@@ -6,12 +6,9 @@ end
 
 local tree_cb = tree_c.nvim_tree_callback
 
-vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_disable_window_picker = 1
-vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache', '_build', 'deps'}
 vim.g.nvim_tree_group_empty = 1
 
 vim.g.nvim_tree_show_icons = {
@@ -91,6 +88,10 @@ require'nvim-tree'.setup {
   system_open = {
     cmd  = nil,
     args = {}
+  },
+  filters = {
+    dotfiles = true,
+    custom = {'.git', 'node_modules', '.cache', '_build', 'deps'}
   },
   view = {
       -- width of the window, can be either a number (columns) or a string in `%`
