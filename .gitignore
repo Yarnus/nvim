@@ -1,0 +1,7 @@
+tmp
+autoload
+plugged
+plugin
+
+lua/custom.lua
+*.log
