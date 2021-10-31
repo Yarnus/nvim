@@ -153,7 +153,8 @@ insert_left {
                 ['r'] = 'HIT-ENTER',
                 [''] = 'SELECT',
                 t = 'T',
-                ['!'] = 'SH'
+                ['!'] = 'SH',
+                ['V?'] = 'VISUAL BLOCK',
             }
 
             local mode_color = {
@@ -180,8 +181,8 @@ insert_left {
             }
 
             local vim_mode = vim.fn.mode()
-            vim.api.nvim_command('hi GalaxyViMode guifg=' ..
-                                     mode_color[vim_mode])
+            local color = mode_color[vim_mode] or colors.red
+            vim.api.nvim_command('hi GalaxyViMode guifg=' ..color)
             return alias[vim_mode]
         end,
         highlight = {colors.line_bg, colors.line_bg}
@@ -248,7 +249,7 @@ insert_left{
 
 insert_left {
   FilePath = {
-    provider= function () 
+    provider= function ()
       local filepath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
       if vim.fn.empty(filepath) == 1 then return '' end
       return filepath
