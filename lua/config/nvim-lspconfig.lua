@@ -5,6 +5,21 @@ if not (present1 or present2) then
   return
 end
 
+function _G.reload_lsp()
+  vim.lsp.stop_client(vim.lsp.get_active_clients())
+  vim.cmd [[edit]]
+end
+
+function _G.open_lsp_log()
+  local path = vim.lsp.get_log_path()
+  vim.cmd("edit " .. path)
+end
+
+vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
+vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
+vim.cmd('command! -nargs=0 Format lua vim.lsp.buf.formatting()')
+
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -80,7 +95,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- lspInstall + lspconfig stuff
 
 -- more server setting: https://github.com/williamboman/nvim-lsp-installer
-local servers = {"clangd", "html", "jsonls", "elixirls", "pyright"}
+local servers = {"clangd", "html", "jsonls", "elixirls", "pyright", "rome"}
 
 for _, lang in pairs(servers) do
     local ok, server = installer.get_server(lang)
@@ -92,6 +107,40 @@ for _, lang in pairs(servers) do
     end
 end
 
+local server_configs = {
+  -- elixir lsp config
+  ['elixirls'] = {
+      -- cmd = {'/Users/yarnus/.config/elixir_ls/release/language_server.sh'},
+    	filetypes = { 'elixir', 'eelixir'},
+      -- root_dir = root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+      settings = {
+        elixirLS = {
+          dialyzerEnabled = false,
+          fetchDeps = false
+        }
+      }
+    },
+  -- python lsp config
+  ['pyright'] = {
+	  filetypes = {'python'},
+	  settings = {
+			pyright = {
+				disableLanguageServices = false,
+				disableOrganizeImports = false
+			},
+      python = {
+      	  analysis = {
+					autoImportCompletions = true,
+      	    autoSearchPaths = true,
+      	    diagnosticMode = 'workspace',
+      	    useLibraryCodeForTypes = true
+      	  }
+        }
+	    }
+    }
+
+}
+
 installer.on_server_ready(function(server)
     local opts = {
       on_attach = on_attach,
@@ -99,11 +148,13 @@ installer.on_server_ready(function(server)
       root_dir = vim.loop.cwd
     }
 
-    -- if server.name == "sumneko_lua" then
-    --   opts.settings = lua_setting
-    -- end
-
-    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+    local extra = server_configs[server.name] or {}
+ 
+    for k,v in pairs(extra) do
+       opts[k] = v
+    end
+    -- This setup() function is exactly the same as lspconfig's setup function 
+    -- more detail on :help lspconfig-quickstart
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
