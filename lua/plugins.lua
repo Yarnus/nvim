@@ -110,12 +110,6 @@ return require('packer').startup(function(use)
         module = 'telescope'
     }
 
-    -- Select text object
-    use {'gcmt/wildfire.vim', event = 'VimEnter'}
-
-    -- surrounding select text with given text
-    use {'tpope/vim-surround', after = 'wildfire.vim'}
-
     -- align
     use {'junegunn/vim-easy-align', cmd = 'EasyAlign'}
 

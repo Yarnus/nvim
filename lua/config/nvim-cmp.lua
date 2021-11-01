@@ -17,13 +17,19 @@ cmp.setup({
     end,
   },
   formatting = {
-    format = require('lspkind').cmp_format({with_text = true, menu = ({
-	buffer = '[Buffer]',
-	nvim_lsp = '[LSP]',
-	luasnip = '[LuaSnip]',
-	nvim_lua = '[Lua]',
-	latex_symbols = '[Latex]',
-      })}),
+        format        = require('lspkind').cmp_format(
+        {
+          with_text = true, 
+          menu = (
+          {
+          	buffer        = '[Buffer]',
+          	nvim_lsp      = '[LSP]',
+          	luasnip       = '[LuaSnip]',
+          	nvim_lua      = '[Lua]',
+          	latex_symbols = '[Latex]',
+          }
+      )}
+   ),
   },
    mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -44,19 +50,21 @@ cmp.setup({
 	elseif has_words_before() then
 	  cmp.complete()
 	else
-	  fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+	  -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+    fallback()
 	end
       end, { 'i', 's' }),
 
 
-      ['<S-Tab>'] = cmp.mapping(function()
-	if cmp.visible() then
-	  cmp.select_prev_item()
-	elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-	  feedkey('<Plug>(vsnip-jump-prev)', '')
-	end
+  ['<S-Tab>'] = cmp.mapping(function()
+      	if cmp.visible() then
+      	  cmp.select_prev_item()
+      	elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+      	  feedkey('<Plug>(vsnip-jump-prev)', '')
+      	end
       end, { 'i', 's' }),
-   },
+  },
+
   sources = {
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
@@ -64,6 +72,7 @@ cmp.setup({
     { name = 'path' },
   },
   experimental = {
-    ghost_text=true
+    -- ghost_test means the gray-text after input
+    ghost_text = false
   }
 })

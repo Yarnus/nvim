@@ -51,17 +51,15 @@ vim.g.nvim_tree_icons = {
        }
     }
 
--- toggle nvim tree
-vim.cmd [[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == 'NvimTree' | set laststatus=0 | else | set laststatus=2 | endif]]
+-- hide the statusline when toggle nvim tree
+-- vim.cmd [[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == 'NvimTree' | set laststatus=0 | else | set laststatus=2 | endif]]
 
-
--- following options are the default
 require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {'startify', 'dashboard'},
-  auto_close          = true,
+  auto_close          = false,
   open_on_tab         = false,
   hijack_cursor       = true,
   update_cwd          = false,

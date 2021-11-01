@@ -12,8 +12,7 @@ local vim = vim
 
 gl.short_line_list = {
     'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
-    'fugitiveblame', 'plug'
-
+    'fugitiveblame', 'plug', 'NvimTree'
 }
 
 local current_scheme = vim.g.colors_name
