@@ -88,6 +88,9 @@ return require('packer').startup(function(use)
     -- vim-commentary: for quickly commenting--
     use {'tpope/vim-commentary', event = 'BufRead'}
 
+    -- Find and replace
+    use {'brooth/far.vim', cmd = {'Far', 'Farr'}}
+
     -- quick reload
     use {
         'famiu/nvim-reload',
