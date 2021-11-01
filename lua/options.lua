@@ -15,7 +15,7 @@ vim.o.errorbells=false
 vim.o.visualbell=false
 
 -- divider
-vim.o.fillchars="vert:ǀ"
+vim.o.fillchars='vert:ǀ'
 -- vim.o.fillchars=vert:│,stl:\ ,stlnc:\
 -- vim.o.list lcs=tab:\ \ ,conceal:\|
 
@@ -28,15 +28,15 @@ vim.o.wrap = false
 
 -- minimum reserve line when scrolling
 vim.o.scrolloff=5
-vim.o.backspace="2"
-vim.o.encoding="UTF-8"
--- vim.o.filetype="on"
+vim.o.backspace='2'
+vim.o.encoding='UTF-8'
+-- vim.o.filetype='on'
 -- filetype plugin on
 
 
 -- copy vim -> os clipboard
-vim.o.clipboard="unnamed"
-vim.o.langmenu="zh_CN.UTF-8"
+vim.o.clipboard='unnamed'
+vim.o.langmenu='zh_CN.UTF-8'
 -- show match space
 vim.o.showmatch=true
 -- search stuff

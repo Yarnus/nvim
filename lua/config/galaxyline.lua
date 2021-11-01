@@ -12,17 +12,17 @@ local vim = vim
 
 gl.short_line_list = {
     'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
-    'fugitiveblame', 'plug', "NvimTree"
+    'fugitiveblame', 'plug'
 
 }
 
 local current_scheme = vim.g.colors_name
 
 -- local line_bg_color = '#1F253A'
--- if current_scheme == "everforest" then
---   line_bg_color = "#282E2C"
--- elseif current_scheme == "gruvbox" then
---   line_bg_color = "#261C00"
+-- if current_scheme == 'everforest' then
+--   line_bg_color = '#282E2C'
+-- elseif current_scheme == 'gruvbox' then
+--   line_bg_color = '#261C00'
 -- end
 
 local colors = {

@@ -1,7 +1,7 @@
-local present1, _ = pcall(require, "lspconfig")
-local present2, installer = pcall(require, "nvim-lsp-installer")
+local present1, _ = pcall(require, 'lspconfig')
+local present2, installer = pcall(require, 'nvim-lsp-installer')
 if not (present1 or present2) then
-  vim.notify("Fail to setup LSP", vim.log.levels.ERROR, {title= 'plugins'})
+  vim.notify('Fail to setup LSP', vim.log.levels.ERROR, {title= 'plugins'})
   return
 end
 
@@ -12,7 +12,7 @@ end
 
 function _G.open_lsp_log()
   local path = vim.lsp.get_log_path()
-  vim.cmd("edit " .. path)
+  vim.cmd('edit ' .. path)
 end
 
 vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
@@ -57,15 +57,15 @@ local on_attach = function(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     -- if client.resolved_capabilities.document_formatting then
-    --     buf_set_keymap("n", "leader>m", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    --     buf_set_keymap('n', 'leader>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     -- elseif client.resolved_capabilities.document_range_formatting then
-    --     buf_set_keymap("n", "<leader>m","<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    --     buf_set_keymap('n', '<leader>m','<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
     -- end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = {
-    "markdown", "plaintext"
+    'markdown', 'plaintext'
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
@@ -78,19 +78,19 @@ capabilities.textDocument.completion.completionItem.tagSupport = {
     valueSet = {1}
 }
 capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {"documentation", "detail", "additionalTextEdits"}
+    properties = {'documentation', 'detail', 'additionalTextEdits'}
 }
 
 -- lspInstall + lspconfig stuff
 
 -- more server setting: https://github.com/williamboman/nvim-lsp-installer
-local servers = {"clangd", "html", "jsonls", "elixirls", "pyright", "rome"}
+local servers = {'clangd', 'html', 'jsonls', 'elixirls', 'pyright', 'rome'}
 
 for _, lang in pairs(servers) do
     local ok, server = installer.get_server(lang)
     if ok then
         if not server:is_installed() then
-            print("Installing " .. lang)
+            print('Installing ' .. lang)
             server:install()
         end
     end
@@ -101,7 +101,7 @@ local server_configs = {
   ['elixirls'] = {
       -- cmd = {'/Users/yarnus/.config/elixir_ls/release/language_server.sh'},
     	filetypes = { 'elixir', 'eelixir'},
-      -- root_dir = root_pattern("mix.exs", ".git") or vim.loop.os_homedir(),
+      -- root_dir = root_pattern('mix.exs', '.git') or vim.loop.os_homedir(),
       settings = {
         elixirLS = {
           dialyzerEnabled = false,
@@ -138,49 +138,49 @@ installer.on_server_ready(function(server)
     }
 
     local extra = server_configs[server.name] or {}
- 
+
     for k,v in pairs(extra) do
        opts[k] = v
     end
-    -- This setup() function is exactly the same as lspconfig's setup function 
+    -- This setup() function is exactly the same as lspconfig's setup function
     -- more detail on :help lspconfig-quickstart
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
-local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+local signs = {Error = ' ', Warn = ' ', Hint = ' ', Info = ' '}
 
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ''})
 end
 
 local lsp_publish_diagnostics_options = {
-    virtual_text = {prefix = "", spacing = 0},
+    virtual_text = {prefix = '', spacing = 0},
     signs = true,
     underline = true,
     update_in_insert = false -- update diagnostics insert mode
 }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
+vim.lsp.handlers['textDocument/publishDiagnostics'] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
                  lsp_publish_diagnostics_options)
 
-vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, {border = "single"})
+vim.lsp.handlers['textDocument/hover'] =
+    vim.lsp.with(vim.lsp.handlers.hover, {border = 'single'})
 
-vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single"})
+vim.lsp.handlers['textDocument/signatureHelp'] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {border = 'single'})
 
 local function goto_definition(split_cmd)
     local util = vim.lsp.util
-    local log = require("vim.lsp.log")
+    local log = require('vim.lsp.log')
     local api = vim.api
 
     -- note, this handler style is for neovim 0.5.1/0.6, if on 0.5, call with function(_, method, result)
     local handler = function(_, result, ctx)
         if result == nil or vim.tbl_isempty(result) then
-            local _ = log.info() and log.info(ctx.method, "No location found")
+            local _ = log.info() and log.info(ctx.method, 'No location found')
             return nil
         end
 
@@ -193,8 +193,8 @@ local function goto_definition(split_cmd)
 
             if #result > 1 then
                 util.set_qflist(util.locations_to_items(result))
-                api.nvim_command("copen")
-                api.nvim_command("wincmd p")
+                api.nvim_command('copen')
+                api.nvim_command('wincmd p')
             end
         else
             util.jump_to_location(result)
@@ -204,4 +204,4 @@ local function goto_definition(split_cmd)
     return handler
 end
 
-vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
+vim.lsp.handlers['textDocument/definition'] = goto_definition('split')

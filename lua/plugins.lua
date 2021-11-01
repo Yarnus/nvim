@@ -1,42 +1,42 @@
 require('packer').init {
     display = {
-        open_fn = function() return require("packer.util").float {border = "single"} end
+        open_fn = function() return require('packer.util').float {border = 'single'} end
     },
     git = {clone_timeout = 60}}
 
 local map = require('utils').map
 
 return require('packer').startup(function(use)
-    use {"wbthomason/packer.nvim", event = "VimEnter"}
+    use {'wbthomason/packer.nvim', event = 'VimEnter'}
 
-    use {'kyazdani42/nvim-web-devicons', event = "BufRead"}
+    use {'kyazdani42/nvim-web-devicons', event = 'BufRead'}
 
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
-        after = "nvim-web-devicons",
-        config = function() require("config.galaxyline") end
+        after = 'nvim-web-devicons',
+        config = function() require('config.galaxyline') end
     }
 
     use {
         'kyazdani42/nvim-tree.lua',
-        config = function() require("config.nvim-tree") end,
-        cmd = {"NvimTreeRefresh", "NvimTreeToggle"}
+        config = function() require('config.nvim-tree') end,
+        cmd = {'NvimTreeRefresh', 'NvimTreeToggle'}
     }
 
     use {
         'akinsho/nvim-bufferline.lua',
-        config = function() require("config.nvim-bufferline") end,
-        event = "BufRead"
+        config = function() require('config.nvim-bufferline') end,
+        event = 'BufRead'
     }
 
-    use {'rafamadriz/friendly-snippets', event = "InsertEnter"}
+    use {'rafamadriz/friendly-snippets', event = 'InsertEnter'}
 
     -- nvim-cmp
     use {
         'hrsh7th/nvim-cmp',
-        after = "friendly-snippets",
-        config = function() require("config.nvim-cmp") end,
+        after = 'friendly-snippets',
+        config = function() require('config.nvim-cmp') end,
         requires = {'onsails/lspkind-nvim'}
     }
 
@@ -54,19 +54,19 @@ return require('packer').startup(function(use)
     -- lsp
     use {
         'williamboman/nvim-lsp-installer',
-        ft = {"bash", "sh", "c", "cpp","go", "html", "json", "python", "elixir", "js","javascrip"}
+        ft = {'bash', 'sh', 'c', 'cpp','go', 'html', 'json', 'python', 'elixir', 'js','javascrip'}
     }
 
     use {
         'neovim/nvim-lspconfig',
-        config = function() require("config.nvim-lspconfig") end,
-        after = "nvim-lsp-installer"
+        config = function() require('config.nvim-lspconfig') end,
+        after = 'nvim-lsp-installer'
     }
 
     use {
-        "ray-x/lsp_signature.nvim",
-        config = function() require("config.lsp-signature") end,
-        after = "nvim-lspconfig"
+        'ray-x/lsp_signature.nvim',
+        config = function() require('config.lsp-signature') end,
+        after = 'nvim-lspconfig'
     }
 
     -- treesitter
@@ -81,24 +81,24 @@ return require('packer').startup(function(use)
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        event = "BufRead",
-        config = function() require("config.gitsigns") end
+        event = 'BufRead',
+        config = function() require('config.gitsigns') end
     }
 
     -- vim-commentary: for quickly commenting--
-    use {'tpope/vim-commentary', event = "BufRead"}
+    use {'tpope/vim-commentary', event = 'BufRead'}
 
     -- quick reload
     use {
         'famiu/nvim-reload',
-        cmd = {"Reload", "Restart"},
-        requires = "nvim-lua/plenary.nvim"
+        cmd = {'Reload', 'Restart'},
+        requires = 'nvim-lua/plenary.nvim'
     }
 
-    -- show color 
+    -- show color
     use {
       'norcalli/nvim-colorizer.lua',
-      cmd = "ColorizerToggle",
+      cmd = 'ColorizerToggle',
       config = function() require('colorizer').setup() end
     }
 
@@ -106,30 +106,30 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
-        config = function() require("config.telescope") end,
+        config = function() require('config.telescope') end,
         module = 'telescope'
     }
 
     -- Select text object
-    use {'gcmt/wildfire.vim', event = "VimEnter"}
+    use {'gcmt/wildfire.vim', event = 'VimEnter'}
 
     -- surrounding select text with given text
-    use {"tpope/vim-surround", after = "wildfire.vim"}
+    use {'tpope/vim-surround', after = 'wildfire.vim'}
 
     -- align
     use {'junegunn/vim-easy-align', cmd = 'EasyAlign'}
 
     -- speed up neovim!
     use {
-        'nathom/filetype.nvim'
+        'nathom/filetype.nvim',
         -- If using a Neovim version earlier than 0.6.0
-        -- setup = function() vim.g.did_load_filetypes = 1 end
+        setup = function() vim.g.did_load_filetypes = 1 end
     }
     -- colorscheme
     use {
         'Avimitin/neovim-deus',
-        after = "packer.nvim",
-        config = function() require("themes.deus") end
+        after = 'packer.nvim',
+        config = function() require('themes.deus') end
     }
 
 end)
