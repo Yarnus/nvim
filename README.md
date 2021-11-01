@@ -1,11 +1,16 @@
+
+
 # About
-<p align="center">
-<img src="https://img.shields.io/badge/neovim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white"/>
-<img src="https://img.shields.io/badge/lua-%232C2D72.svg?&style=for-the-badge&logo=lua&logoColor=white"/>
-</p>
+![nvim](https://img.shields.io/badge/require%20neovim-v0.5.1-red)
+![language](https://img.shields.io/github/languages/top/Yarnus/nvim)
+![Neovim Configuration Test](https://img.shields.io/github/workflow/status/Yarnus/nvim/Neovim%20Configuration%20Test?label=paker%20compile&logo=Github)
+![last commit](https://img.shields.io/github/last-commit/Yarnus/nvim?color=yellow)
+
+- My personal nvim configuration written in lua.
+![preview](https://i.imgur.com/GQJEB85.png)
 
 
-## Credit
+# Credit
 - This project is originally base on [Avimitin/nvim](https://github.com/Avimitin/nvim)  ( I highly recommend it to be your first template.)
 - It's originally inspired by
   - [theniceboy/nvim](https://github.com/theniceboy/nvim)
@@ -15,7 +20,7 @@
 Anyway, take a look at their contribution, which is really fantastic.
 
 
-## TODO
+# TODO
 - [ ] Optimized neovim start up time based on each file
 - [ ] Add guide and more screent
 
