@@ -19,10 +19,18 @@
 
 Anyway, take a look at their contribution, which is really fantastic.
 
+# Installation
+1. neovim v0.5 or later (please follow [neovim installation](https://github.com/neovim/neovim/wiki/Installing-Neovim).) 
+2. nerdfont (most of chars are based on nerd font, therefore it's highly recommended to install [nerdfont](https://www.nerdfonts.com/font-downloads) for impressive icon support.)
+3. other neovim dependency (for more details, please use `:checkhealth` in neovim.)
+  - Install `pip3` and run `pip3 install --user pynvim`
+  - Install `node` and run `npm install -g neovim`
+4. run neovim then do `:PackerInstall`, after that run `:PackerCompile`
+5. restart neovim and installation done. (ATM, some lsp/tree-sitter will download automatically.)
 
 # TODO
 - [ ] Optimized neovim start up time based on each file
-- [ ] Add guide and more screent
+- [ ] Add more docs and screenshot
 
 ## Start up time test data
 > Base on MBP 13 (2018, i5 2.3Ghz / 8 / 256)
