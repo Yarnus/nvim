@@ -9,7 +9,8 @@ local map = require('utils').map
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', event = 'VimEnter'}
 
-    use {'kyazdani42/nvim-web-devicons', event = 'BufRead'}
+    -- use {'kyazdani42/nvim-web-devicons', event = 'BufRead'}
+    use {'kyazdani42/nvim-web-devicons'}
 
     use {
         'glepnir/galaxyline.nvim',
@@ -22,6 +23,13 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua',
         config = function() require('config.nvim-tree') end,
         cmd = {'NvimTreeRefresh', 'NvimTreeToggle'}
+    }
+
+    use {
+        'projekt0n/circles.nvim',
+        config = function() require('config.circles') end,
+        after = 'nvim-web-devicons',
+        requires = {{'kyazdani42/nvim-tree.lua', opt = true}}
     }
 
     use {
