@@ -14,7 +14,7 @@ require('gitsigns').setup {
   linehl = false,
   keymaps = {
     noremap = true,
-    ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+    ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
   },
   watch_index = {
     interval = 1000,

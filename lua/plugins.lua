@@ -116,7 +116,9 @@ return require('packer').startup(function(use)
     -- telescope
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'},
+        -- The last one commit support nvim 0.5
+        commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120',
+        requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
         config = function() require('config.telescope') end,
         module = 'telescope'
     }
