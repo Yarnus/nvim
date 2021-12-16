@@ -41,4 +41,5 @@ completion["windwp/nvim-autopairs"] = {
     config = conf.autopairs
 }
 
+
 return completion

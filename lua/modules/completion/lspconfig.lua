@@ -17,6 +17,10 @@ end
 local nvim_lsp = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
 
+vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
+vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
+vim.cmd('command! -nargs=0 Format lua vim.lsp.buf.formatting()')
+
 lsp_installer.settings {
     ui = {
         icons = {

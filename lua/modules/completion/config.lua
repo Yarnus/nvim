@@ -7,22 +7,10 @@ function config.lightbulb()
 end
 
 function config.cmp()
-    vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
-    vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindUnit guifg=#D08770 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindProperty guifg=#A3BE8C guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindKeyword guifg=#EBCB8B guibg=NONE]]
-    vim.cmd [[highlight CmpItemAbbrMatch guifg=#5E81AC guibg=NONE]]
-    vim.cmd [[highlight CmpItemAbbrMatchFuzzy guifg=#5E81AC guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindVariable guifg=#8FBCBB guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindInterface guifg=#88C0D0 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindText guifg=#81A1C1 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindFunction guifg=#B48EAD guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindMethod guifg=#B48EAD guibg=NONE]]
-
     local t = function(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
+
     local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and
@@ -31,6 +19,7 @@ function config.cmp()
     end
 
     local cmp = require("cmp")
+
     cmp.setup {
         formatting = {
             format = function(entry, vim_item)
@@ -67,15 +56,12 @@ function config.cmp()
                                               vim_item.kind)
 
                 vim_item.menu = ({
-                    -- cmp_tabnine = "[TN]",
                     buffer = "[BUF]",
-                    orgmode = "[ORG]",
                     nvim_lsp = "[LSP]",
+                    luasnip = "[SNIP]",
                     nvim_lua = "[LUA]",
                     path = "[PATH]",
-                    tmux = "[TMUX]",
-                    luasnip = "[SNIP]",
-                    spell = "[SPELL]"
+                    -- spell = "[SPELL]"
                 })[entry.source.name]
 
                 return vim_item
@@ -83,18 +69,20 @@ function config.cmp()
         },
         -- You can set mappings if you want
         mapping = {
-            ["<CR>"] = cmp.mapping.confirm({select = true}),
             ["<C-p>"] = cmp.mapping.select_prev_item(),
             ["<C-n>"] = cmp.mapping.select_next_item(),
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
             ["<C-e>"] = cmp.mapping.close(),
+            ["<CR>"] = cmp.mapping.confirm({select = true, behavior = cmp.ConfirmBehavior.Replace}),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
                 elseif has_words_before() then
                     cmp.complete()
                 else
+                -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
                     fallback()
                 end
             end, {"i", "s"}),
@@ -127,10 +115,14 @@ function config.cmp()
         },
         -- You should specify your *installed* sources.
         sources = {
-            {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
-            {name = "path"}, {name = "spell"}, {name = "tmux"},
-            {name = "orgmode"}, {name = "buffer"}
-            -- {name = 'cmp_tabnine'}
+            {name = "nvim_lsp"}, 
+            {name = "nvim_lua"}, 
+            {name = "luasnip"},
+            {name = "path"}, 
+            {name = "buffer"}
+            -- {name = "spell"}, 
+            -- {name = "tmux"},
+            -- {name = "orgmode"}, 
         }
     }
 end

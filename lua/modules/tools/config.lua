@@ -55,12 +55,6 @@ function config.telescope()
             set_env = {["COLORTERM"] = "truecolor"}
         },
         extensions = {
-            fzf = {
-                fuzzy = false,
-                override_generic_sorter = true,
-                override_file_sorter = true,
-                case_mode = "smart_case"
-            },
             frecency = {
                 show_scores = true,
                 show_unindexed = true,
@@ -83,7 +77,6 @@ function config.telescope()
         }
     }
 
-    require("telescope").load_extension("fzf")
     require("telescope").load_extension("project")
     require("telescope").load_extension("frecency")
     require("telescope").load_extension("media_files")

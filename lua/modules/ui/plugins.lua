@@ -3,9 +3,11 @@ local conf = require("modules.ui.config")
 
 ui["kyazdani42/nvim-web-devicons"] = {opt = false}
 
-ui["hoob3rt/lualine.nvim"] = {
-    opt = true,
-    config = conf.lualine
+ui["glepnir/galaxyline.nvim"] = {
+  opt = false,
+  branch = "main",
+  requires = {"kyazdani42/nvim-web-devicons"},
+  config = conf.galaxyline
 }
 
 ui["kyazdani42/nvim-tree.lua"] = {
@@ -26,6 +28,6 @@ ui["akinsho/nvim-bufferline.lua"] = {
     config = conf.nvim_bufferline
 }
 
-ui["Avimitin/neovim-deus"] = {}
+ui["Avimitin/neovim-deus"] = {config = conf.deus}
 
 return ui
