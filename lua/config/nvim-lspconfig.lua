@@ -96,12 +96,13 @@ for _, lang in pairs(servers) do
     end
 end
 
+
 local server_configs = {
   -- elixir lsp config
   ['elixirls'] = {
-      -- cmd = {'/Users/yarnus/.config/elixir_ls/release/language_server.sh'},
+      cmd = {'/Users/yarnus/.config/elixir_ls/release/language_server.sh'},
     	filetypes = { 'elixir', 'eelixir'},
-      -- root_dir = root_pattern('mix.exs', '.git') or vim.loop.os_homedir(),
+      -- root_dir = util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
       settings = {
         elixirLS = {
           dialyzerEnabled = false,

@@ -17,19 +17,49 @@ cmp.setup({
     end,
   },
   formatting = {
-        format        = require('lspkind').cmp_format(
-        {
-          with_text = true, 
-          menu = (
-          {
-          	buffer        = '[Buffer]',
-          	nvim_lsp      = '[LSP]',
-          	luasnip       = '[LuaSnip]',
-          	nvim_lua      = '[Lua]',
-          	latex_symbols = '[Latex]',
-          }
-      )}
-   ),
+       format = function(entry, vim_item)
+            local lspkind_icons = {
+                Text = "",
+                Method = "",
+                Function = "",
+                Constructor = "",
+                Field = "",
+                Variable = "",
+                Class = "ﴯ",
+                Interface = "",
+                Module = "",
+                Property = "ﰠ",
+                Unit = "",
+                Value = "",
+                Enum = "",
+                Keyword = "",
+                Snippet = "",
+                Color = "",
+                File = "",
+                Reference = "",
+                Folder = "",
+                EnumMember = "",
+                Constant = "",
+                Struct = "",
+                Event = "",
+                Operator = "",
+                TypeParameter = ""
+            }
+            -- load lspkind icons
+            vim_item.kind = string.format("%s %s",
+                                          lspkind_icons[vim_item.kind],
+                                          vim_item.kind)
+
+            vim_item.menu = ({
+                luasnip = "[SNIP]",
+                buffer = "[BUF]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[LUA]",
+                path = "[PATH]",
+            })[entry.source.name]
+
+      return vim_item
+    end
   },
    mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -69,7 +99,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'buffer' },
-    { name = 'path' },
+    -- { name = 'path' },
   },
   experimental = {
     -- ghost_test means the gray-text after input
