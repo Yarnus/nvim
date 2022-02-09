@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
+        -- BUG: fixed https://github.com/kyazdani42/nvim-tree.lua/issues/951
+        commit = 'd8bf1adcdcc6a8a66c3dce5c29a4ef06e21dc844',
         config = function() require('config.nvim-tree') end,
         cmd = {'NvimTreeRefresh', 'NvimTreeToggle'}
     }
@@ -83,6 +85,14 @@ return require('packer').startup(function(use)
         run = ':TSUpdate',
         event = 'BufRead',
         config = function() require('config.nvim-treesitter') end
+    }
+
+    -- TODO: elixir highlight only due to tree-sitter terrible performance.
+    -- should be reuse once upstream fixed.
+    use {
+      'elixir-editors/vim-elixir',
+      event = 'BufRead',
+      ft = {'elixir', 'eelixir'}
     }
 
     -- git stuff
