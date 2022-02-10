@@ -1,7 +1,7 @@
 
 
 # About
-![nvim](https://img.shields.io/badge/require%20neovim-v0.5.1-red)
+![nvim](https://img.shields.io/badge/require%20neovim-v0.6.1-red)
 ![language](https://img.shields.io/github/languages/top/Yarnus/nvim)
 ![Neovim Configuration Test](https://img.shields.io/github/workflow/status/Yarnus/nvim/Neovim%20Configuration%20Test?label=paker%20compile&logo=Github)
 ![last commit](https://img.shields.io/github/last-commit/Yarnus/nvim?color=yellow)

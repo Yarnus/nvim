@@ -9,7 +9,6 @@ local map = require('utils').map
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim', event = 'VimEnter'}
 
-    -- use {'kyazdani42/nvim-web-devicons', event = 'BufRead'}
     use {'kyazdani42/nvim-web-devicons'}
 
     use {
@@ -21,7 +20,6 @@ return require('packer').startup(function(use)
 
     use {
         'kyazdani42/nvim-tree.lua',
-        -- BUG: fixed https://github.com/kyazdani42/nvim-tree.lua/issues/951
         commit = 'd8bf1adcdcc6a8a66c3dce5c29a4ef06e21dc844',
         config = function() require('config.nvim-tree') end,
         cmd = {'NvimTreeRefresh', 'NvimTreeToggle'}
@@ -87,14 +85,6 @@ return require('packer').startup(function(use)
         config = function() require('config.nvim-treesitter') end
     }
 
-    -- TODO: elixir highlight only due to tree-sitter terrible performance.
-    -- should be reuse once upstream fixed.
-    use {
-      'elixir-editors/vim-elixir',
-      event = 'BufRead',
-      ft = {'elixir', 'eelixir'}
-    }
-
     -- git stuff
     use {
         'lewis6991/gitsigns.nvim',
@@ -126,8 +116,6 @@ return require('packer').startup(function(use)
     -- telescope
     use {
         'nvim-telescope/telescope.nvim',
-        -- The last one commit support nvim 0.5
-        commit = '80cdb00b221f69348afc4fb4b701f51eb8dd3120',
         requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
         config = function() require('config.telescope') end,
         module = 'telescope'
@@ -137,11 +125,8 @@ return require('packer').startup(function(use)
     use {'junegunn/vim-easy-align', cmd = 'EasyAlign'}
 
     -- speed up neovim!
-    use {
-        'nathom/filetype.nvim',
-        -- If using a Neovim version earlier than 0.6.0
-        setup = function() vim.g.did_load_filetypes = 1 end
-    }
+    use {'nathom/filetype.nvim'}
+
     -- colorscheme
     use {
         'Avimitin/neovim-deus',
