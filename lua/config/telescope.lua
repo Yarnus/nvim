@@ -16,6 +16,7 @@ telescope.setup({
         prompt_prefix = '❯ ',
         selection_caret = ' ',
         entry_prefix = '  ',
+        multi_icon = ' ',
         initial_mode = 'insert',
         selection_strategy = 'reset',
         sorting_strategy = 'ascending',
@@ -33,7 +34,9 @@ telescope.setup({
             preview_cutoff = 120
         },
         file_sorter = require('telescope.sorters').get_fuzzy_file,
-        file_ignore_patterns = {},
+        -- Example: { "^scratch/" } -- ignore all files in scratch directory
+        -- Example: { "%.npz" } -- ignore all npz files
+        file_ignore_patterns = {"^node_modules/", ".pyc", ".xlsx", ".xls"},
         generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
         path_display = {'absolute'},
         winblend = 0,
