@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gl','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', 'gl','<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -157,9 +157,9 @@ for type, icon in pairs(signs) do
 end
 
 local lsp_publish_diagnostics_options = {
-    virtual_text = {prefix = '', spacing = 0},
+    virtual_text = {prefix = '<', spacing = 1},
     signs = true,
-    underline = true,
+    underline = false,
     update_in_insert = false -- update diagnostics insert mode
 }
 

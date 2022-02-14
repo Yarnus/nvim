@@ -27,7 +27,7 @@ local current_scheme = vim.g.colors_name
 local colors = {
     bg       = '#504945',
     -- hi StatusLine - guibg
-    line_bg  = '#242a32',
+    line_bg  = '#202020',
     fg       = '#8FBCBB',
     fg_green = '#65a380',
     yellow   = '#fabd2f',

@@ -125,13 +125,19 @@ return require('packer').startup(function(use)
     use {'junegunn/vim-easy-align', cmd = 'EasyAlign'}
 
     -- speed up neovim!
-    use {'yarnus/filetype.nvim', branch="dev"}
+    use {'yarnus/filetype.nvim', branch = 'dev'}
 
     -- colorscheme
+    -- use {
+    --     'Avimitin/neovim-deus',
+    --     after = 'packer.nvim',
+    --     config = function() require('themes.deus') end
+    -- }
+
     use {
-        'Avimitin/neovim-deus',
-        after = 'packer.nvim',
-        config = function() require('themes.deus') end
+      'luisiacc/gruvbox-baby',
+      after = 'packer.nvim',
+      config = function() require('themes.gruvbox-baby') end
     }
 
 end)
