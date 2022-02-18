@@ -23,11 +23,12 @@ local current_scheme = vim.g.colors_name
 -- elseif current_scheme == 'gruvbox' then
 --   line_bg_color = '#261C00'
 -- end
+--
 
 local colors = {
     bg       = '#504945',
     -- hi StatusLine - guibg
-    line_bg  = '#202020',
+    line_bg  = '#131A24',
     fg       = '#8FBCBB',
     fg_green = '#65a380',
     yellow   = '#fabd2f',

@@ -133,11 +133,11 @@ return require('packer').startup(function(use)
     --     after = 'packer.nvim',
     --     config = function() require('themes.deus') end
     -- }
-
+    --
     use {
-      'luisiacc/gruvbox-baby',
+      'EdenEast/nightfox.nvim',
       after = 'packer.nvim',
-      config = function() require('themes.gruvbox-baby') end
+      config = function() require('themes.nightfox') end
     }
 
 end)
