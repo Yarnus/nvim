@@ -125,7 +125,7 @@ return require('packer').startup(function(use)
     use {'junegunn/vim-easy-align', cmd = 'EasyAlign'}
 
     -- speed up neovim!
-    use {'yarnus/filetype.nvim', branch = 'dev'}
+    use {'nathom/filetype.nvim'}
 
     -- colorscheme
     -- use {
