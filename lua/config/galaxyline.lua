@@ -15,33 +15,44 @@ gl.short_line_list = {
     'fugitiveblame', 'plug', 'NvimTree'
 }
 
-local current_scheme = vim.g.colors_name
 
--- local line_bg_color = '#1F253A'
--- if current_scheme == 'everforest' then
---   line_bg_color = '#282E2C'
--- elseif current_scheme == 'gruvbox' then
---   line_bg_color = '#261C00'
--- end
---
+-- common
+-- colors = {
+--     bg       = '#504945',
+--     -- hi StatusLine - guibg
+--     line_bg  = '#202020',
+--     fg       = '#8FBCBB',
+--     fg_green = '#65a380',
+--     yellow   = '#fabd2f',
+--     cyan     = '#86c1b9',
+--     darkblue = '#1d2021',
+--     green    = '#a1b56c',
+--     orange   = '#dc9656',
+--     purple   = '#5d4d7a',
+--     magenta  = '#d3869b',
+--     blue     = '#7cafc2',
+--     red      = '#fb4934',
+--     violet   = '#ba8baf'
+-- }
 
-local colors = {
+-- gruvbox-baby
+colors = {
     bg       = '#504945',
-    -- hi StatusLine - guibg
-    line_bg  = '#131A24',
+    line_bg  = '#202020',
     fg       = '#8FBCBB',
-    fg_green = '#65a380',
+    fg_green = '#689d6a',
     yellow   = '#fabd2f',
     cyan     = '#86c1b9',
     darkblue = '#1d2021',
-    green    = '#a1b56c',
-    orange   = '#dc9656',
+    green    = '#8ec07c',
+    orange   = '#d65d0e',
     purple   = '#5d4d7a',
-    magenta  = '#d3869b',
+    magenta  = '#b16286',
     blue     = '#7cafc2',
     red      = '#fb4934',
-    violet   = '#ba8baf'
+    violet   = '#D4879C'
 }
+
 
 local function has_file_type()
     local f_type = vim.bo.filetype
@@ -202,7 +213,7 @@ insert_left {
     GitBranch = {
       provider  = 'GitBranch',
       condition = condition.check_git_workspace,
-      highlight = {colors.orange, colors.line_bg},
+      highlight = {colors.red, colors.line_bg},
     }
 }
 
@@ -212,7 +223,7 @@ insert_left {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
-    icon = '+',
+    icon = '  ',
     highlight = {colors.green,colors.line_bg},
   }
 }
@@ -221,7 +232,7 @@ insert_left {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
-    icon = ' ~',
+    icon = '  ',
     highlight = {colors.orange,colors.line_bg},
   }
 }
@@ -230,7 +241,7 @@ insert_left {
     DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
-    icon = ' -',
+    icon = '  ',
     highlight = {colors.red,colors.line_bg},
   }
 }
@@ -255,10 +266,9 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = {colors.fg_green, colors.line_bg},
+    highlight = {colors.yellow, colors.line_bg},
   }
 }
-
 
 local DiagnosticError = diagnostic.get_diagnostic_error
 local DiagnosticWarn = diagnostic.get_diagnostic_warn
@@ -276,7 +286,7 @@ insert_right{
       end
       return true
     end,
-    icon = ' ',
+    icon = ' ',
     highlight = {colors.green, colors.line_bg}
   }
 }
@@ -287,7 +297,7 @@ insert_separator_at_right(' ')
 insert_right {
     PerCent = {
     provider = 'LinePercent',
-    highlight = {colors.fg, colors.line_bg},
+    highlight = {colors.yellow, colors.line_bg},
   }
 }
 
@@ -297,7 +307,7 @@ insert_right {
     FileEncode = {
     provider = 'FileEncode',
     condition = condition.hide_in_width,
-    highlight = {colors.red, colors.line_bg}
+    highlight = {colors.orange, colors.line_bg}
   }
 }
 
@@ -307,7 +317,7 @@ insert_right {
     FileFormat = {
     provider = 'FileFormat',
     condition = condition.hide_in_width,
-    highlight = {colors.red, colors.line_bg}
+    highlight = {colors.violet, colors.line_bg}
   }
 }
 
@@ -316,7 +326,7 @@ insert_blank_line_at_right()
 insert_right {
   BufferType = {
     provider = 'FileTypeName',
-    highlight = { colors.blue, colors.line_bg },
+    highlight = { colors.fg_green, colors.line_bg },
   }
 }
 
