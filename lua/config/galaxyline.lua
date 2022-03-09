@@ -20,7 +20,7 @@ gl.short_line_list = {
 -- colors = {
 --     bg       = '#504945',
 --     -- hi StatusLine - guibg
---     line_bg  = '#202020',
+--     line_bg  = '#242a32',
 --     fg       = '#8FBCBB',
 --     fg_green = '#65a380',
 --     yellow   = '#fabd2f',
@@ -38,7 +38,7 @@ gl.short_line_list = {
 -- gruvbox-baby
 colors = {
     bg       = '#504945',
-    line_bg  = '#202020',
+    line_bg  = '#242a32',
     fg       = '#8FBCBB',
     fg_green = '#689d6a',
     yellow   = '#fabd2f',

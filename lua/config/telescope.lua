@@ -36,7 +36,7 @@ telescope.setup({
         file_sorter = require('telescope.sorters').get_fuzzy_file,
         -- Example: { "^scratch/" } -- ignore all files in scratch directory
         -- Example: { "%.npz" } -- ignore all npz files
-        file_ignore_patterns = {"^node_modules/", ".pyc", ".xlsx", ".xls"},
+        file_ignore_patterns = {"^node_modules/",".pyc", ".xlsx", ".xls"},
         generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
         path_display = {'absolute'},
         winblend = 0,
