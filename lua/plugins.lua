@@ -93,8 +93,11 @@ return require('packer').startup(function(use)
         config = function() require('config.gitsigns') end
     }
 
-    -- vim-commentary: for quickly commenting--
-    use {'tpope/vim-commentary', event = 'BufRead'}
+    use {
+      'terrortylor/nvim-comment', 
+      event = 'BufRead',
+      config = function() require('nvim_comment').setup() end
+    }
 
     -- Find and replace
     use {'brooth/far.vim', cmd = {'Far', 'Farr'}}
@@ -133,5 +136,16 @@ return require('packer').startup(function(use)
         after = 'packer.nvim',
         config = function() require('themes.deus') end
     }
-
+    --
+    -- use {
+    --   'EdenEast/nightfox.nvim',
+    --   after = 'packer.nvim',
+    --   config = function() require('themes.nightfox') end
+    -- }
+    --
+    -- use {
+    --   'luisiacc/gruvbox-baby',
+    --   after = 'packer.nvim',
+    --   config = function() require('themes.gruvbox-baby') end
+    -- }
 end)
