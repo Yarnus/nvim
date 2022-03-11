@@ -38,21 +38,20 @@ gl.short_line_list = {
 -- gruvbox-baby
 colors = {
     bg       = '#504945',
-    line_bg  = '#242a32',
+    line_bg  = '#21252b',
     fg       = '#8FBCBB',
     fg_green = '#689d6a',
-    yellow   = '#fabd2f',
+    yellow   = '#e5c07b',
     cyan     = '#86c1b9',
     darkblue = '#1d2021',
     green    = '#8ec07c',
-    orange   = '#d65d0e',
+    orange   = '#d19a66',
     purple   = '#5d4d7a',
     magenta  = '#b16286',
     blue     = '#7cafc2',
-    red      = '#fb4934',
+    red      = '#e86671',
     violet   = '#D4879C'
 }
-
 
 local function has_file_type()
     local f_type = vim.bo.filetype

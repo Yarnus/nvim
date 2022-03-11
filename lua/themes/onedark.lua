@@ -1,0 +1,45 @@
+require("onedark").setup({
+  functionStyle = "italic",
+  commentStyle = "NONE",
+  keywordStyle = "italic",
+  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  darkSidebar = true,
+  darkFloat = false,
+  hideInactiveStatusline = true,
+  customTelescope = true,
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  -- colors = {hint = "orange"},
+  colors = {
+      none = 'NONE',
+      bg = '#21252b',
+      bg2 = '#21252b',
+      bg_visual = '#393f4a',
+      darker_black = '#1b1f27',
+      black = '#1e222a', --  nvim bg
+      black2 = '#252931',
+      border = '#646e82',
+      fg = '#abb2bf',
+      fg_light = '#adbac7',
+      fg_dark = '#798294',
+      fg_gutter = '#5c6370',
+      dark5 = '#abb2bf',
+      blue = '#61afef',
+      cyan = '#56b6c2',
+      purple = '#c678dd',
+      orange = '#d19a66',
+      yellow = '#e5c07b',
+      yellow2 = '#e2c08d',
+      bg_yellow = '#ebd09c',
+      green = '#98c379',
+      red = '#e86671',
+      red1 = '#f65866',
+      git = { change = '#e0af68', add = '#109868', delete = '#9A353D', conflict = '#bb7a61' },
+      gitSigns = { change = '#e0af68', add = '#109868', delete = '#9A353D' },
+      diagnostics = {
+        error = '#db4b4b',
+        hint = '#1abc9c',
+        info = '#0db9d7',
+        warn = '#e0af68',
+      }
+    }
+})

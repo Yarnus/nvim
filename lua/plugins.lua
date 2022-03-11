@@ -131,11 +131,18 @@ return require('packer').startup(function(use)
     use {'nathom/filetype.nvim'}
 
     -- colorscheme
+    -- use {
+    --     'Avimitin/neovim-deus',
+    --     after = 'packer.nvim',
+    --     config = function() require('themes.deus') end
+    -- }
+    
     use {
-        'Avimitin/neovim-deus',
-        after = 'packer.nvim',
-        config = function() require('themes.deus') end
+      'monsonjeremy/onedark.nvim',
+      after = 'packer.nvim',
+      config = function() require('themes.onedark') end
     }
+
     --
     -- use {
     --   'EdenEast/nightfox.nvim',
