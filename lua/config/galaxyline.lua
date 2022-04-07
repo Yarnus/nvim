@@ -15,7 +15,6 @@ gl.short_line_list = {
     'fugitiveblame', 'plug', 'NvimTree'
 }
 
-
 -- common
 -- colors = {
 --     bg       = '#504945',
@@ -35,23 +34,43 @@ gl.short_line_list = {
 --     violet   = '#ba8baf'
 -- }
 
--- gruvbox-baby
+
+
+-- everforest
 colors = {
-    bg       = '#504945',
-    line_bg  = '#2c313b',
-    fg       = '#8FBCBB',
-    fg_green = '#689d6a',
-    yellow   = '#e5c07b',
+    bg       = '#212121',
+    line_bg  = '#292929',
+    fg       = '#d3c6aa',
+    fg_green = '#a7c080',
+    yellow   = '#dfa000',
     cyan     = '#86c1b9',
-    darkblue = '#1d2021',
-    green    = '#8ec07c',
-    orange   = '#d19a66',
-    purple   = '#5d4d7a',
-    magenta  = '#b16286',
-    blue     = '#7cafc2',
-    red      = '#e86671',
-    violet   = '#D4879C'
+    darkblue = '#35a77c',
+    green    = '#8da101',
+    orange   = '#f57d26',
+    purple   = '#df69ba',
+    magenta  = '#d3869b',
+    blue     = '#3a94c5',
+    red      = '#fb4934',
+    violet   = '#ba8baf'
 }
+
+-- gruvbox-baby
+-- colors = {
+--     bg       = '#504945',
+--     line_bg  = '#2c313b',
+--     fg       = '#8FBCBB',
+--     fg_green = '#689d6a',
+--     yellow   = '#e5c07b',
+--     cyan     = '#86c1b9',
+--     darkblue = '#1d2021',
+--     green    = '#8ec07c',
+--     orange   = '#d19a66',
+--     purple   = '#5d4d7a',
+--     magenta  = '#b16286',
+--     blue     = '#7cafc2',
+--     red      = '#e86671',
+--     violet   = '#D4879C'
+-- }
 
 local function has_file_type()
     local f_type = vim.bo.filetype
@@ -286,7 +305,7 @@ insert_right{
       return true
     end,
     icon = ' ',
-    highlight = {colors.blue, colors.line_bg}
+    highlight = {colors.darkblue, colors.line_bg}
   }
 }
 

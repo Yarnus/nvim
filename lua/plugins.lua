@@ -130,29 +130,9 @@ return require('packer').startup(function(use)
     -- speed up neovim!
     use {'nathom/filetype.nvim'}
 
-    -- colorscheme
-    -- use {
-    --     'Avimitin/neovim-deus',
-    --     after = 'packer.nvim',
-    --     config = function() require('themes.deus') end
-    -- }
-    
     use {
-      'monsonjeremy/onedark.nvim',
+      'sainnhe/everforest',
       after = 'packer.nvim',
-      config = function() require('themes.onedark') end
+      config = function() require('themes.everforest') end
     }
-
-    --
-    -- use {
-    --   'EdenEast/nightfox.nvim',
-    --   after = 'packer.nvim',
-    --   config = function() require('themes.nightfox') end
-    -- }
-    --
-    -- use {
-    --   'luisiacc/gruvbox-baby',
-    --   after = 'packer.nvim',
-    --   config = function() require('themes.gruvbox-baby') end
-    -- }
 end)
