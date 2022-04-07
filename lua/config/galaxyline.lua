@@ -38,7 +38,7 @@ gl.short_line_list = {
 -- gruvbox-baby
 colors = {
     bg       = '#504945',
-    line_bg  = '#21252b',
+    line_bg  = '#2c313b',
     fg       = '#8FBCBB',
     fg_green = '#689d6a',
     yellow   = '#e5c07b',
@@ -265,7 +265,7 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = {colors.yellow, colors.line_bg},
+    highlight = {colors.cyan, colors.line_bg},
   }
 }
 
@@ -286,7 +286,7 @@ insert_right{
       return true
     end,
     icon = ' ',
-    highlight = {colors.green, colors.line_bg}
+    highlight = {colors.blue, colors.line_bg}
   }
 }
 
@@ -296,7 +296,7 @@ insert_separator_at_right(' ')
 insert_right {
     PerCent = {
     provider = 'LinePercent',
-    highlight = {colors.yellow, colors.line_bg},
+    highlight = {colors.green, colors.line_bg},
   }
 }
 
@@ -325,7 +325,7 @@ insert_blank_line_at_right()
 insert_right {
   BufferType = {
     provider = 'FileTypeName',
-    highlight = { colors.fg_green, colors.line_bg },
+    highlight = { colors.violet, colors.line_bg },
   }
 }
 
