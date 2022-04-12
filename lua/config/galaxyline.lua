@@ -1,3 +1,5 @@
+local vim = vim
+
 if vim.g.galaxyline_loaded ~= nil then
   return
 end
@@ -6,9 +8,7 @@ vim.g.galaxyline_loaded = 1
 
 local gl = require('galaxyline')
 local gls = gl.section
-local diagnostic = require('galaxyline.provider_diagnostic')
 local condition = require('galaxyline.condition')
-local vim = vim
 
 gl.short_line_list = {
   'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
@@ -35,7 +35,8 @@ gl.short_line_list = {
 -- }
 
 
-colors = {
+
+local colors = {
   bg       = '#504945',
   line_bg  = '393f44',
   fg       = '#8FBCBB',
@@ -52,11 +53,11 @@ colors = {
   violet   = '#D4879C'
 }
 
-local function has_file_type()
-  local f_type = vim.bo.filetype
-  if not f_type or f_type == '' then return false end
-  return true
-end
+-- local function has_file_type()
+--   local f_type = vim.bo.filetype
+--   if not f_type or f_type == '' then return false end
+--   return true
+-- end
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
@@ -68,8 +69,7 @@ local function insert_left(element)
   table.insert(gls.left, element)
 end
 
--- insert_blank_line_at_left insert blank line with
--- line_bg color.
+-- insert_blank_line_at_left insert blank line with line_bg color.
 local function insert_blank_line_at_left()
   insert_left {
     Space = {
@@ -116,13 +116,6 @@ local function insert_separator_at_right(separator)
   insert_blank_line_at_right()
 end
 
-local checkwidth = function()
-  local squeeze_width = vim.fn.winwidth(0) / 2
-  if squeeze_width > 40 then return true end
-  return false
-end
-
-
 insert_blank_line_at_left()
 
 insert_left {
@@ -158,7 +151,6 @@ insert_left {
         s = 'S',
         S = 'S',
         ['r'] = 'HIT-ENTER',
-        [''] = 'SELECT',
         t = 'T',
         ['!'] = 'SH',
         ['V?'] = 'VISUAL BLOCK',
@@ -174,7 +166,6 @@ insert_left {
         no = colors.red,
         s = colors.orange,
         S = colors.orange,
-        [''] = colors.orange,
         ic = colors.yellow,
         R = colors.purple,
         Rv = colors.purple,
@@ -209,7 +200,7 @@ insert_left {
   GitBranch = {
     provider  = 'GitBranch',
     condition = condition.check_git_workspace,
-    highlight = { colors.red, colors.line_bg },
+    highlight = { colors.cyan, colors.line_bg },
   }
 }
 
@@ -249,7 +240,7 @@ insert_left {
     provider = 'FileIcon',
     condition = buffer_not_empty,
     highlight = {
-      require('galaxyline.provider_fileinfo').get_file_icon_color, colors.line_bg
+      require('galaxyline.providers.fileinfo').get_file_icon_color, colors.line_bg
     }
   }
 }
@@ -262,14 +253,9 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.cyan, colors.line_bg },
+    highlight = { colors.magenta, colors.line_bg },
   }
 }
-
-local DiagnosticError = diagnostic.get_diagnostic_error
-local DiagnosticWarn = diagnostic.get_diagnostic_warn
-local DiagnosticHint = diagnostic.get_diagnostic_hint
-local DiagnosticInfo = diagnostic.get_diagnostic_info
 
 -- right
 insert_right {

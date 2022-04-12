@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
   use { 'kyazdani42/nvim-web-devicons' }
 
   use {
-    'glepnir/galaxyline.nvim',
+    'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
     after = 'nvim-web-devicons',
     config = function() require('config.galaxyline') end
