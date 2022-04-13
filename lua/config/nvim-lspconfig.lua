@@ -1,5 +1,6 @@
 local present1, _ = pcall(require, 'lspconfig')
 local present2, installer = pcall(require, 'nvim-lsp-installer')
+local vim = vim
 if not (present1 or present2) then
   vim.notify('Fail to setup LSP', vim.log.levels.ERROR, { title = 'plugins' })
   return
@@ -18,6 +19,8 @@ end
 vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
 vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
 vim.cmd('command! -nargs=0 Format lua vim.lsp.buf.formatting()')
+vim.cmd('command! -nargs=0 DiagnosticShow lua vim.diagnostic.open_float()')
+vim.cmd('command! -nargs=0 DiagnosticList lua vim.diagnostic.setloclist()')
 
 
 -- Use an on_attach function to only map the following keys
@@ -46,8 +49,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
   -- I hardly ever use them
   -- buf_set_keymap('n', '<leader>wl','<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',opts)
@@ -167,39 +170,4 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   lsp_publish_diagnostics_options)
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
-
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
-
-local function goto_definition(split_cmd)
-  local util = vim.lsp.util
-  local log = require('vim.lsp.log')
-  local api = vim.api
-
-  -- note, this handler style is for neovim 0.5.1/0.6, if on 0.5, call with function(_, method, result)
-  local handler = function(_, result, ctx)
-    if result == nil or vim.tbl_isempty(result) then
-      local _ = log.info() and log.info(ctx.method, 'No location found')
-      return nil
-    end
-
-    if split_cmd then
-      vim.cmd(split_cmd)
-    end
-
-    if vim.tbl_islist(result) then
-      util.jump_to_location(result[1])
-
-      if #result > 1 then
-        util.set_qflist(util.locations_to_items(result))
-        api.nvim_command('copen')
-        api.nvim_command('wincmd p')
-      end
-    else
-      util.jump_to_location(result)
-    end
-  end
-
-  return handler
-end
-
-vim.lsp.handlers['textDocument/definition'] = goto_definition('split')

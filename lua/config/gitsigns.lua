@@ -16,7 +16,7 @@ require('gitsigns').setup {
     noremap = true,
     ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
   },
-  watch_index = {
+  watch_gitdir = {
     interval = 1000,
     follow_files = true
   },

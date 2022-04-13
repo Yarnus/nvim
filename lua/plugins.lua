@@ -4,7 +4,7 @@ require('packer').init {
   },
   git = { clone_timeout = 60 } }
 
-local map = require('utils').map
+-- local map = require('utils').map
 
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
@@ -20,7 +20,6 @@ return require('packer').startup(function(use)
 
   use {
     'kyazdani42/nvim-tree.lua',
-    commit = 'd8bf1adcdcc6a8a66c3dce5c29a4ef06e21dc844',
     config = function() require('config.nvim-tree') end,
     cmd = { 'NvimTreeRefresh', 'NvimTreeToggle' }
   }
@@ -34,6 +33,7 @@ return require('packer').startup(function(use)
 
   use {
     'akinsho/nvim-bufferline.lua',
+    branch = 'main',
     config = function() require('config.nvim-bufferline') end,
     event = 'BufRead'
   }

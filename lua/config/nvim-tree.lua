@@ -6,9 +6,7 @@ end
 
 local tree_cb = tree_c.nvim_tree_callback
 
-vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_disable_window_picker = 1
 vim.g.nvim_tree_group_empty = 1
 
 vim.g.nvim_tree_show_icons = {
@@ -61,6 +59,15 @@ require 'nvim-tree'.setup {
   ignore_ft_on_setup  = { 'startify', 'dashboard' },
   auto_close          = false,
   open_on_tab         = false,
+  actions             = {
+    open_file = {
+      window_picker = { enable = false }
+    }
+  },
+  renderer            = {
+    indent_makers = { enable = true },
+
+  },
   hijack_cursor       = true,
   update_cwd          = false,
   update_to_buf_dir   = {
