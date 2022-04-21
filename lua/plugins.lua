@@ -25,13 +25,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'projekt0n/circles.nvim',
-    config = function() require('config.circles') end,
-    after = 'nvim-web-devicons',
-    requires = { { 'kyazdani42/nvim-tree.lua', opt = true } }
-  }
-
-  use {
     'akinsho/nvim-bufferline.lua',
     branch = 'main',
     config = function() require('config.nvim-bufferline') end,
@@ -130,9 +123,5 @@ return require('packer').startup(function(use)
   -- speed up neovim!
   use { 'nathom/filetype.nvim' }
 
-  use {
-    'sainnhe/gruvbox-material',
-    after = 'packer.nvim',
-    config = function() require('themes.gruvbox-material') end
-  }
+  use { 'navarasu/onedark.nvim', config = function() require('themes.onedark') end }
 end)
