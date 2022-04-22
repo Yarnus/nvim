@@ -16,42 +16,42 @@ gl.short_line_list = {
 }
 
 -- common
--- colors = {
---     bg       = '#504945',
---     -- hi StatusLine - guibg
---     line_bg  = '#242a32',
---     fg       = '#8FBCBB',
---     fg_green = '#65a380',
---     yellow   = '#fabd2f',
---     cyan     = '#86c1b9',
---     darkblue = '#1d2021',
---     green    = '#a1b56c',
---     orange   = '#dc9656',
---     purple   = '#5d4d7a',
---     magenta  = '#d3869b',
---     blue     = '#7cafc2',
---     red      = '#fb4934',
---     violet   = '#ba8baf'
--- }
-
-
-
 local colors = {
   bg       = '#504945',
+  -- hi StatusLine - guibg
   line_bg  = '393f44',
   fg       = '#8FBCBB',
-  fg_green = '#689d6a',
-  yellow   = '#e5c07b',
+  fg_green = '#65a380',
+  yellow   = '#fabd2f',
   cyan     = '#86c1b9',
   darkblue = '#1d2021',
-  green    = '#8ec07c',
-  orange   = '#d19a66',
+  green    = '#a1b56c',
+  orange   = '#dc9656',
   purple   = '#5d4d7a',
-  magenta  = '#b16286',
+  magenta  = '#d3869b',
   blue     = '#7cafc2',
-  red      = '#e86671',
-  violet   = '#D4879C'
+  red      = '#fb4934',
+  violet   = '#ba8baf'
 }
+
+--
+--
+-- local colors = {
+--   bg       = '#504945',
+--   line_bg  = '393f44',
+--   fg       = '#8FBCBB',
+--   fg_green = '#689d6a',
+--   yellow   = '#e5c07b',
+--   cyan     = '#86c1b9',
+--   darkblue = '#1d2021',
+--   green    = '#8ec07c',
+--   orange   = '#d19a66',
+--   purple   = '#5d4d7a',
+--   magenta  = '#b16286',
+--   blue     = '#7cafc2',
+--   red      = '#e86671',
+--   violet   = '#D4879C'
+-- }
 
 -- local function has_file_type()
 --   local f_type = vim.bo.filetype
@@ -187,49 +187,21 @@ insert_left {
   }
 }
 
-insert_separator_at_left('▊')
+insert_separator_at_left('▎')
 
 insert_left {
   GitIcon = {
-    provider  = function() return '  ' end,
+    provider  = function() return ' ' end,
     condition = condition.check_git_workspace,
     highlight = { colors.orange, colors.line_bg }
   }
 }
+
 insert_left {
   GitBranch = {
     provider  = 'GitBranch',
     condition = condition.check_git_workspace,
-    highlight = { colors.cyan, colors.line_bg },
-  }
-}
-
-insert_blank_line_at_left()
-
-insert_left {
-  DiffAdd = {
-    provider = 'DiffAdd',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = { colors.green, colors.line_bg },
-  }
-}
-
-insert_left {
-  DiffModified = {
-    provider = 'DiffModified',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = { colors.orange, colors.line_bg },
-  }
-}
-
-insert_left {
-  DiffRemove = {
-    provider = 'DiffRemove',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = { colors.red, colors.line_bg },
+    highlight = { colors.magenta, colors.line_bg },
   }
 }
 
@@ -253,11 +225,42 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.magenta, colors.line_bg },
+    highlight = { colors.cyan, colors.line_bg },
   }
 }
 
 -- right
+--
+insert_right {
+  DiffAdd = {
+    provider = 'DiffAdd',
+    condition = condition.hide_in_width,
+    icon = '  ',
+    highlight = { colors.green, colors.line_bg },
+  }
+}
+
+insert_right {
+  DiffModified = {
+    provider = 'DiffModified',
+    condition = condition.hide_in_width,
+    icon = '  ',
+    highlight = { colors.orange, colors.line_bg },
+  }
+}
+
+insert_right {
+  DiffRemove = {
+    provider = 'DiffRemove',
+    condition = condition.hide_in_width,
+    icon = '  ',
+    highlight = { colors.red, colors.line_bg },
+  }
+}
+
+insert_blank_line_at_right()
+
+
 insert_right {
   ShowLspClient = {
     provider = 'GetLspClient',
@@ -269,7 +272,7 @@ insert_right {
       return true
     end,
     icon = ' ',
-    highlight = { colors.darkblue, colors.line_bg }
+    highlight = { colors.red, colors.line_bg }
   }
 }
 
@@ -308,7 +311,7 @@ insert_blank_line_at_right()
 insert_right {
   BufferType = {
     provider = 'FileTypeName',
-    highlight = { colors.violet, colors.line_bg },
+    highlight = { colors.yellow, colors.line_bg },
   }
 }
 
