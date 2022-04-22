@@ -8,8 +8,6 @@ require('onedark').setup {
   toggle_style_key = '<leader>ts', -- Default keybinding to toggle
   toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
 
-  -- Change code style ---
-  -- Options are italic, bold, underline, none
   -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
   code_style = {
     comments = 'none',
@@ -20,33 +18,36 @@ require('onedark').setup {
   },
   -- Custom Highlights --
   colors = {
-    black = "#0e1013",
-    bg0 = "#1f2329",
+    black = "#272727",
+    -- 主题背景颜色
+    bg0 = "#202020",
     bg1 = "#282c34",
     bg2 = "#30363f",
     bg3 = "#323641",
-    bg_d = "#181b20",
+    bg_d = "#181818",
     bg_blue = "#61afef",
     bg_yellow = "#e8c88c",
     fg = "#a0a8b7",
-    purple = "#bf68d9",
-    green = "#08cd7d",
-    orange = "#cc9057",
-    blue = "#4fa6ed",
-    yellow = "#e2b86b",
-    cyan = "#48b0bd",
-    red = "#f12d52",
+    purple = "#b16286",
+    green = "#b8ba25",
+    orange = "#d19a66",
+    -- blue = "#448488",
+    blue = "#86c1b9",
+    yellow = "#e5c07b",
+    cyan = "#8ec07b",
+    red = "#fb4833",
     grey = "#535965",
     light_grey = "#7a818e",
-    dark_cyan = "#266269",
-    dark_red = "#8b3434",
-    dark_yellow = "#835d1a",
-    dark_purple = "#7e3992",
+    dark_cyan = "#689d69",
+    dark_red = "#cc231c",
+    dark_yellow = "#d79920",
+    dark_purple = "#5d4d7a",
     diff_add = "#09c87a",
     diff_delete = "#ff78a2",
     diff_change = "#3081df",
     diff_text = "#274964",
   },
+
   highlights = {}, -- Override highlight groups
 
   -- Plugins Config --

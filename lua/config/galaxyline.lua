@@ -19,13 +19,14 @@ gl.short_line_list = {
 local colors = {
   bg       = '#504945',
   -- hi StatusLine - guibg
-  line_bg  = '393f44',
+  line_bg  = '202020',
   fg       = '#8FBCBB',
   fg_green = '#65a380',
   yellow   = '#fabd2f',
   cyan     = '#86c1b9',
   darkblue = '#1d2021',
-  green = "#08cd7d",
+  -- green = "#08cd7d",
+  green    = '#8ec07c',
   orange   = '#dc9656',
   purple   = '#5d4d7a',
   magenta  = '#d3869b',
