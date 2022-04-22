@@ -4,16 +4,22 @@ require 'nvim-web-devicons'.setup {
   -- DevIcon will be appended to `name`
   override = {
     heex = {
-      icon = "",
+      icon = "",
       color = "#a074c4",
       cterm_color = "140",
       name = "Eex",
     },
     ex = {
-      icon = "",
+      icon = "",
       color = "#a074c4",
       cterm_color = "140",
       name = "Ex",
+    },
+    exs = {
+      icon = "",
+      color = "#a074c4",
+      cterm_color = "140",
+      name = "Exs",
     }
   };
   -- globally enable default icons (default to false)

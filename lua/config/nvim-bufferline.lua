@@ -11,9 +11,9 @@ require('bufferline').setup {
     -- close_icon = '',
     close_icon = ' ',
     show_buffer_icons = true,
-    max_name_length = 10,
+    max_name_length = 13,
     max_prefix_length = 13,
-    tab_size = 15,
+    tab_size = 18,
     separator_style = 'thin',
     diagnostics = false,
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)

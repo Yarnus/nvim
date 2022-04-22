@@ -25,7 +25,7 @@ local colors = {
   yellow   = '#fabd2f',
   cyan     = '#86c1b9',
   darkblue = '#1d2021',
-  green    = '#a1b56c',
+  green = "#08cd7d",
   orange   = '#dc9656',
   purple   = '#5d4d7a',
   magenta  = '#d3869b',
@@ -225,7 +225,7 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.cyan, colors.line_bg },
+    highlight = { colors.green, colors.line_bg },
   }
 }
 

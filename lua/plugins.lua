@@ -9,7 +9,9 @@ require('packer').init {
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
 
-  use { 'kyazdani42/nvim-web-devicons', config = function() require('config.nvim-web-devicons') end }
+  use { 'kyazdani42/nvim-web-devicons', 
+  config = function() require('config.nvim-web-devicons') end 
+}
 
   use {
     'NTBBloodbath/galaxyline.nvim',
