@@ -1,3 +1,4 @@
+local utils = require "utils"
 local vim = vim
 
 if vim.g.galaxyline_loaded ~= nil then
@@ -15,8 +16,9 @@ gl.short_line_list = {
   'fugitiveblame', 'plug', 'NvimTree'
 }
 
--- common
-local colors = {
+local onedark_colors = require('onedark.colors')
+
+local base_colors = {
   bg       = '#504945',
   -- hi StatusLine - guibg
   line_bg  = '202020',
@@ -35,6 +37,16 @@ local colors = {
   violet   = '#ba8baf'
 }
 
+local function mixin_colors(base, extra)
+  for k, v in pairs(extra) do
+    base[k] = v
+  end
+
+  return base
+end
+
+local colors = mixin_colors(base_colors, onedark_colors)
+-- common
 --
 --
 -- local colors = {
