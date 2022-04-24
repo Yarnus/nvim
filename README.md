@@ -1,7 +1,7 @@
 
 
 # About
-![nvim](https://img.shields.io/badge/require%20neovim-v0.6.1-red)
+![nvim](https://img.shields.io/badge/require%20neovim-v0.7.0-red)
 ![language](https://img.shields.io/github/languages/top/Yarnus/nvim)
 ![Neovim Configuration Test](https://img.shields.io/github/workflow/status/Yarnus/nvim/Neovim%20Configuration%20Test?label=paker%20compile&logo=Github)
 ![last commit](https://img.shields.io/github/last-commit/Yarnus/nvim?color=yellow)
@@ -20,7 +20,7 @@
 Anyway, take a look at their contribution, which is really fantastic.
 
 # Installation
-1. neovim v0.5 or later (please follow [neovim installation](https://github.com/neovim/neovim/wiki/Installing-Neovim).) 
+1. neovim v0.7 or later (please follow [neovim installation](https://github.com/neovim/neovim/wiki/Installing-Neovim).) 
 2. nerdfont (most of chars are based on nerd font, therefore it's highly recommended to install [nerdfont](https://www.nerdfonts.com/font-downloads) for impressive icon support.)
 3. other neovim dependency (for more details, please use `:checkhealth` in neovim.)
   - Install `pip3` and run `pip3 install --user pynvim`
@@ -29,6 +29,7 @@ Anyway, take a look at their contribution, which is really fantastic.
 5. restart neovim and installation done. (ATM, some lsp/tree-sitter will download automatically.)
 
 # TODO
+- [x] Trouble-shooting for terrible `elixir` rendering
 - [ ] Optimized neovim start up time based on each file
 - [ ] Add more docs and screenshot
 
