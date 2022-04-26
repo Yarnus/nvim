@@ -9,9 +9,7 @@ require('packer').init {
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
 
-  use { 'kyazdani42/nvim-web-devicons',
-    config = function() require('config.nvim-web-devicons') end
-  }
+  use { 'kyazdani42/nvim-web-devicons' }
 
   use {
     'NTBBloodbath/galaxyline.nvim',
@@ -89,9 +87,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'terrortylor/nvim-comment',
+    'numToStr/Comment.nvim',
     event = 'BufRead',
-    config = function() require('nvim_comment').setup() end
+    config = function() require('Comment').setup() end
+  }
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("config.todo-comments") end
   }
 
   -- Find and replace
