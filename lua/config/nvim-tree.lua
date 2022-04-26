@@ -95,7 +95,7 @@ require 'nvim-tree'.setup {
     args = {}
   },
   filters             = {
-    dotfiles = true,
+    dotfiles = false,
     custom = { '.git', 'node_modules', '_build', 'deps' }
   },
   git                 = {

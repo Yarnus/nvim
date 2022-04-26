@@ -13,7 +13,7 @@ local condition = require('galaxyline.condition')
 
 gl.short_line_list = {
   'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
-  'fugitiveblame', 'plug', 'NvimTree'
+  'fugitiveblame', 'plug', 'NvimTree', 'neo-tree'
 }
 
 local onedark_colors = require('onedark.colors')

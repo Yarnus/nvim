@@ -59,3 +59,5 @@ require('onedark').setup {
   },
 }
 require('onedark').load()
+
+vim.cmd([[highlight NeoTreeGitModified guifg=#fabd2f]])

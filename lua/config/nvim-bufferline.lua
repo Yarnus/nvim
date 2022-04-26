@@ -19,6 +19,9 @@ require('bufferline').setup {
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
     --   return '("..count..")'
     -- end,
-    offsets = { { filetype = 'NvimTree', text = ' Explorer', padding = 1 } }
+    offsets = {
+      { filetype = 'NvimTree', text = ' Explorer', padding = 1 },
+      { filetype = 'neo-tree', text = ' Explorer', padding = 1 },
+    }
   }
 }

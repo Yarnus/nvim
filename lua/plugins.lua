@@ -8,7 +8,6 @@ require('packer').init {
 
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
-
   use { 'kyazdani42/nvim-web-devicons' }
 
   use {
@@ -19,9 +18,10 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() require('config.nvim-tree') end,
-    cmd = { 'NvimTreeRefresh', 'NvimTreeToggle' }
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+    config = function() require("config.neo-tree") end
   }
 
   use {
@@ -128,6 +128,6 @@ return require('packer').startup(function(use)
 
   -- speed up neovim!
   use { 'nathom/filetype.nvim' }
-
   use { 'navarasu/onedark.nvim', config = function() require('themes.onedark') end }
+
 end)
