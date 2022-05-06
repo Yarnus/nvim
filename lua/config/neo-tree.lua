@@ -59,13 +59,13 @@ require("neo-tree").setup({
         modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
         -- Status type
         conflict  = "",
-        unstaged = '✗',
-        staged = '✓',
-        unmerged = '',
+        unstaged  = '✗',
+        staged    = '✓',
+        unmerged  = '',
         renamed   = "", -- this can only be used in the git_status source
         untracked = '★',
-        deleted = '',
-        ignored = '◌'
+        deleted   = '',
+        ignored   = '◌'
       }
     },
   },
@@ -83,8 +83,8 @@ require("neo-tree").setup({
       },
       ["<2-LeftMouse>"] = "open",
       ["<cr>"] = "open",
-      ["v"] = "open_split",
-      ["s"] = "open_vsplit",
+      ["s"] = "open_split",
+      ["v"] = "open_vsplit",
       -- ["S"] = "split_with_window_picker",
       -- ["s"] = "vsplit_with_window_picker",
       -- ["t"] = "open_tabnew",
@@ -175,4 +175,3 @@ require("neo-tree").setup({
     }
   }
 })
-
