@@ -1,4 +1,13 @@
 require('bufferline').setup {
+  highlights = {
+    buffer_selected = {
+      guifg = '#09c87a',
+      guibg = 'none',
+      gui = "bold"
+    },
+    indicator_selected = { guifg = '#09c87a' },
+    separator = { guifg = 'none' }
+  };
   options = {
     mode = "buffers",
     numbers = "none",
