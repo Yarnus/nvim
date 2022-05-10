@@ -51,7 +51,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-
   -- I hardly ever use them
   -- buf_set_keymap('n', '<leader>wl','<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',opts)
   -- buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -59,12 +58,9 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<leader>wa','<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 
-  -- Set some keybinds conditional on server capabilities
-  -- if client.resolved_capabilities.document_formatting then
-  --     buf_set_keymap('n', 'leader>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  -- elseif client.resolved_capabilities.document_range_formatting then
-  --     buf_set_keymap('n', '<leader>m','<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
-  -- end
+  -- aerial required
+  require("aerial").on_attach(client, bufnr)
+
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

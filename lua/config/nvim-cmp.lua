@@ -96,10 +96,10 @@ cmp.setup({
   },
 
   sources = {
-    { name = 'nvim_lsp' },
     { name = 'vsnip' },
+    { name = 'nvim_lsp' },
     { name = 'buffer' },
-    -- { name = 'path' },
+    { name = 'path' },
   },
   experimental = {
     -- ghost_test means the gray-text after input

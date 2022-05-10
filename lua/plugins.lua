@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
   use { 'kyazdani42/nvim-web-devicons' }
 
+
   use {
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
@@ -101,13 +102,6 @@ return require('packer').startup(function(use)
   -- Find and replace
   use { 'brooth/far.vim', cmd = { 'Far', 'Farr' } }
 
-  -- quick reload
-  use {
-    'famiu/nvim-reload',
-    cmd = { 'Reload', 'Restart' },
-    requires = 'nvim-lua/plenary.nvim'
-  }
-
   -- show color
   use {
     'norcalli/nvim-colorizer.lua',
@@ -118,10 +112,12 @@ return require('packer').startup(function(use)
   -- telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim' },
+    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim', 'stevearc/aerial.nvim' },
     config = function() require('config.telescope') end,
     module = 'telescope'
   }
+
+  use { 'stevearc/aerial.nvim', config = function() require('config.aerial') end }
 
   -- align
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
