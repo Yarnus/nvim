@@ -10,7 +10,6 @@ return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
   use { 'kyazdani42/nvim-web-devicons' }
 
-
   use {
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
@@ -123,7 +122,9 @@ return require('packer').startup(function(use)
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
 
   -- speed up neovim!
-  use { 'nathom/filetype.nvim' }
-  use { 'navarasu/onedark.nvim', config = function() require('themes.onedark') end }
+  -- use { 'nathom/filetype.nvim' }
+  -- use { 'navarasu/onedark.nvim', config = function() require('themes.onedark') end }
+  use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
+
 
 end)

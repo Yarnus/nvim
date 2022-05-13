@@ -15,11 +15,7 @@ end
 
 function autocmd.load_autocmds()
   local definitions = {
-    bufs = {
-      { "BufWritePre", "*.ex", "lua vim.lsp.buf.formatting_sync()" },
-      { "BufWritePre", "*.lua", "lua vim.lsp.buf.formatting_sync()" },
-      { "BufWritePre", "*.py", "lua vim.lsp.buf.formatting_sync()" },
-    }
+    bufs = {}
   }
   autocmd.nvim_create_augroups(definitions)
 end

@@ -1,11 +1,11 @@
 require('bufferline').setup {
   highlights = {
     buffer_selected = {
-      guifg = '#079ee8',
+      guifg = '#FABD2F',
       guibg = 'none',
       gui = "bold"
     },
-    indicator_selected = { guifg = '#079ee8' },
+    indicator_selected = { guifg = '#FABD2F' },
     separator = { guifg = 'none' }
   };
   options = {

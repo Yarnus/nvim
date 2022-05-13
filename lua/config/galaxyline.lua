@@ -16,7 +16,7 @@ gl.short_line_list = {
   'fugitiveblame', 'plug', 'NvimTree', 'neo-tree'
 }
 
-local onedark_colors = require('onedark.colors')
+local theme_colors = require("gruvbox-baby.colors")
 
 local base_colors = {
   bg       = '#504945',
@@ -45,7 +45,7 @@ local function mixin_colors(base, extra)
   return base
 end
 
-local colors = mixin_colors(base_colors, onedark_colors)
+local colors = mixin_colors(base_colors, theme_colors)
 -- common
 --
 --
