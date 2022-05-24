@@ -133,40 +133,40 @@ insert_blank_line_at_left()
 
 insert_left {
   ViMode = {
-    icon = function()
-      local icons = {
-        n = ' ',
-        i = ' ',
-        c = 'ﲵ ',
-        V = ' ',
-        [''] = ' ',
-        v = ' ',
-        C = 'ﲵ ',
-        R = '﯒ ',
-        t = ' '
-      }
-      return icons[vim.fn.mode()]
-    end,
+    -- icon = function()
+    --   local icons = {
+    --     n = ' ',
+    --     i = ' ',
+    --     c = 'ﲵ ',
+    --     V = ' ',
+    --     [''] = ' ',
+    --     v = ' ',
+    --     C = 'ﲵ ',
+    --     R = '﯒ ',
+    --     t = ' '
+    --   }
+    --   return icons[vim.fn.mode()]
+    -- end,
     provider = function()
       -- auto change color according the vim mode
       local alias = {
-        n = 'NORMAL',
-        i = 'INSERT',
-        c = 'COMMAND',
-        V = 'VISUAL LINE',
-        [''] = 'VISUAL',
-        v = 'VISUAL',
-        C = 'COMMAND',
-        ['r?'] = ':CONFIRM',
-        rm = '--MORE',
-        R = 'REPLACE',
+        n = 'Normal',
+        i = 'Insert',
+        c = 'Command',
+        V = 'Visual Line',
+        [''] = 'Visual',
+        v = 'Visual',
+        C = 'Command',
+        ['r?'] = ':Confirm',
+        rm = '--More',
+        R = 'Repalce',
         Rv = 'R&V',
         s = 'S',
         S = 'S',
         ['r'] = 'HIT-ENTER',
         t = 'T',
         ['!'] = 'SH',
-        ['V?'] = 'VISUAL BLOCK',
+        ['V?'] = 'visual block',
       }
 
       local mode_color = {
@@ -200,11 +200,13 @@ insert_left {
   }
 }
 
-insert_separator_at_left('▎')
+insert_separator_at_left('⏽')
+-- insert_separator_at_left('▎')
+-- insert_blank_line_at_left()
 
 insert_left {
   GitIcon = {
-    provider  = function() return ' ' end,
+    provider  = function() return ' ' end,
     condition = condition.check_git_workspace,
     highlight = { colors.orange, colors.line_bg }
   }
@@ -215,20 +217,21 @@ insert_left {
     provider  = 'GitBranch',
     condition = condition.check_git_workspace,
     highlight = { colors.magenta, colors.line_bg },
-  }
+    separator = ' '
+  },
 }
 
 insert_blank_line_at_left()
 
-insert_left {
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = buffer_not_empty,
-    highlight = {
-      require('galaxyline.providers.fileinfo').get_file_icon_color, colors.line_bg
-    }
-  }
-}
+-- insert_left {
+--   FileIcon = {
+--     provider = 'FileIcon',
+--     condition = buffer_not_empty,
+--     highlight = {
+--       require('galaxyline.providers.fileinfo').get_file_icon_color, colors.line_bg
+--     }
+--   }
+-- }
 
 insert_left {
   FilePath = {
@@ -248,7 +251,7 @@ insert_right {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = '  ',
     highlight = { colors.green, colors.line_bg },
   }
 }
@@ -257,7 +260,7 @@ insert_right {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = '  ',
     highlight = { colors.orange, colors.line_bg },
   }
 }
@@ -266,7 +269,7 @@ insert_right {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = '  ',
     highlight = { colors.red, colors.line_bg },
   }
 }
@@ -284,8 +287,8 @@ insert_right {
       end
       return true
     end,
-    icon = ' ',
-    highlight = { colors.red, colors.line_bg }
+    icon = 'ﲳ ',
+    highlight = { colors.cyan, colors.line_bg }
   }
 }
 
