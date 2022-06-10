@@ -92,17 +92,6 @@ local function insert_blank_line_at_left()
   }
 end
 
-local function insert_separator_at_left(separator)
-  insert_blank_line_at_left()
-  insert_left {
-    Separator = {
-      provider = function() return separator end,
-      highlight = { colors.orange, colors.line_bg }
-    }
-  }
-  insert_blank_line_at_left()
-end
-
 -- insert_right insert given item into galaxyline.right
 local function insert_right(element)
   table.insert(gls.right, element)
@@ -196,32 +185,32 @@ insert_left {
       vim.api.nvim_command('hi GalaxyViMode guifg=' .. color)
       return alias[vim_mode]
     end,
-    highlight = { colors.line_bg, colors.line_bg }
+    highlight = { colors.line_bg, colors.line_bg },
+    separator = ' '
   }
 }
 
-insert_separator_at_left('⏽')
--- insert_separator_at_left('▎')
 -- insert_blank_line_at_left()
-
-insert_left {
-  GitIcon = {
-    provider  = function() return ' ' end,
-    condition = condition.check_git_workspace,
-    highlight = { colors.orange, colors.line_bg }
-  }
-}
+--
+-- insert_left {
+--   GitIcon = {
+--     provider  = function() return ' ' end,
+--     condition = condition.check_git_workspace,
+--     highlight = { colors.purple, colors.line_bg },
+--   }
+-- }
 
 insert_left {
   GitBranch = {
     provider  = 'GitBranch',
     condition = condition.check_git_workspace,
-    highlight = { colors.magenta, colors.line_bg },
-    separator = ' '
+    highlight = { colors.cyan, colors.line_bg },
+    separator = ' ',
+    icon = ' '
   },
 }
 
-insert_blank_line_at_left()
+-- insert_blank_line_at_left()
 
 -- insert_left {
 --   FileIcon = {
@@ -232,6 +221,15 @@ insert_blank_line_at_left()
 --     }
 --   }
 -- }
+--
+
+insert_left {
+  FileIndicator = {
+    provider  = function() return ' ' end,
+    condition = condition.buffer_not_empty,
+    highlight = { colors.violet, colors.line_bg }
+  }
+}
 
 insert_left {
   FilePath = {
@@ -241,12 +239,12 @@ insert_left {
       return filepath
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.green, colors.line_bg },
+    highlight = { colors.orange, colors.line_bg },
   }
 }
 
--- right
---
+-- right --
+
 insert_right {
   DiffAdd = {
     provider = 'DiffAdd',
@@ -260,7 +258,7 @@ insert_right {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = '  ',
     highlight = { colors.orange, colors.line_bg },
   }
 }
@@ -288,7 +286,7 @@ insert_right {
       return true
     end,
     icon = 'ﲳ ',
-    highlight = { colors.cyan, colors.line_bg }
+    highlight = { colors.blue, colors.line_bg }
   }
 }
 
