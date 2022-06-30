@@ -18,10 +18,9 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-    config = function() require("config.neo-tree") end
+    "kyazdani42/nvim-tree.lua",
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function() require("config.nvim-tree") end
   }
 
   use {

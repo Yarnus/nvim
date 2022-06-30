@@ -27,7 +27,7 @@ map('c', '<C-e>', '<End>')
 map('v', '<leader>e', ':EasyAlign<CR>')
 
 -- neo-tree
-map('n', '<C-n>', ':Neotree toggle<CR>')
+map('n', '<C-n>', ':NvimTreeToggle<CR>')
 
 map('n', '<C-p>', [[:lua require('telescope.builtin').find_files{}<CR>]])
 map('n', '<LEADER>ff', [[:lua require('telescope.builtin').live_grep{}<CR>]])

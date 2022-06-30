@@ -52,7 +52,8 @@ vim.g.nvim_tree_icons = {
 -- hide the statusline when toggle nvim tree
 -- vim.cmd [[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == 'NvimTree' | set laststatus=0 | else | set laststatus=2 | endif]]
 
-require 'nvim-tree'.setup {
+require("nvim-tree").setup(
+  {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = false,
@@ -95,8 +96,8 @@ require 'nvim-tree'.setup {
     args = {}
   },
   filters             = {
-    dotfiles = false,
-    custom = { '.git', 'node_modules', '_build', 'deps' }
+    dotfiles = true,
+    custom = { 'node_modules', '_build', 'deps' }
   },
   git                 = {
     enable = true,
@@ -147,4 +148,4 @@ require 'nvim-tree'.setup {
       }
     }
   }
-}
+})
