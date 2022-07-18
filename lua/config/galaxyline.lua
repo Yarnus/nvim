@@ -10,6 +10,7 @@ vim.g.galaxyline_loaded = 1
 local gl = require('galaxyline')
 local gls = gl.section
 local condition = require('galaxyline.condition')
+local whitespace = require("galaxyline.providers.whitespace")
 
 gl.short_line_list = {
   'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
@@ -21,7 +22,7 @@ local theme_colors = require("gruvbox-baby.colors")
 local base_colors = {
   bg       = '#504945',
   -- hi StatusLine - guibg
-  line_bg  = '202020',
+  line_bg  = '#161616',
   fg       = '#8FBCBB',
   fg_green = '#65a380',
   yellow   = '#fabd2f',
@@ -65,12 +66,6 @@ local colors = mixin_colors(base_colors, theme_colors)
 --   red      = '#e86671',
 --   violet   = '#D4879C'
 -- }
-
--- local function has_file_type()
---   local f_type = vim.bo.filetype
---   if not f_type or f_type == '' then return false end
---   return true
--- end
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
@@ -118,24 +113,9 @@ local function insert_separator_at_right(separator)
   insert_blank_line_at_right()
 end
 
-insert_blank_line_at_left()
-
 insert_left {
   ViMode = {
-    -- icon = function()
-    --   local icons = {
-    --     n = ' ',
-    --     i = ' ',
-    --     c = 'ﲵ ',
-    --     V = ' ',
-    --     [''] = ' ',
-    --     v = ' ',
-    --     C = 'ﲵ ',
-    --     R = '﯒ ',
-    --     t = ' '
-    --   }
-    --   return icons[vim.fn.mode()]
-    -- end,
+    icon = "▌",
     provider = function()
       -- auto change color according the vim mode
       local alias = {
@@ -185,50 +165,21 @@ insert_left {
       vim.api.nvim_command('hi GalaxyViMode guifg=' .. color)
       return alias[vim_mode]
     end,
-    highlight = { colors.line_bg, colors.line_bg },
-    separator = ' '
+    highlight = { colors.line_bg, colors.bg },
+    separator = '',
+    separator_highlight = { colors.bg, colors.yellow }
   }
 }
-
--- insert_blank_line_at_left()
---
--- insert_left {
---   GitIcon = {
---     provider  = function() return ' ' end,
---     condition = condition.check_git_workspace,
---     highlight = { colors.purple, colors.line_bg },
---   }
--- }
 
 insert_left {
   GitBranch = {
-    provider  = 'GitBranch',
-    condition = condition.check_git_workspace,
-    highlight = { colors.cyan, colors.line_bg },
-    separator = ' ',
-    icon = ' '
+    provider            = 'GitBranch',
+    condition           = condition.check_git_workspace,
+    highlight           = { colors.cyan, colors.yellow },
+    separator           = '',
+    separator_highlight = { colors.yellow, colors.line_bg },
+    icon                = '  '
   },
-}
-
--- insert_blank_line_at_left()
-
--- insert_left {
---   FileIcon = {
---     provider = 'FileIcon',
---     condition = buffer_not_empty,
---     highlight = {
---       require('galaxyline.providers.fileinfo').get_file_icon_color, colors.line_bg
---     }
---   }
--- }
---
-
-insert_left {
-  FileIndicator = {
-    provider  = function() return ' ' end,
-    condition = condition.buffer_not_empty,
-    highlight = { colors.violet, colors.line_bg }
-  }
 }
 
 insert_left {
@@ -236,7 +187,7 @@ insert_left {
     provider = function()
       local filepath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
       if vim.fn.empty(filepath) == 1 then return '' end
-      return filepath
+      return ' ' .. filepath
     end,
     condition = condition.buffer_not_empty,
     highlight = { colors.orange, colors.line_bg },
@@ -274,7 +225,6 @@ insert_right {
 
 insert_blank_line_at_right()
 
-
 insert_right {
   ShowLspClient = {
     provider = 'GetLspClient',
@@ -286,12 +236,13 @@ insert_right {
       return true
     end,
     icon = 'ﲳ ',
-    highlight = { colors.blue, colors.line_bg }
+    highlight = { colors.yellow, colors.line_bg },
+    -- separator = '',
+    -- separator_highlight = { colors.bg, colors.line_bg }
   }
 }
 
-insert_separator_at_right(' ')
-
+insert_separator_at_right('▌')
 
 insert_right {
   PerCent = {
@@ -316,11 +267,11 @@ insert_right {
   FileFormat = {
     provider = 'FileFormat',
     condition = condition.hide_in_width,
-    highlight = { colors.violet, colors.line_bg }
+    highlight = { colors.violet, colors.line_bg },
   }
 }
 
-insert_blank_line_at_right()
+insert_separator_at_right('▌')
 
 insert_right {
   BufferType = {
@@ -328,5 +279,3 @@ insert_right {
     highlight = { colors.yellow, colors.line_bg },
   }
 }
-
-insert_separator_at_right(' ')
