@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
   -- lsp
   use {
     'williamboman/nvim-lsp-installer',
-    ft = { 'bash', 'sh', 'c', 'cpp', 'html', 'json', 'python', 'elixir', 'js', 'javascrip', 'lua' }
+    ft = { 'bash', 'sh', 'c', 'cpp', 'html', 'json', 'python', 'rust', 'elixir', 'js', 'javascrip', 'lua' }
   }
 
   use {
@@ -110,7 +110,8 @@ return require('packer').startup(function(use)
   -- telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim', 'stevearc/aerial.nvim' },
+    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim',
+      'stevearc/aerial.nvim' },
     config = function() require('config.telescope') end,
     module = 'telescope'
   }

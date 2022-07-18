@@ -174,23 +174,25 @@ insert_left {
 insert_left {
   GitBranch = {
     provider            = 'GitBranch',
-    condition           = condition.check_git_workspace,
-    highlight           = { colors.cyan, colors.yellow },
+    -- condition           = condition.check_git_workspace,
+    highlight           = { colors.orange, colors.yellow },
     separator           = '',
-    separator_highlight = { colors.yellow, colors.line_bg },
+    separator_highlight = { colors.yellow, colors.cyan },
     icon                = '  '
   },
 }
 
 insert_left {
   FilePath = {
-    provider = function()
+    provider            = function()
       local filepath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
       if vim.fn.empty(filepath) == 1 then return '' end
       return ' ' .. filepath
     end,
-    condition = condition.buffer_not_empty,
-    highlight = { colors.orange, colors.line_bg },
+    -- condition = condition.buffer_not_empty,
+    highlight           = { colors.line_bg, colors.cyan },
+    separator           = '',
+    separator_highlight = { colors.cyan, colors.line_bg },
   }
 }
 
