@@ -53,8 +53,8 @@ return require('packer').startup(function(use)
 
   -- lsp
   use {
-    'williamboman/nvim-lsp-installer',
-    ft = { 'bash', 'sh', 'c', 'cpp', 'html', 'json', 'python', 'rust', 'elixir', 'js', 'javascrip', 'lua' }
+    'williamboman/nvim-lsp-installer'
+    -- ft = { 'bash', 'sh', 'c', 'cpp', 'html', 'json', 'python', 'rust', 'elixir', 'js', 'javascrip', 'lua' }
   }
 
   use {

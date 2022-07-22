@@ -107,7 +107,7 @@ local function insert_separator_at_right(separator)
   insert_right {
     Separator = {
       provider = function() return separator end,
-      highlight = { colors.orange, colors.line_bg }
+      highlight = { colors.yellow, colors.line_bg }
     }
   }
   insert_blank_line_at_right()
@@ -237,7 +237,7 @@ insert_right {
       end
       return true
     end,
-    icon = 'ﲳ ',
+    icon = ' ',
     highlight = { colors.yellow, colors.line_bg },
     -- separator = '',
     -- separator_highlight = { colors.bg, colors.line_bg }
