@@ -175,10 +175,10 @@ insert_left {
   GitBranch = {
     provider            = 'GitBranch',
     -- condition           = condition.check_git_workspace,
-    highlight           = { colors.orange, colors.yellow },
+    highlight           = { colors.darkblue, colors.yellow },
     separator           = '',
-    separator_highlight = { colors.yellow, colors.cyan },
-    icon                = '  '
+    separator_highlight = { colors.yellow, colors.green },
+    icon                = '  '
   },
 }
 
@@ -190,9 +190,9 @@ insert_left {
       return ' ' .. filepath
     end,
     -- condition = condition.buffer_not_empty,
-    highlight           = { colors.line_bg, colors.cyan },
+    highlight           = { colors.line_bg, colors.green },
     separator           = '',
-    separator_highlight = { colors.cyan, colors.line_bg },
+    separator_highlight = { colors.green, colors.line_bg },
   }
 }
 
