@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
     event = 'BufRead'
   }
 
-  use { 'rafamadriz/friendly-snippets', event = 'InsertEnter' }
+  use { 'Yarnus/friendly-snippets', event = 'InsertEnter' }
 
   -- nvim-cmp
   use {
