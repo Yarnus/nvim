@@ -2,9 +2,8 @@ require('packer').init {
   display = {
     open_fn = function() return require('packer.util').float { border = 'single' } end
   },
-  git = { clone_timeout = 60 } }
-
--- local map = require('utils').map
+  git = { clone_timeout = 60 }
+}
 
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
@@ -52,10 +51,7 @@ return require('packer').startup(function(use)
   }
 
   -- lsp
-  use {
-    'williamboman/nvim-lsp-installer'
-    -- ft = { 'bash', 'sh', 'c', 'cpp', 'html', 'json', 'python', 'rust', 'elixir', 'js', 'javascrip', 'lua' }
-  }
+  use { 'williamboman/nvim-lsp-installer' }
 
   use {
     'neovim/nvim-lspconfig',
@@ -116,14 +112,11 @@ return require('packer').startup(function(use)
     module = 'telescope'
   }
 
+  -- flag
   use { 'stevearc/aerial.nvim', config = function() require('config.aerial') end }
 
   -- align
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
-
-  -- speed up neovim!
-  -- use { 'nathom/filetype.nvim' }
-  -- use { 'navarasu/onedark.nvim', config = function() require('themes.onedark') end }
   use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
 
 

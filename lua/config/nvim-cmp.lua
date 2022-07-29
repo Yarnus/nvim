@@ -1,4 +1,5 @@
 local cmp = require 'cmp'
+local vim = vim
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -45,7 +46,6 @@ cmp.setup({
         Operator = "",
         TypeParameter = ""
       }
-      -- load lspkind icons
       vim_item.kind = string.format("%s %s",
         lspkind_icons[vim_item.kind],
         vim_item.kind)
@@ -85,7 +85,6 @@ cmp.setup({
       end
     end, { 'i', 's' }),
 
-
     ['<S-Tab>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
@@ -94,11 +93,10 @@ cmp.setup({
       end
     end, { 'i', 's' }),
   },
-
   sources = {
     { name = 'vsnip' },
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    { name = 'buffer', keyword_length = 3 },
     { name = 'path' },
   },
   experimental = {
@@ -106,3 +104,16 @@ cmp.setup({
     ghost_text = false
   }
 })
+
+vim.cmd([[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]])
+vim.cmd([[highlight! CmpItemAbbrMatch guibg=NONE guifg=#7cafc2]])
+vim.cmd([[highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#7cafc2]])
+vim.cmd([[highlight! CmpItemKindVariable guibg=NONE guifg=#dc9656]])
+vim.cmd([[highlight! CmpItemKindInterface guibg=NONE guifg=#fb4934]])
+vim.cmd([[highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE]])
+vim.cmd([[highlight! CmpItemKindFunction guibg=NONE guifg=#fabd2f]])
+vim.cmd([[highlight! CmpItemKindMethod guibg=NONE guifg=#fabd2f]])
+vim.cmd([[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]])
+vim.cmd([[highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4]])
+vim.cmd([[highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4]])
+vim.cmd([[highlight! CmpItemKindSnippet guibg=NONE guifg=#08cd7d]])
