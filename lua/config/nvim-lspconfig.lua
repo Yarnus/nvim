@@ -109,6 +109,16 @@ local server_configs = {
       }
     }
   },
+  ["sumneko_lua"] = {
+    settings = {
+      -- Lua.diagnostics.globals
+      Lua = {
+        diagnostics = {
+          globals = { "vim" }
+        }
+      }
+    }
+  },
   -- python lsp config
   ['pyright'] = {
     filetypes = { 'python' },

@@ -1,59 +1,59 @@
 vim.g.mapleader = ','
-vim.o.termguicolors = true
-vim.o.number = true
-vim.o.foldenable = false
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.foldenable = false
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 -- replace tabs to spaces
-vim.o.expandtab = true
+vim.opt.expandtab = true
 -- only even number of spaces (3 spaces + tab = 4 spaces, 2 spaces + tab = 4 spaces)
-vim.o.smarttab = true
+vim.opt.smarttab = true
 -- reduce redraw
-vim.o.lazyredraw = true
+vim.opt.lazyredraw = true
 -- disable ring
-vim.o.errorbells = false
-vim.o.visualbell = false
+vim.opt.errorbells = false
+vim.opt.visualbell = false
 
 -- divider
-vim.o.fillchars = 'vert:ǀ'
--- vim.o.fillchars=vert:│,stl:\ ,stlnc:\
--- vim.o.list lcs=tab:\ \ ,conceal:\|
+vim.opt.fillchars = 'vert:ǀ'
+-- vim.opt.fillchars=vert:│,stl:\ ,stlnc:\
+-- vim.opt.list lcs=tab:\ \ ,conceal:\|
 
 -- deafult split location
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- disable line wrap
-vim.o.wrap = false
+vim.opt.wrap = false
 
 -- minimum reserve line when scrolling
-vim.o.scrolloff = 5
-vim.o.backspace = '2'
-vim.o.encoding = 'UTF-8'
--- vim.o.filetype='on'
+vim.opt.scrolloff = 5
+vim.opt.backspace = '2'
+vim.opt.encoding = 'UTF-8'
+-- vim.opt.filetype='on'
 -- filetype plugin on
 
 
 -- copy vim -> os clipboard
-vim.o.clipboard = 'unnamed'
-vim.o.langmenu = 'zh_CN.UTF-8'
+vim.opt.clipboard = 'unnamed'
+vim.opt.langmenu = 'zh_CN.UTF-8'
 -- show match space
-vim.o.showmatch = true
+vim.opt.showmatch = true
 -- search stuff
-vim.o.hlsearch = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- disable backup even gen a swap file
-vim.o.backup = false
-vim.o.swapfile = false
-vim.o.writebackup = false
-vim.o.autoread = true
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.writebackup = false
+vim.opt.autoread = true
 
 -- avoid change buffer before you save current file.
-vim.o.hidden = true
-vim.o.laststatus = 2
+vim.opt.hidden = true
+vim.opt.laststatus = 2
 
 -- size of the saved command-lines in a history table
-vim.o.history = 1000
+vim.opt.history = 1000
