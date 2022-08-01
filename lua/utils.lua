@@ -11,6 +11,10 @@ M.map = function(mode, lhs, rhs, opts)
   end
 end
 
+M.cmd = function(str)
+  return '<cmd>' .. str .. '<CR>'
+end
+
 M.new_cmd = function(cmd, repl, force)
   local command
   if force then
@@ -59,7 +63,7 @@ M.load_plugins = function()
     M.log_err('Load plugins: ' .. error, 'load plugins')
   end
 
-  vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+  -- vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 
   if no_packer then require('packer').sync() end
 end

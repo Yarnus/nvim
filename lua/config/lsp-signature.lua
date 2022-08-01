@@ -19,4 +19,3 @@ if present then
     padding = '' -- character to pad on left and right of signature can be ' ', or '|'  etc
   })
 end
-

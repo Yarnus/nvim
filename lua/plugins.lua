@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
     'akinsho/nvim-bufferline.lua',
     branch = 'main',
     config = function() require('config.nvim-bufferline') end,
-    event = 'BufRead'
+    -- event = 'BufRead'
   }
 
   use { 'Yarnus/friendly-snippets', event = 'InsertEnter' }
@@ -99,8 +99,8 @@ return require('packer').startup(function(use)
   -- show color
   use {
     'norcalli/nvim-colorizer.lua',
+    config = function() require('colorizer').setup() end,
     cmd = 'ColorizerToggle',
-    config = function() require('colorizer').setup() end
   }
 
   -- telescope
@@ -109,7 +109,8 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim',
       'stevearc/aerial.nvim' },
     config = function() require('config.telescope') end,
-    module = 'telescope'
+    -- module = 'telescope'
+    cmd = 'Telescope'
   }
 
   -- flag
@@ -118,6 +119,5 @@ return require('packer').startup(function(use)
   -- align
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
   use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
-
 
 end)
