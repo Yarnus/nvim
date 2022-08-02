@@ -79,8 +79,8 @@ vim.opt.display = 'lastline'
 vim.opt.showbreak = '↳  '
 vim.opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 -- neovim transparent stuff
-vim.opt.pumblend = 5
-vim.opt.winblend = 10
+vim.opt.pumblend = 0
+vim.opt.winblend = 0
 
 vim.opt.undofile = true
 vim.opt.synmaxcol = 2500
