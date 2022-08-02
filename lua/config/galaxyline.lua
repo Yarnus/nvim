@@ -1,4 +1,3 @@
-local utils = require "utils"
 local vim = vim
 
 if vim.g.galaxyline_loaded ~= nil then
@@ -10,7 +9,6 @@ vim.g.galaxyline_loaded = 1
 local gl = require('galaxyline')
 local gls = gl.section
 local condition = require('galaxyline.condition')
-local whitespace = require("galaxyline.providers.whitespace")
 
 gl.short_line_list = {
   'LuaTree', 'vista', 'dbui', 'startify', 'term', 'nerdtree', 'fugitive',
