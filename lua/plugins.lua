@@ -29,21 +29,20 @@ return require('packer').startup(function(use)
     -- event = 'BufRead'
   }
 
+  -- nvim-cmp and sources.
   use { 'Yarnus/friendly-snippets', event = 'InsertEnter' }
-
-  -- nvim-cmp
   use {
     'hrsh7th/nvim-cmp',
     after = 'friendly-snippets',
     config = function() require('config.nvim-cmp') end,
     requires = { 'onsails/lspkind-nvim' }
   }
-
   use { 'hrsh7th/cmp-path', after = { 'nvim-cmp' } }
   use { 'hrsh7th/cmp-nvim-lsp', after = { 'nvim-cmp' } }
   use { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } }
   use { 'hrsh7th/cmp-vsnip', after = { 'nvim-cmp' } }
   use { 'hrsh7th/vim-vsnip', after = { 'nvim-cmp' } }
+  use { 'hrsh7th/cmp-nvim-lsp-signature-help', after = { 'nvim-cmp' } }
   use {
     'windwp/nvim-autopairs',
     config = function() require('config.nvim-autopairs') end,
@@ -57,12 +56,6 @@ return require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
     config = function() require('config.nvim-lspconfig') end,
     after = 'nvim-lsp-installer'
-  }
-
-  use {
-    'ray-x/lsp_signature.nvim',
-    config = function() require('config.lsp-signature') end,
-    after = 'nvim-lspconfig'
   }
 
   -- treesitter

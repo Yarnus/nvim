@@ -98,6 +98,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'buffer', keyword_length = 3 },
     { name = 'path' },
+    { name = 'nvim_lsp_signature_help' }
   },
   experimental = {
     -- ghost_test means the gray-text after input

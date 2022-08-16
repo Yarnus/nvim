@@ -1,6 +1,7 @@
 vim.g.mapleader = ','
 vim.opt.termguicolors = true
 vim.opt.mouse = 'nv'
+vim.opt.autoread = true
 -- disable ring
 vim.opt.errorbells = false
 vim.opt.visualbell = false
