@@ -1,18 +1,21 @@
 require('bufferline').setup {
   highlights = {
     buffer_selected = {
-      guifg = '#08cd7d',
-      guibg = 'none',
-      gui = "bold"
+      fg = '#08cd7d',
+      bg = 'none',
+      bold = true
     },
-    indicator_selected = { guifg = '#08cd7d' },
-    separator = { guifg = 'none' }
+    indicator_selected = { fg = '#08cd7d' },
+    separator = { fg = 'none' }
   };
   options = {
     mode = "buffers",
     numbers = "none",
     buffer_close_icon = '',
-    indicator_icon = ' ',
+    indicator = {
+      style = 'icon',
+      icon = ' '
+    },
     modified_icon = '●',
     close_icon = '',
     -- left_trunc_marker = '',
@@ -39,8 +42,7 @@ require('bufferline').setup {
     --   return '("..count..")'
     -- end,
     offsets = {
-      { filetype = 'NvimTree', text = ' Explorer', padding = 1 },
-      { filetype = 'neo-tree', text = ' Explorer', padding = 1 },
+      { filetype = 'NvimTree', text = ' Explorer', padding = 1 }
     }
   }
 }

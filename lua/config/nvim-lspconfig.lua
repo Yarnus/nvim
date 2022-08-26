@@ -18,10 +18,10 @@ end
 
 vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
 vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
-vim.cmd('command! -nargs=0 Format lua vim.lsp.buf.format({ async = false })')
 vim.cmd('command! -nargs=0 DiagnosticShow lua vim.diagnostic.open_float()')
 vim.cmd('command! -nargs=0 DiagnosticList lua vim.diagnostic.setloclist()')
-
+-- NOTE: auto format once buffer save.
+vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -42,15 +42,16 @@ local on_attach = function(client, bufnr)
   -- hover doc
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
   -- I hardly ever use them
   -- buf_set_keymap('n', '<leader>wl','<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',opts)
   -- buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -68,7 +69,7 @@ capabilities.textDocument.completion.completionItem.documentationFormat = {
   'markdown', 'plaintext'
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = false
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
 capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
 capabilities.textDocument.completion.completionItem.deprecatedSupport = true
@@ -177,6 +178,3 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' })
-
--- NOTE: auto format once buffer save.
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })]]

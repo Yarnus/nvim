@@ -10,7 +10,7 @@ require('gitsigns').setup {
     topdelete = { hl = 'GitGutterDeleteChange', text = '▔' },
     changedelete = { hl = 'GitGutterChange', text = '▎' },
   },
-  numhl = true,
+  numhl = false,
   linehl = false,
   keymaps = {
     noremap = true,

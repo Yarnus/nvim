@@ -12,8 +12,9 @@ local tree_cb = tree_c.nvim_tree_callback
 require("nvim-tree").setup(
   {
     auto_reload_on_write               = true,
-    disable_netrw                      = true,
+    disable_netrw                      = false,
     hijack_netrw                       = true,
+    hijack_cursor                      = true,
     hijack_unnamed_buffer_when_opening = false,
     open_on_setup                      = false,
     ignore_ft_on_setup                 = { 'startify', 'dashboard' },
@@ -83,7 +84,6 @@ require("nvim-tree").setup(
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
       symlink_destination = true,
     },
-    hijack_cursor                      = true,
     update_cwd                         = false,
     diagnostics                        = {
       enable = false,
@@ -105,7 +105,7 @@ require("nvim-tree").setup(
     },
     filters                            = {
       dotfiles = true,
-      custom = { 'node_modules', '_build', 'deps' }
+      custom = { 'node_modules/', '_build/', 'deps/' }
     },
     git                                = {
       enable = true,
