@@ -9,6 +9,12 @@ return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim', event = 'VimEnter' }
   use { 'kyazdani42/nvim-web-devicons' }
 
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function() require('config.lspsaga') end
+  })
+
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',

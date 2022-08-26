@@ -82,8 +82,7 @@ vim.opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 -- neovim transparent stuff
 vim.opt.pumblend = 0
 vim.opt.winblend = 0
-
-vim.opt.undofile = true
+vim.opt.undofile = false
 vim.opt.synmaxcol = 2500
 vim.opt.formatoptions = '1jcroql'
 vim.opt.textwidth = 80

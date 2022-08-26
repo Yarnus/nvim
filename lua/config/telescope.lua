@@ -68,3 +68,4 @@ telescope.setup({
 
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('aerial')
+vim.cmd('command! -nargs=0 Grep :Telescope live_grep')
