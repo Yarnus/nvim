@@ -43,7 +43,7 @@ local on_attach = function(client, bufnr)
   -- NOTE: will define on top of lspsaga.lua
   buf_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
   -- Diagnsotic jump can use `<c-o>` to jump back
-  buf_set_keymap('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
+  -- buf_set_keymap('n', 'gl', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
@@ -61,7 +61,7 @@ local on_attach = function(client, bufnr)
   -- replace on top of lspsaga
   -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  -- buf_set_keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   -- buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
