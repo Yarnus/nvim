@@ -15,55 +15,7 @@ gl.short_line_list = {
   'fugitiveblame', 'plug', 'NvimTree', 'neo-tree'
 }
 
-local theme_colors = require("gruvbox-baby.colors")
-
-local base_colors = {
-  bg       = '#504945',
-  -- hi StatusLine - guibg
-  line_bg  = '#161616',
-  fg       = '#8FBCBB',
-  fg_green = '#65a380',
-  yellow   = '#fabd2f',
-  cyan     = '#86c1b9',
-  darkblue = '#1d2021',
-  -- green = "#08cd7d",
-  green    = '#8ec07c',
-  orange   = '#dc9656',
-  purple   = '#5d4d7a',
-  magenta  = '#d3869b',
-  blue     = '#7cafc2',
-  red      = '#fb4934',
-  violet   = '#ba8baf'
-}
-
-local function mixin_colors(base, extra)
-  for k, v in pairs(extra) do
-    base[k] = v
-  end
-
-  return base
-end
-
-local colors = mixin_colors(base_colors, theme_colors)
--- common
---
---
--- local colors = {
---   bg       = '#504945',
---   line_bg  = '393f44',
---   fg       = '#8FBCBB',
---   fg_green = '#689d6a',
---   yellow   = '#e5c07b',
---   cyan     = '#86c1b9',
---   darkblue = '#1d2021',
---   green    = '#8ec07c',
---   orange   = '#d19a66',
---   purple   = '#5d4d7a',
---   magenta  = '#b16286',
---   blue     = '#7cafc2',
---   red      = '#e86671',
---   violet   = '#D4879C'
--- }
+local colors = require('galaxyline.theme').default
 
 local buffer_not_empty = function()
   if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then return true end
@@ -164,34 +116,29 @@ insert_left {
       return alias[vim_mode]
     end,
     highlight = { colors.line_bg, colors.bg },
-    separator = '',
+    separator = ' ',
     separator_highlight = { colors.bg, colors.yellow }
   }
 }
 
 insert_left {
   GitBranch = {
-    provider            = 'GitBranch',
-    -- condition           = condition.check_git_workspace,
-    highlight           = { colors.darkblue, colors.yellow },
-    separator           = '',
-    separator_highlight = { colors.yellow, colors.green },
-    icon                = '  '
+    provider  = 'GitBranch',
+    condition = condition.check_git_workspace,
+    separator = ' ',
+    icon      = '  '
   },
 }
 
 insert_left {
   File = {
-    -- provider            = function()
-    --   local filepath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
-    --   if vim.fn.empty(filepath) == 1 then return '' end
-    --   return ' ' .. filepath
-    -- end,
-    provider            = 'FileName',
-    -- condition           = condition.buffer_not_empty,
-    highlight           = { colors.line_bg, colors.green },
-    separator           = '',
-    separator_highlight = { colors.green, colors.line_bg },
+    provider  = function()
+      local filepath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
+      if vim.fn.empty(filepath) == 1 then return '' end
+      return ' ' .. filepath
+    end,
+    -- provider  = 'FileName',
+    condition = condition.buffer_not_empty,
   }
 }
 
@@ -238,8 +185,6 @@ insert_right {
     end,
     icon = ' ',
     highlight = { colors.yellow, colors.line_bg },
-    -- separator = '',
-    -- separator_highlight = { colors.bg, colors.line_bg }
   }
 }
 

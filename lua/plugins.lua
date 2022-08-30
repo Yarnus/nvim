@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
     'glepnir/galaxyline.nvim',
     branch = 'main',
     after = 'nvim-web-devicons',
-    config = function() require('config.galaxyline') end
+    config = function() require('config.eviline') end
   }
 
   use {
@@ -116,6 +116,7 @@ return require('packer').startup(function(use)
 
   -- align
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
-  use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
+  -- use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
+  use { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
 
 end)

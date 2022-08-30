@@ -1,12 +1,9 @@
 require('bufferline').setup {
   highlights = {
-    buffer_selected = {
-      fg = '#08cd7d',
-      bg = 'none',
-      bold = true
-    },
-    indicator_selected = { fg = '#08cd7d' },
-    separator = { fg = 'none' }
+    -- fill = { bg = 'none' },
+    buffer_selected = { fg = '#08cd7d', bold = true },
+    -- indicator_selected = { fg = '#08cd7d' },
+    separator = { bg = 'none' }
   };
   options = {
     mode = "buffers",
@@ -46,3 +43,9 @@ require('bufferline').setup {
     }
   }
 }
+-- cater transparent
+vim.cmd([[
+ autocmd ColorScheme * highlight BufferLineFill guibg=none
+ autocmd ColorScheme * highlight BufferLineBackground guifg=#7a7c9e
+ autocmd ColorScheme * highlight BufferLineBufferSelected gui=none
+]])
