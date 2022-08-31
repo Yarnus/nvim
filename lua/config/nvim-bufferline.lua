@@ -11,7 +11,8 @@ require('bufferline').setup {
     buffer_close_icon = '',
     indicator = {
       style = 'icon',
-      icon = ' '
+      -- icon = ' '
+      icon = ' '
     },
     modified_icon = '●',
     close_icon = '',
@@ -43,9 +44,3 @@ require('bufferline').setup {
     }
   }
 }
--- cater transparent
-vim.cmd([[
- autocmd ColorScheme * highlight BufferLineFill guibg=none
- autocmd ColorScheme * highlight BufferLineBackground guifg=#7a7c9e
- autocmd ColorScheme * highlight BufferLineBufferSelected gui=none
-]])
