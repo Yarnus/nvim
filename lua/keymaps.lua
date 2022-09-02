@@ -32,7 +32,7 @@ map('n', '<C-n>', cmd(':NvimTreeToggle'))
 
 -- map('n', '<C-p>', cmd(':lua require("telescope.builtin").find_files{}'))
 map('n', '<C-p>', cmd(':Telescope find_files'))
--- map('n', '<LEADER>ff', cmd(':lua require("telescope.builtin").live_grep{}'))
+map('n', '<LEADER>ff', cmd(':lua require("telescope.builtin").live_grep{}'))
 
 map('i', '<C-a>', '<Home>')
 map('i', '<C-e>', '<End>')
