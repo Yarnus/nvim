@@ -68,4 +68,11 @@ M.load_plugins = function()
   if no_packer then require('packer').sync() end
 end
 
+M.merge_table = function(t1, t2)
+  for k, v in pairs(t2) do
+    t1[k] = v
+  end
+  return t1
+end
+
 return M

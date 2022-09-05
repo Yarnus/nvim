@@ -1,8 +1,28 @@
 local gl = require('galaxyline')
-local colors = require('galaxyline.theme').default
+local utils = require('utils')
+local default_colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = { 'NvimTree', 'vista', 'dbui', 'packer' }
+
+local extra_colors = {
+  red = "#e95678",
+  redwine = "#d16d9e",
+  orange = "#FF8700",
+  yellow = "#f7bb3b",
+  lignt_orange = "#fab795",
+  green = "#afd700",
+  dark_green = "#98be65",
+  cyan = "#36d0e0",
+  blue = "#61afef",
+  violet = "#CBA6F7",
+  magenta = "#c678dd",
+  teal = "#1abc9c",
+  grey = "#928374",
+  brown = "#c78665",
+}
+
+local colors = utils.merge_table(default_colors, extra_colors)
 
 gls.left[1] = {
   RainbowRed = {
@@ -41,9 +61,10 @@ gls.left[3] = {
       return branch .. ' '
     end,
     condition           = condition.check_git_workspace,
-    highlight           = { colors.violet, colors.bg, 'bold' },
-    separator           = '▎',
-    separator_highlight = { colors.blue, colors.bg }
+    highlight           = { colors.redwine, colors.bg, 'bold' },
+    -- separator           = '▎',
+    separator           = '❯',
+    separator_highlight = { colors.green, colors.bg }
   }
 }
 
@@ -56,7 +77,7 @@ gls.left[4] = {
       return ' ' .. filepath .. ' '
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.magenta, colors.bg, 'bold' },
+    highlight = { colors.yellow, colors.bg, 'bold' },
   }
 }
 
