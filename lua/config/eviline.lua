@@ -20,14 +20,20 @@ local extra_colors = {
   teal = "#1abc9c",
   grey = "#928374",
   brown = "#c78665",
+  -- bg = "#1f241f",
 }
+
 
 local colors = utils.merge_table(default_colors, extra_colors)
 
+-- vim.cmd [[
+--    highlight StatusLine guibg=#1f241f
+--   ]]
+--
 gls.left[1] = {
   RainbowRed = {
     provider = function() return '▊ ' end,
-    highlight = { colors.blue, colors.bg }
+    highlight = { colors.yellow, colors.bg }
   },
 }
 gls.left[2] = {
@@ -61,10 +67,10 @@ gls.left[3] = {
       return branch .. ' '
     end,
     condition           = condition.check_git_workspace,
-    highlight           = { colors.redwine, colors.bg, 'bold' },
+    highlight           = { colors.yellow, colors.bg, 'bold' },
     -- separator           = '▎',
     separator           = '❯',
-    separator_highlight = { colors.green, colors.bg }
+    separator_highlight = { colors.blue, colors.bg }
   }
 }
 
@@ -77,7 +83,7 @@ gls.left[4] = {
       return ' ' .. filepath .. ' '
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.yellow, colors.bg, 'bold' },
+    highlight = { colors.teal, colors.bg, 'bold' },
   }
 }
 
@@ -124,7 +130,7 @@ gls.mid[1] = {
       return true
     end,
     icon = ' lsp:',
-    highlight = { colors.cyan, colors.bg }
+    highlight = { colors.yellow, colors.bg }
   }
 }
 
@@ -168,7 +174,7 @@ gls.right[6] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = { 'NONE', colors.bg },
-    highlight = { colors.blue, colors.bg, 'bold' }
+    highlight = { colors.dark_green, colors.bg, 'bold' }
   }
 }
 
@@ -179,7 +185,7 @@ gls.right[7] = {
     condition = condition.hide_in_width,
     separator = ' ',
     separator_highlight = { 'NONE', colors.bg },
-    highlight = { colors.red, colors.bg, 'bold' }
+    highlight = { colors.lignt_orange, colors.bg, 'bold' }
   }
 }
 
@@ -195,7 +201,7 @@ gls.right[8] = {
 gls.right[9] = {
   RainbowBlue = {
     provider = function() return ' ▊' end,
-    highlight = { colors.blue, colors.bg }
+    highlight = { colors.yellow, colors.bg }
   },
 }
 

@@ -103,6 +103,8 @@ vim.opt.foldenable = false
 vim.opt.signcolumn = 'yes'
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'niv'
+vim.opt.cursorlineopt = { "number" }
+vim.opt.cursorline = false
 
 if vim.loop.os_uname().sysname == 'Darwin' then
   vim.g.clipboard = {

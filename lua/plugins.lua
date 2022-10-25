@@ -108,7 +108,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim',
       'stevearc/aerial.nvim' },
     config = function() require('config.telescope') end,
-    cmd = 'Telescope'
+    -- cmd = 'Telescope'
   }
 
   -- flag
