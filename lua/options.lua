@@ -105,7 +105,6 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'niv'
 vim.opt.cursorlineopt = { "number" }
 vim.opt.cursorline = false
-vim.opt.cmdheight = 0
 
 if vim.loop.os_uname().sysname == 'Darwin' then
   vim.g.clipboard = {
