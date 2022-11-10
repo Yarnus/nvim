@@ -1,7 +1,7 @@
 require('bufferline').setup {
   highlights = {
     -- fill = { bg = 'none' },
-    buffer_selected = { fg = '#08cd7d', bold = true },
+    buffer_selected = { fg = '#f7bb3b', bold = true },
     -- indicator_selected = { fg = '#08cd7d' },
     separator = { bg = 'none' }
   };

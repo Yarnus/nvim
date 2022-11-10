@@ -108,7 +108,6 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzy-native.nvim',
       'stevearc/aerial.nvim' },
     config = function() require('config.telescope') end,
-    -- cmd = 'Telescope'
   }
 
   -- flag
@@ -116,7 +115,6 @@ return require('packer').startup(function(use)
 
   -- align
   use { 'junegunn/vim-easy-align', cmd = 'EasyAlign' }
-  -- use { 'luisiacc/gruvbox-baby', config = function() require('themes.gruvbox-baby') end }
   use { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
 
 end)
