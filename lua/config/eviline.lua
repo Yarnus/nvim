@@ -3,7 +3,7 @@ local utils = require('utils')
 local default_colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
 local gls = gl.section
-gl.short_line_list = { 'NvimTree', 'vista', 'dbui', 'packer' }
+gl.short_line_list = { 'NvimTree', 'vista', 'dbui' }
 
 local extra_colors = {
   red = "#e95678",

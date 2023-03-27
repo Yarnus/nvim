@@ -11,6 +11,24 @@ M.map = function(mode, lhs, rhs, opts)
   end
 end
 
+M.require = function(name, message)
+  local status_ok, plugin = pcall(require, name)
+  if not status_ok and message ~= false then
+    local info = debug.getinfo(2, "Sl")
+    local file = info.short_src
+    local line = info.currentline
+    local _hint = "require: Failed to load '%s'\n(%s: %d)"
+    local hint = _hint:format(name, file, line)
+    vim.notify(hint, vim.log.levels.WARN)
+    return nil
+  else
+    if status_ok and plugin ~= true then
+      return plugin
+    end
+  end
+  return nil
+end
+
 M.cmd = function(str)
   return '<cmd>' .. str .. '<CR>'
 end
@@ -34,38 +52,6 @@ end
 
 M.log_info = function(msg, title)
   vim.notify(msg, vim.log.levels.INFO, { title = title })
-end
-
-M.load_plugins = function()
-  -- detecting plugin manager
-  local no_packer = false
-  local fn = vim.fn
-  local install_path = fn.stdpath('data') ..
-      '/site/pack/packer/opt/packer.nvim'
-
-  if fn.empty(fn.glob(install_path)) > 0 then
-    M.log_info('Installing packer to ' .. install_path)
-    no_packer = fn.system({
-      'git', 'clone', '--depth', '1',
-      'https://github.com/wbthomason/packer.nvim', install_path
-    })
-  end
-
-  local packer_call, error_msg = pcall(vim.cmd, [[packadd packer.nvim]])
-  if not packer_call then
-    M.log_err(error_msg, 'load plugin')
-    return
-  end
-
-  -- Reading plugins configuration
-  local ok, error = pcall(require, 'plugins')
-  if not ok then
-    M.log_err('Load plugins: ' .. error, 'load plugins')
-  end
-
-  -- vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
-
-  if no_packer then require('packer').sync() end
 end
 
 M.merge_table = function(t1, t2)

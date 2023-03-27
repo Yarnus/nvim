@@ -97,7 +97,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- lspInstall + lspconfig stuff
 
 -- more server setting: https://github.com/williamboman/nvim-lsp-installer
-local servers = { 'clangd', 'html', 'jsonls', 'elixirls', 'jedi-language-server', 'rome', 'rust_analyzer', 'sumneko_lua' }
+-- local servers = { 'clangd', 'html', 'jsonls', 'elixirls', 'jedi-language-server', 'rome', 'rust_analyzer', 'sumneko_lua' }
+local servers = { 'clangd', 'html', 'jsonls', 'elixirls', 'jedi-language-server', 'rome', 'rust_analyzer' }
 
 for _, lang in pairs(servers) do
   local ok, server = installer.get_server(lang)

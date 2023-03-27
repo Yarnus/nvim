@@ -23,5 +23,3 @@ Anyway, take a look at their contribution, which is really fantastic.
 3. other neovim dependency (for more details, please use `:checkhealth` in neovim.)
   - Install `pip3` and run `pip3 install --user pynvim`
   - Install `node` and run `npm install -g neovim`
-4. run neovim then do `:PackerInstall`, after that run `:PackerCompile`
-5. restart neovim and installation done. (ATM, some lsp/tree-sitter will download automatically.)
