@@ -1,5 +1,6 @@
 local mason_lspconfig = require("utils").require("mason-lspconfig")
 local lspconfig = require("utils").require("lspconfig")
+
 if not mason_lspconfig or not lspconfig then
   return
 end
@@ -26,9 +27,9 @@ vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "" },
 }
 
 for _, sign in ipairs(signs) do
@@ -159,38 +160,53 @@ local opts = {
   capabilities = capabilities,
 }
 
-local custom_lua_ls = {
-      settings = {
-        Lua = {
-            runtime = { version = "LuaJIT" },
-            diagnostics = { globals = { "vim" } },
-            telemetry = {enable = false  },
-        },
-    }
-}
-local lua_ls_opts = vim.tbl_extend("force", opts, custom_lua_ls)
 
-local clangd_opts = opts
-clangd_opts.capabilities.offsetEncoding = "utf-8"
+local server_configs = {
+  -- elixir lsp config
+  ['elixirls'] = {
+    -- cmd = { '/Users/yarnus/.config/elixir_ls/release/language_server.sh' },
+    -- filetypes = { 'elixir', 'eelixir' },
+    -- root_dir = util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
+    settings = {
+      elixirLS = {
+        dialyzerEnabled = false,
+        fetchDeps = false
+      }
+    }
+  },
+  ["lua_ls"] = {
+    settings = {
+      Lua = {
+        runtime = { version = "LuaJIT" },
+        diagnostics = { globals = { "vim" } },
+        telemetry = { enable = false },
+      },
+    }
+  },
+  -- python lsp config
+  ['pyright'] = {
+    filetypes = { 'python' },
+    settings = {
+      pyright = {
+        disableLanguageServices = false,
+        disableOrganizeImports = false
+      },
+      python = {
+        analysis = {
+          autoImportCompletions = true,
+          autoSearchPaths = true,
+          diagnosticMode = 'workspace',
+          useLibraryCodeForTypes = true
+        }
+      }
+    }
+  }
+}
 
 mason_lspconfig.setup_handlers({
   function(server_name)
-    lspconfig[server_name].setup(opts)
-  end,
-
-  ["lua_ls"] = function()
-    lspconfig.lua_ls.setup(lua_ls_opts)
-  end,
-
-  ["clangd"] = function()
-    lspconfig.clangd.setup(clangd_opts)
-  end,
-
-  ["rust_analyzer"] = function()
-    require("rust-tools").setup({
-      server = {
-        on_attach = on_attach,
-      },
-    })
-  end,
+    local extra = server_configs[server_name] or {}
+    local server_opts = vim.tbl_extend("force", opts, extra)
+    lspconfig[server_name].setup(server_opts)
+  end
 })
