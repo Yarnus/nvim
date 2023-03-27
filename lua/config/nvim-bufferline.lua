@@ -6,6 +6,9 @@ require('bufferline').setup {
     separator = { bg = 'none' }
   };
   options = {
+    hover = {
+      enabled = false
+    },
     mode = "buffers",
     numbers = "none",
     buffer_close_icon = '',

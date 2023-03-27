@@ -1,6 +1,6 @@
 -- local keymap = vim.keymap.set
 local saga = require('lspsaga')
-saga.init_lsp_saga({
+saga.setup({
   border_style = 'rounded',
   saga_winblend = 0,
   -- move_in_saga = { prev = '<C-p>',next = '<C-n>'},
@@ -30,5 +30,14 @@ saga.init_lsp_saga({
   code_action_keys = {
     quit = "q",
     exec = "<CR>",
+  },
+  symbol_in_winbar = {
+    enable = false,
+    separator = " ",
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
   }
 })
