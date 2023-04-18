@@ -21,7 +21,8 @@ vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
 vim.cmd('command! -nargs=0 DiagnosticShow lua vim.diagnostic.open_float()')
 vim.cmd('command! -nargs=0 DiagnosticList lua vim.diagnostic.setloclist()')
 -- NOTE: auto format once buffer save.
-vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
+-- vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()')
+vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
