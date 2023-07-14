@@ -43,7 +43,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = false,
   update_in_insert = false,
   underline = true,
   severity_sort = true,
@@ -56,7 +56,7 @@ vim.diagnostic.config({
     prefix = "",
   },
   signs = {
-    active = signs,
+    -- active = signs,
   },
 })
 

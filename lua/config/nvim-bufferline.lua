@@ -4,7 +4,7 @@ require('bufferline').setup {
     buffer_selected = { fg = '#f7bb3b', bold = true },
     -- indicator_selected = { fg = '#08cd7d' },
     separator = { bg = 'none' }
-  };
+  },
   options = {
     hover = {
       enabled = false
@@ -30,8 +30,6 @@ require('bufferline').setup {
     max_prefix_length = 15,
     tab_size = 18,
     color_icons = true,
-    show_buffer_icons = true,
-    show_buffer_default_icon = true,
     show_buffer_close_icons = true,
     show_tab_indicators = false,
     separator_style = 'thin',
