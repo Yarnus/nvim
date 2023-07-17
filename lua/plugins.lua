@@ -1,4 +1,5 @@
 return {
+  { 'luisiacc/gruvbox-baby',       config = function() require('themes.gruvbox-baby') end },
   { 'kyazdani42/nvim-web-devicons' },
   {
     "glepnir/lspsaga.nvim",
@@ -6,12 +7,11 @@ return {
     config = function() require('config.lspsaga') end
   },
   {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
+    'nvim-lualine/lualine.nvim',
+    branch = 'master',
     dependencies = { 'nvim-web-devicons' },
-    config = function() require('config.eviline') end
+    config = function() require('config.lualine') end
   },
-
   {
     "kyazdani42/nvim-tree.lua",
     dependencies = { 'kyazdani42/nvim-web-devicons' },
@@ -22,18 +22,18 @@ return {
     branch = 'main',
     config = function() require('config.nvim-bufferline') end,
   },
-  { 'Yarnus/friendly-snippets', event = 'InsertEnter' },
+  { 'Yarnus/friendly-snippets',            event = 'InsertEnter' },
   {
     'hrsh7th/nvim-cmp',
     after = 'friendly-snippets',
     config = function() require('config.nvim-cmp') end,
     dependencies = { 'onsails/lspkind-nvim' }
   },
-  { 'hrsh7th/cmp-path', after = { 'nvim-cmp' } },
-  { 'hrsh7th/cmp-nvim-lsp', after = { 'nvim-cmp' } },
-  { 'hrsh7th/cmp-buffer', after = { 'nvim-cmp' } },
-  { 'hrsh7th/cmp-vsnip', after = { 'nvim-cmp' } },
-  { 'hrsh7th/vim-vsnip', after = { 'nvim-cmp' } },
+  { 'hrsh7th/cmp-path',                    after = { 'nvim-cmp' } },
+  { 'hrsh7th/cmp-nvim-lsp',                after = { 'nvim-cmp' } },
+  { 'hrsh7th/cmp-buffer',                  after = { 'nvim-cmp' } },
+  { 'hrsh7th/cmp-vsnip',                   after = { 'nvim-cmp' } },
+  { 'hrsh7th/vim-vsnip',                   after = { 'nvim-cmp' } },
   { 'hrsh7th/cmp-nvim-lsp-signature-help', after = { 'nvim-cmp' } },
   {
     'windwp/nvim-autopairs',
@@ -44,14 +44,18 @@ return {
   -- lsp
 
 
-  { 'williamboman/mason.nvim', build = ':MasonUpdate', config = function() require("mason").setup() end},
-
-  { 'williamboman/mason-lspconfig.nvim',
-    opts = { ensure_installed = { 'clangd', 'html', 'jsonls', 'elixirls', 'jedi-language-server', 'rome', 'rust_analyzer', 'lua_ls'} },
+  { 'williamboman/mason.nvim', build = ':MasonUpdate', config = function() require("mason").setup() end },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    opts = {
+      ensure_installed = { 'clangd', 'html', 'jsonls', 'elixirls', 'jedi-language-server', 'rome', 'rust_analyzer',
+        'lua_ls' }
+    },
     config = function()
       require("mason-lspconfig").setup(opts)
       require('config.mason-lspconfig')
-    end },
+    end
+  },
 
   {
     'neovim/nvim-lspconfig',
@@ -84,7 +88,7 @@ return {
   },
 
   -- Find and replace
-  { 'brooth/far.vim', cmd = { 'Far', 'Farr' } },
+  { 'brooth/far.vim',          cmd = { 'Far', 'Farr' } },
 
   -- show color
   {
@@ -103,9 +107,9 @@ return {
     config = function() require('config.telescope') end,
   },
 
-  { 'stevearc/aerial.nvim', config = function() require('config.aerial') end },
+  { 'stevearc/aerial.nvim',    config = function() require('config.aerial') end },
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
-  { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
+  -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
   -- end
 }

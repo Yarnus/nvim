@@ -1,9 +1,11 @@
 local gl = require('galaxyline')
 local utils = require('utils')
-local default_colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = { 'NvimTree', 'vista', 'dbui' }
+
+-- local default_colors = require('galaxyline.theme').default
+local default_colors = require("gruvbox-baby.colors").config()
 
 local extra_colors = {
   red = "#e95678",
@@ -20,7 +22,8 @@ local extra_colors = {
   teal = "#1abc9c",
   grey = "#928374",
   brown = "#c78665",
-  -- bg = "#1f241f",
+  bg = default_colors.background,
+  fg = default_colors.foreground
 }
 
 
@@ -41,14 +44,26 @@ gls.left[2] = {
     provider = function()
       -- auto change color according the vim mode
       local mode_color = {
-        n = colors.red, i = colors.green, v = colors.blue,
-        [''] = colors.blue, V = colors.blue,
-        c = colors.magenta, no = colors.red, s = colors.orange,
-        S = colors.orange, [''] = colors.orange,
-        ic = colors.yellow, R = colors.violet, Rv = colors.violet,
-        cv = colors.red, ce = colors.red, r = colors.cyan,
-        rm = colors.cyan, ['r?'] = colors.cyan,
-        ['!'] = colors.red, t = colors.red
+        n = colors.red,
+        i = colors.green,
+        v = colors.blue,
+        [''] = colors.blue,
+        V = colors.blue,
+        c = colors.magenta,
+        no = colors.red,
+        s = colors.orange,
+        S = colors.orange,
+        [''] = colors.orange,
+        ic = colors.yellow,
+        R = colors.violet,
+        Rv = colors.violet,
+        cv = colors.red,
+        ce = colors.red,
+        r = colors.cyan,
+        rm = colors.cyan,
+        ['r?'] = colors.cyan,
+        ['!'] = colors.red,
+        t = colors.red
       }
       vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
       return '  '
@@ -83,7 +98,7 @@ gls.left[4] = {
       return ' ' .. filepath .. ' '
     end,
     condition = condition.buffer_not_empty,
-    highlight = { colors.teal, colors.bg, 'bold' },
+    highlight = { colors.teal, "NONE", 'bold' },
   }
 }
 

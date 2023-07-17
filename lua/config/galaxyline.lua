@@ -112,7 +112,7 @@ insert_left {
 
       local vim_mode = vim.fn.mode()
       local color = mode_color[vim_mode] or colors.red
-      vim.api.nvim_command('hi GalaxyViMode guifg=' .. color)
+      -- vim.api.nvim_command('hi GalaxyViMode guifg=' .. color)
       return alias[vim_mode]
     end,
     highlight = { colors.line_bg, colors.bg },

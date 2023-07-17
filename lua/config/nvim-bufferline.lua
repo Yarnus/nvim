@@ -1,21 +1,20 @@
 require('bufferline').setup {
   highlights = {
     -- fill = { bg = 'none' },
-    buffer_selected = { fg = '#f7bb3b', bold = true },
+    buffer_selected = { fg = '#f7bb3b', bold = false, italic = false },
+    buffer_visible = { fg = '#928374' }
     -- indicator_selected = { fg = '#08cd7d' },
-    separator = { bg = 'none' }
+    -- separator = { bg = 'none' }
   },
   options = {
-    hover = {
-      enabled = false
-    },
+    hover = { enabled = false },
     mode = "buffers",
     numbers = "none",
     buffer_close_icon = '',
     indicator = {
-      style = 'icon',
-      -- icon = ' '
-      icon = ' '
+      style = 'none',
+      -- icon = ' ',
+      icon = ''
     },
     modified_icon = '●',
     close_icon = '',
