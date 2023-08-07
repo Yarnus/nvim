@@ -136,38 +136,34 @@ ins_left {
 }
 
 ins_left {
-  -- filesize component
   'filesize',
   color = { fg = colors.redwine },
   cond = conditions.buffer_not_empty,
 }
 
+-- 0: Just the filename
+-- 1: Relative path
+-- 2: Absolute path
+-- 3: Absolute path, with tilde as the home directory
+-- 4: Filename and parent dir, with tilde as the home directory
 ins_left {
-  'filename', path = 1, file_status = true,
+  'filename', path = 4, file_status = false,
   cond = conditions.buffer_not_empty,
   color = { fg = colors.teal, gui = '' },
 }
 
---
--- ins_left { 'filename', path = 2,
---   fmt = function(path)
---     return table.concat({ vim.fs.basename(vim.fs.dirname(path)),
---       vim.fs.basename(path) }, package.config:sub(1, 1))
---   end }
 
 ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = '  ', modified = '  ', removed = '  ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
+  'diagnostics',
+  sources = { 'nvim_diagnostic' },
   cond = conditions.hide_in_width,
+  symbols = { error = '  ', warn = '  ', info = '  ' },
+  diagnostics_color = {
+    color_error = { fg = colors.red },
+    color_warn = { fg = colors.yellow },
+    color_info = { fg = colors.cyan },
+  },
 }
-
-
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -177,22 +173,11 @@ ins_left {
   end,
 }
 
-ins_left {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  cond = conditions.hide_in_width,
-  symbols = { error = '  ', warn = '  ', info = '  ' },
-  diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
-  },
-}
 
 ins_left {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
+    local msg = 'nil'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
@@ -211,6 +196,19 @@ ins_left {
 }
 
 -- Add components to right sections
+
+ins_right {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+  symbols = { added = '  ', modified = '  ', removed = '  ' },
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
+
 
 
 ins_right {

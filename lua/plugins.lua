@@ -111,5 +111,5 @@ return {
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
   -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
-  -- end
+  -- { "lukas-reineke/indent-blankline.nvim", config = function() require('config.indent_blankline') end },
 }
