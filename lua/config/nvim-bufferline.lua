@@ -2,7 +2,7 @@ local bufferline = require('bufferline')
 bufferline.setup {
   highlights = {
     buffer_selected = { fg = '#08cd7d', bold = false, italic = true },
-    buffer_visible = { fg = '#928374' },
+    -- buffer_visible = { fg = '#928374', bg = '#928374' },
     indicator_selected = { fg = '#08cd7d' }
 
   },
@@ -78,12 +78,12 @@ bufferline.setup {
     show_buffer_close_icons = false,
     show_close_icon = false,
     show_tab_indicators = true,
-    show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
-    persist_buffer_sort = true,   -- whether or not custom sorted buffers should persist
-    move_wraps_at_ends = false,   -- whether or not the move command "wraps" at the first or last position
+    show_duplicate_prefix = false, -- whether to show duplicate buffer prefix
+    persist_buffer_sort = true,    -- whether or not custom sorted buffers should persist
+    move_wraps_at_ends = false,    -- whether or not the move command "wraps" at the first or last position
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "none",
+    separator_style = { '', '' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
     hover = {

@@ -1,7 +1,8 @@
 local vim = vim
 
-vim.g.gruvbox_baby_background_color = "medium"
-vim.g.gruvbox_baby_transparent_mode = true
+-- vim.g.gruvbox_baby_background_color = "medium"
+vim.g.gruvbox_baby_background_color = "soft flat"
+vim.g.gruvbox_baby_transparent_mode = false
 
 -- see :h attr-list
 vim.g.gruvbox_baby_comment_style = "altfont"
