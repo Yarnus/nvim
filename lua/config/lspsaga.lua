@@ -108,7 +108,7 @@ saga.setup({
     },
   },
   symbol_in_winbar = {
-    enable = true,
+    enable = false,
     separator = ' › ',
     hide_keyword = false,
     show_file = false,
@@ -118,9 +118,9 @@ saga.setup({
   },
   outline = {
     win_position = 'right',
-    win_width = 30,
+    win_width = 40,
     auto_preview = true,
-    detail = true,
+    detail = false,
     auto_close = true,
     close_after_jump = false,
     layout = 'normal',
@@ -158,3 +158,5 @@ saga.setup({
   },
 
 })
+
+vim.cmd('command! -nargs=0 Flag :Lspsaga outline')

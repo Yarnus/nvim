@@ -102,12 +102,10 @@ return {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
-      'stevearc/aerial.nvim'
     },
     config = function() require('config.telescope') end,
   },
 
-  { 'stevearc/aerial.nvim',    config = function() require('config.aerial') end },
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
   -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
