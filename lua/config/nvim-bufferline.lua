@@ -60,7 +60,7 @@ bufferline.setup {
     --     end
     -- end,
     offsets = {
-      { filetype = 'NvimTree', text = ' Explorer', padding = 1 }
+      { filetype = 'NvimTree', text = ' Explorer', padding = 0 }
     },
     color_icons = true, -- whether or not to add the filetype icon highlights
     -- get_element_icon = function(element)
