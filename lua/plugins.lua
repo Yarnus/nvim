@@ -42,8 +42,6 @@ return {
   },
 
   -- lsp
-
-
   { 'williamboman/mason.nvim', build = ':MasonUpdate', config = function() require("mason").setup() end },
   {
     'williamboman/mason-lspconfig.nvim',
@@ -58,8 +56,7 @@ return {
   },
 
   {
-    'neovim/nvim-lspconfig',
-    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' }
+    'neovim/nvim-lspconfig', dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' }
   },
 
   -- treesitter

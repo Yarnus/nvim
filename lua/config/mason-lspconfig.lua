@@ -77,7 +77,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
 
-  -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
@@ -161,10 +160,8 @@ local opts = {
 
 
 local server_configs = {
-  -- elixir lsp config
   ['elixirls'] = {
-    -- cmd = { '/Users/yarnus/.config/elixir_ls/release/language_server.sh' },
-    cmd = { '/Users/yarnus/.config/elixir_ls/v0.13.0/language_server.sh' },
+    cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.16.0/language_server.sh' },
     filetypes = { 'elixir', 'eelixir' },
     -- root_dir = util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
     settings = {
