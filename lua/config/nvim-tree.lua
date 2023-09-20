@@ -1,9 +1,3 @@
-local ok, tree_c = pcall(require, 'nvim-tree.config')
-if not ok then
-  vim.notify(tree_c, vim.log.levels.ERROR)
-  return
-end
-
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
 
