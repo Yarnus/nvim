@@ -8,7 +8,7 @@ telescope.setup({
       '--line-number', '--column', '--smart-case'
     },
     prompt_prefix = '❯ ',
-    selection_caret = ' ',
+    selection_caret = '➔ ',
     entry_prefix = '  ',
     multi_icon = ' ',
     initial_mode = 'insert',
