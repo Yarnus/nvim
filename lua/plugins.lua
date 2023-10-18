@@ -1,5 +1,4 @@
 return {
-  { 'luisiacc/gruvbox-baby',       config = function() require('themes.gruvbox-baby') end },
   { 'kyazdani42/nvim-web-devicons' },
   {
     "glepnir/lspsaga.nvim",
@@ -22,7 +21,7 @@ return {
     branch = 'main',
     config = function() require('config.nvim-bufferline') end,
   },
-  { 'Yarnus/friendly-snippets',            event = 'InsertEnter' },
+  { 'Yarnus/friendly-snippets',    event = 'InsertEnter' },
   {
     'hrsh7th/nvim-cmp',
     after = 'friendly-snippets',
@@ -105,6 +104,14 @@ return {
 
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
+  -- { 'luisiacc/gruvbox-baby',   priority = 1000,  config = function() require('themes.gruvbox-baby') end },
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000,
+    config = function() require('themes.everforest') end,
+  },
   -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
   -- { "lukas-reineke/indent-blankline.nvim", config = function() require('config.indent_blankline') end },
   { 'wakatime/vim-wakatime' },

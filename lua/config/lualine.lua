@@ -1,7 +1,9 @@
 local lualine = require('lualine')
 local utils = require('utils')
 
-local default_colors = require("gruvbox-baby.colors").config()
+-- local default_colors = require("gruvbox-baby.colors").config()
+-- local default_colors = {}
+local default_colors = require("everforest.colours")
 
 local extra_colors = {
   -- red = "#e95678",
@@ -22,6 +24,7 @@ local extra_colors = {
   bg           = default_colors.background,
   fg           = default_colors.foreground
 }
+
 
 local colors = utils.merge_table(default_colors, extra_colors)
 
@@ -45,13 +48,14 @@ local config = {
     component_separators = '',
     section_separators = '',
     icons_enabled = true,
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    },
+    -- theme = "everforest",
+    -- theme = {
+    --   -- We are going to use lualine_c an lualine_x as left and
+    --   -- right section. Both are highlighted by c theme .  So we
+    --   -- are just setting default looks o statusline
+    --   normal = { c = { fg = colors.fg, bg = colors.bg } },
+    --   inactive = { c = { fg = colors.fg, bg = colors.bg } },
+    -- },
     globalstatus = true,
     ignore_focus = { "NvimTree" }
   },
@@ -192,7 +196,7 @@ ins_left {
     return msg
   end,
   icon = ' lsp:',
-  color = { fg = colors.blue, gui = '' },
+  color = { fg = colors.lignt_orange, gui = '' },
 }
 
 -- Add components to right sections
@@ -215,7 +219,7 @@ ins_right {
   'o:encoding',       -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.cyan, gui = '' },
+  color = { fg = colors.brown, gui = '' },
 }
 
 ins_right {
