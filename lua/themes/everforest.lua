@@ -46,7 +46,6 @@ require("everforest").setup({
   ---been mixed on the palette.
   colours_override = function(palette)
     palette.red = '#e75a7c'
-    palette.bg_visual = '#838781'
   end,
 })
 --    black = '#111210',
