@@ -139,17 +139,25 @@ ins_left {
   -- separator           = '❯',
 }
 
-ins_left {
-  'filesize',
-  color = { fg = colors.redwine },
-  cond = conditions.buffer_not_empty,
-}
+
 
 -- 0: Just the filename
 -- 1: Relative path
 -- 2: Absolute path
 -- 3: Absolute path, with tilde as the home directory
 -- 4: Filename and parent dir, with tilde as the home directory
+ins_left {
+  'diff',
+  -- Is it me or the symbol for modified us really weird
+  symbols = { added = '  ', modified = '  ', removed = '  ' },
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
+
 ins_left {
   'filename', path = 4, file_status = false,
   cond = conditions.buffer_not_empty,
@@ -201,19 +209,14 @@ ins_left {
 
 -- Add components to right sections
 
+
+
 ins_right {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = '  ', modified = '  ', removed = '  ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
+  'fileformat',
+  fmt = string.upper,
+  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+  color = { fg = colors.red, gui = '' },
 }
-
-
 
 ins_right {
   'o:encoding',       -- option component same as &encoding in viml
@@ -223,10 +226,9 @@ ins_right {
 }
 
 ins_right {
-  'fileformat',
-  fmt = string.upper,
-  icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.red, gui = '' },
+  'filesize',
+  color = { fg = colors.redwine },
+  cond = conditions.buffer_not_empty,
 }
 
 ins_right { 'progress', color = { fg = colors.green, gui = '' } }

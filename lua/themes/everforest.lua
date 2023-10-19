@@ -4,7 +4,7 @@ require("everforest").setup({
   background = "soft",
   ---How much of the background should be transparent. 2 will have more UI
   ---components be transparent (e.g. status line background)
-  transparent_background_level = 0,
+  transparent_background_level = 2,
   ---Whether italics should be used for keywords and more.
   italics = false,
   ---Disable italic fonts for comments. Comments are in italics by default, set
@@ -28,7 +28,7 @@ require("everforest").setup({
   ---also highlight the background of them.
   diagnostic_text_highlight = false,
   ---Which colour the diagnostic text should be. Options are `"grey"` or `"coloured"` (default)
-  diagnostic_virtual_text = "coloured",
+  diagnostic_virtual_text = "grey",
   ---Some plugins support highlighting error/warning/info/hint lines, but this
   ---feature is disabled by default in this colour scheme.
   diagnostic_line_highlight = false,
@@ -40,14 +40,41 @@ require("everforest").setup({
   show_eob = true,
   ---You can override specific highlights to use other groups or a hex colour.
   ---This function will be called with the highlights and colour palette tables.
-  ---@param highlight_groups Highlights
-  ---@param palette Palette
-  on_highlights = function(highlight_groups, palette) end,
+  -- on_highlights = function(highlight_groups, palette) end,
   ---You can override colours in the palette to use different hex colours.
   ---This function will be called once the base and background colours have
   ---been mixed on the palette.
-  ---@param palette Palette
-  colours_override = function(palette) end,
+  colours_override = function(palette)
+    palette.red = '#e75a7c'
+    palette.bg_visual = '#838781'
+  end,
 })
+--    black = '#111210',
+--    bg0 = '#252623',
+--    bg1 = '#2f312c',
+--    bg2 = '#383b35',
+--    bg3 = '#3a3d37',
+--    bg_d = '#1c1e1b',
+--    bg_blue = '#68aee8',
+--    bg_yellow = '#e2c792',
+--    fg = '#f1e9d2',
+--    purple = '#aaaaff',
+--    green = '#8fb573',
+--    orange = '#ff9966',
+--    blue = '#57a5e5',
+--    yellow = '#dbb671',
+--    cyan = '#70c2be',
+--    red = '#e75a7c',
+--    coral = '#f08080',
+--    grey = '#5b5e5a',
+--    light_grey = '#838781',
+--    dark_cyan = '#2b5d63',
+--    dark_red = '#833b3b',
+--    dark_yellow = '#7c5c20',
+--    dark_purple = '#79428a',
+--    diff_add = '#40531b',
+--    diff_delete = '#893f45',
+--    diff_change = '#2a3a57',
+--    diff_text = '#3a4a67',
 
 require("everforest").load()
