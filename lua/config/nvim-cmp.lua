@@ -94,10 +94,18 @@ cmp.setup({
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    {
+      name = 'buffer',
+      keyword_length = 2,
+      option = {
+        get_bufnrs = function()
+          return vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
+        end
+      }
+    },
     { name = 'vsnip' },
+    { name = 'nvim_lsp' },
     { name = 'path' },
-    { name = 'buffer',                 keyword_length = 2 },
     { name = 'nvim_lsp_signature_help' }
   },
   experimental = {
