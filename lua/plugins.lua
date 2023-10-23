@@ -16,17 +16,26 @@ return {
   },
 
   -- completion
+  { 'Yarnus/friendly-snippets', event = 'InsertEnter' },
+
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      'hrsh7th/vim-vsnip',
-      "hrsh7th/cmp-nvim-lsp",
-      "onsails/lspkind-nvim",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-omni",
-    },
+    'hrsh7th/nvim-cmp',
+    after = 'friendly-snippets',
     config = function() require('config.nvim-cmp') end,
+    dependencies = {
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'onsails/lspkind-nvim',
+    }
+  },
+  {
+    'windwp/nvim-autopairs',
+    config = function() require('config.nvim-autopairs') end,
+    after = 'nvim-cmp'
   },
 
   -- old
@@ -55,13 +64,6 @@ return {
     event = { 'BufEnter' },
     config = function() require('config.nvim-bufferline') end,
   },
-  { 'Yarnus/friendly-snippets', event = 'InsertEnter' },
-
-  {
-    'windwp/nvim-autopairs',
-    config = function() require('config.nvim-autopairs') end,
-    after = 'nvim-cmp'
-  },
 
   -- git stuff
   {
@@ -82,7 +84,7 @@ return {
   },
 
   -- Find and replace
-  { 'brooth/far.vim',           cmd = { 'Far', 'Farr' } },
+  { 'brooth/far.vim',              cmd = { 'Far', 'Farr' } },
 
   -- show color
   {
