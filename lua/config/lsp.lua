@@ -1,12 +1,10 @@
-local mason_lspconfig = require("utils").require("mason-lspconfig")
-local lspconfig = require("utils").require("lspconfig")
--- local util = require('nvim_lsp/util')
+local fn = vim.fn
+local api = vim.api
+local keymap = vim.keymap
+local lsp = vim.lsp
+local diagnostic = vim.diagnostic
+local utils = require("utils")
 
-if not mason_lspconfig or not lspconfig then
-  return
-end
-
-local vim = vim
 function _G.reload_lsp()
   vim.lsp.stop_client(vim.lsp.get_active_clients())
   vim.cmd [[edit]]
@@ -24,28 +22,17 @@ vim.cmd('command! -nargs=0 DiagnosticList lua vim.diagnostic.setloclist()')
 -- NOTE: auto format once buffer save.
 vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
 
+-- Change diagnostic signs.
+fn.sign_define("DiagnosticSignError", { text = '', texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignWarn", { text = '', texthl = "DiagnosticSignWarn" })
+fn.sign_define("DiagnosticSignInfo", { text = '', texthl = "DiagnosticSignInfo" })
+fn.sign_define("DiagnosticSignHint", { text = '', texthl = "DiagnosticSignHint" })
 
-
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
-
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  { underline = true, update_in_insert = false }
-)
-
-vim.diagnostic.config({
+-- global config for diagnostic
+diagnostic.config({
+  underline = true,
   virtual_text = false,
   update_in_insert = false,
-  underline = true,
   severity_sort = true,
   float = {
     focusable = false,
@@ -60,13 +47,12 @@ vim.diagnostic.config({
   },
 })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "single",
-})
+-- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
+lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
+  lsp.diagnostic.on_publish_diagnostics, { underline = true, update_in_insert = false }
+)
+lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "rounded" })
+lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "single" })
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
@@ -153,57 +139,57 @@ capabilities.textDocument.completion = {
   insertTextMode = 1,
 }
 
-local opts = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require("lspconfig")
 
-
-local server_configs = {
-  ['elixirls'] = {
-    cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.16.0/language_server.sh' },
-    filetypes = { 'elixir', 'eelixir' },
-    -- root_dir = util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
-    settings = {
-      elixirLS = {
-        dialyzerEnabled = false,
-        fetchDeps = false
-      }
-    }
-  },
-  ["lua_ls"] = {
+if utils.executable("lua-language-server") then
+  lspconfig.lua_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
       Lua = {
-        runtime = { version = "LuaJIT" },
-        diagnostics = { globals = { "vim" } },
+        runtime = { version = 'LuaJIT' },
+        diagnostics = { globals = { 'vim' } },
         telemetry = { enable = false },
       },
-    }
-  },
-  -- python lsp config
-  ['pyright'] = {
-    filetypes = { 'python' },
-    settings = {
-      pyright = {
-        disableLanguageServices = false,
-        disableOrganizeImports = false
-      },
-      python = {
-        analysis = {
-          autoImportCompletions = true,
-          autoSearchPaths = true,
-          diagnosticMode = 'workspace',
-          useLibraryCodeForTypes = true
-        }
-      }
+    },
+  }
+else
+  vim.notify('lua-language-server not found!', vim.log.levels.WARN, { title = 'Nvim-config' })
+end
+
+
+lspconfig.elixirls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.16.0/language_server.sh' },
+  filetypes = { 'elixir', 'eelixir' },
+  -- root_dir = util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false,
+      fetchDeps = false
     }
   }
 }
 
-mason_lspconfig.setup_handlers({
-  function(server_name)
-    local extra = server_configs[server_name] or {}
-    local server_opts = vim.tbl_extend("force", opts, extra)
-    lspconfig[server_name].setup(server_opts)
-  end
-})
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'python' },
+  settings = {
+    pyright = {
+      disableLanguageServices = false,
+      disableOrganizeImports = false
+    },
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = 'workspace',
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
+}
