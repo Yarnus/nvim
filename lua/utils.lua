@@ -11,6 +11,13 @@ M.map = function(mode, lhs, rhs, opts)
   end
 end
 
+M.executable = function(name)
+  if vim.fn.executable(name) > 0 then
+    return true
+  end
+  return false
+end
+
 M.require = function(name, message)
   local status_ok, plugin = pcall(require, name)
   if not status_ok and message ~= false then

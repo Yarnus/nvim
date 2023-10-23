@@ -94,10 +94,10 @@ cmp.setup({
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'vsnip' },
     { name = 'nvim_lsp' },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'vsnip' },
     { name = 'path' },
+    { name = 'buffer',                 keyword_length = 2 },
     { name = 'nvim_lsp_signature_help' }
   },
   experimental = {
