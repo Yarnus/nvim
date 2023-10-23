@@ -140,6 +140,7 @@ capabilities.textDocument.completion = {
 }
 
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- NOTE: manual install ref to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local lspconfig = require("lspconfig")
 
 if utils.executable("lua-language-server") then
@@ -192,4 +193,11 @@ lspconfig.pyright.setup {
       }
     }
   }
+}
+
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "json", "jsonc" },
+  init_options = { provideFormatter = true }
 }
