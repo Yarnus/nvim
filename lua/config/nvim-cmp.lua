@@ -94,19 +94,20 @@ cmp.setup({
     end, { 'i', 's' }),
   },
   sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+    { name = 'path' },
+    { name = 'nvim_lsp_signature_help' },
     {
       name = 'buffer',
-      keyword_length = 2,
+      keyword_length = 3,
       option = {
         get_bufnrs = function()
           return vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
         end
       }
-    },
-    { name = 'vsnip' },
-    { name = 'nvim_lsp' },
-    { name = 'path' },
-    { name = 'nvim_lsp_signature_help' }
+    }
+
   },
   experimental = {
     -- ghost_test means the gray-text after input
