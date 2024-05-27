@@ -1,6 +1,6 @@
 local fn = vim.fn
 local api = vim.api
--- local keymap = vim.keymap
+-- local keymap = vim.keymaplsp
 local lsp = vim.lsp
 local diagnostic = vim.diagnostic
 local utils = require("utils")
@@ -20,7 +20,7 @@ vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
 vim.cmd('command! -nargs=0 DiagnosticShow lua vim.diagnostic.open_float()')
 vim.cmd('command! -nargs=0 DiagnosticList lua vim.diagnostic.setloclist()')
 -- NOTE: auto format once buffer save.
-vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format({})')
+vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = '', texthl = "DiagnosticSignError" })
@@ -163,13 +163,18 @@ end
 lspconfig.elixirls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.20.1/language_server.sh' },
+  -- cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.20.0/language_server.sh' },
+  cmd = { '/Users/yarnus/.config/elixir_ls/v0201_old_relase/language_server.sh' },
+  -- cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.20.1_mixinstall/language_server.sh' },
   filetypes = { 'elixir', 'eelixir' },
-  root_dir = lspconfig.util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
+  -- root_dir = lspconfig.util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
   settings = {
     elixirLS = {
       dialyzerEnabled = false,
-      fetchDeps = false
+      fetchDeps = false,
+      suggestSpecs = false,
+      autoInsertRequiredAlias = true,
+      autoBuild = false
     }
   }
 }
