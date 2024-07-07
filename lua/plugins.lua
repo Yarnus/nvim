@@ -16,7 +16,7 @@ return {
   },
 
   -- completion
-  { 'Yarnus/friendly-snippets', event = 'InsertEnter' },
+  { 'rafamadriz/friendly-snippets', event = 'InsertEnter' },
 
   {
     'hrsh7th/nvim-cmp',
