@@ -103,6 +103,30 @@ return {
     config = function() require('config.telescope') end,
   },
 
+  -- markdown
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    ft = "markdown",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    }
+  },
+  {
+    'SCJangra/table-nvim',
+    ft = 'markdown',
+    opts = {
+      padd_column_separators = true,       -- Insert a space around column separators.
+      mappings = {                         -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.
+        insert_column_left = '<leader>r',  -- Insert a column to the left of current column.
+        insert_column_right = '<leader>l', -- Insert a column to the right of current column.
+        insert_table = '<leader>t',        -- Insert a new table.
+        delete_column = '<leader>d',       -- Delete the column under cursor.
+      }
+    },
+  },
+
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
   -- { 'luisiacc/gruvbox-baby',   priority = 1000,  config = function() require('themes.gruvbox-baby') end },
@@ -113,7 +137,6 @@ return {
     lazy = false,
     priority = 1000,
     config = function() require('themes.everforest') end,
-  },
+  }
   -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
-  { 'wakatime/vim-wakatime' },
 }
