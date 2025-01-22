@@ -17,30 +17,30 @@ vim.cmd([[
   highlight CurSearch guibg=#c3d5ff guifg=NONE gui=underline
 
   " 补全窗口相关配置
-  highlight Pmenu guibg=#f8f4e3 guifg=#444444
+  highlight Pmenu guibg=#c8cfd8 guifg=#2c3e50
   highlight PmenuSel guibg=#005faf guifg=white gui=bold
-  highlight PmenuSbar guibg=#ebe6d5
-  highlight PmenuThumb guibg=#bbb4a5
+  highlight PmenuSbar guibg=#b8c2ce
+  highlight PmenuThumb guibg=#8696aa
 
   " LSP 浮动窗口配置
-  highlight NormalFloat guibg=#eeeeee guifg=#444444
-  highlight FloatBorder guifg=#8e908c
+  highlight NormalFloat guibg=#c8cfd8 guifg=#2c3e50
+  highlight FloatBorder guifg=#8696aa
 
   " Bufferline 配置
   highlight TabLine guifg=#8e908c guibg=#eeeeee
   highlight TabLineSel guifg=#005faf guibg=#eeeeee gui=bold
   highlight TabLineFill guibg=#eeeeee
 
-  " 补全项类型配置 - 调整为更易读的颜色
-  highlight CmpItemKindFunction guifg=#0050a0
-  highlight CmpItemKindMethod guifg=#0050a0
-  highlight CmpItemKindVariable guifg=#007000
-  highlight CmpItemKindKeyword guifg=#b05000
-  highlight CmpItemKindText guifg=#444444
-  highlight CmpItemKindProperty guifg=#006090
-  highlight CmpItemKindClass guifg=#005f87
-  highlight CmpItemKindInterface guifg=#005f87
-  highlight CmpItemKindSnippet guifg=#704000
+  " 补全项类型配置 - 调整为更深的颜色
+  highlight CmpItemKindFunction guifg=#004080
+  highlight CmpItemKindMethod guifg=#004080
+  highlight CmpItemKindVariable guifg=#006000
+  highlight CmpItemKindKeyword guifg=#904000
+  highlight CmpItemKindText guifg=#2c3e50
+  highlight CmpItemKindProperty guifg=#005080
+  highlight CmpItemKindClass guifg=#004c6f
+  highlight CmpItemKindInterface guifg=#004c6f
+  highlight CmpItemKindSnippet guifg=#603000
 
   " 诊断相关配置
   highlight Error guifg=#af0000 guibg=NONE
