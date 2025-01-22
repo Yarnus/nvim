@@ -12,19 +12,20 @@ vim.cmd([[
 
   " 搜索高亮配置
   highlight Type guifg=#d75f5f
-  highlight Search guibg=#e4eeff guifg=NONE gui=underline
-  highlight IncSearch guibg=#c3d5ff guifg=NONE gui=underline
-  highlight CurSearch guibg=#c3d5ff guifg=NONE gui=underline
+  highlight Search guibg=#005faf guifg=#ffffff
+  highlight IncSearch guibg=#005faf guifg=#ffffff
+  highlight CurSearch guibg=#005f00 guifg=#ffffff
+  highlight GitGutterChange guifg=#005faf
 
   " 补全窗口相关配置
-  highlight Pmenu guibg=#c8cfd8 guifg=#2c3e50
-  highlight PmenuSel guibg=#005faf guifg=white gui=bold
-  highlight PmenuSbar guibg=#b8c2ce
-  highlight PmenuThumb guibg=#8696aa
+  "highlight Pmenu guibg=#c8cfd8 guifg=#2c3e50
+  "highlight PmenuSel guibg=#005faf guifg=white gui=bold
+  "highlight PmenuSbar guibg=#b8c2ce
+  "highlight PmenuThumb guibg=#8696aa
 
   " LSP 浮动窗口配置
-  highlight NormalFloat guibg=#c8cfd8 guifg=#2c3e50
-  highlight FloatBorder guifg=#8696aa
+  "highlight NormalFloat guibg=#c8cfd8 guifg=#2c3e50
+  "highlight FloatBorder guifg=#8696aa
 
   " Bufferline 配置
   highlight TabLine guifg=#8e908c guibg=#eeeeee
