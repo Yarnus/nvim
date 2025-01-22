@@ -23,8 +23,13 @@ vim.cmd([[
   highlight PmenuThumb guibg=#bbb4a5
 
   " LSP 浮动窗口配置
-  highlight NormalFloat guibg=#f8f4e3 guifg=#444444
-  highlight FloatBorder guifg=#444444
+  highlight NormalFloat guibg=#eeeeee guifg=#444444
+  highlight FloatBorder guifg=#8e908c
+
+  " Bufferline 配置
+  highlight TabLine guifg=#8e908c guibg=#eeeeee
+  highlight TabLineSel guifg=#005faf guibg=#eeeeee gui=bold
+  highlight TabLineFill guibg=#eeeeee
 
   " 补全项类型配置 - 调整为更易读的颜色
   highlight CmpItemKindFunction guifg=#0050a0
