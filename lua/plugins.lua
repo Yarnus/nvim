@@ -105,15 +105,6 @@ return {
 
   -- markdown
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-    ft = "markdown",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    }
-  },
-  {
     'SCJangra/table-nvim',
     ft = 'markdown',
     opts = {
@@ -129,14 +120,12 @@ return {
 
   -- align
   { 'junegunn/vim-easy-align', cmd = 'EasyAlign' },
-  -- { 'luisiacc/gruvbox-baby',   priority = 1000,  config = function() require('themes.gruvbox-baby') end },
 
+  -- 添加 PaperColor 主题
   {
-    "neanias/everforest-nvim",
-    version = false,
+    'NLKNguyen/papercolor-theme',
     lazy = false,
     priority = 1000,
-    config = function() require('themes.everforest') end,
+    config = function() require('themes.papercolor') end,
   }
-  -- { 'glepnir/zephyr-nvim', config = function() require('themes.zephyr') end }
 }

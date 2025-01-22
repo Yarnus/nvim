@@ -41,9 +41,9 @@ diagnostic.config({
     source = "always",
     header = "",
     prefix = "",
-  },
-  signs = {
-    -- active = signs,
+    format = function(diagnostic)
+      return string.format("%s", diagnostic.message)
+    end,
   },
 })
 
@@ -163,9 +163,7 @@ end
 lspconfig.elixirls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  -- cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.20.0/language_server.sh' },
   cmd = { '/Users/yarnus/.config/elixir_ls/release/language_server.sh' },
-  -- cmd = { '/Users/yarnus/.config/elixir_ls/v024/language_server.sh' },
   filetypes = { 'elixir', 'eelixir' },
   -- root_dir = lspconfig.util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
   settings = {

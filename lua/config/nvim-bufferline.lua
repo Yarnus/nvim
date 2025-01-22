@@ -1,9 +1,9 @@
 local bufferline = require('bufferline')
 bufferline.setup {
   highlights = {
-    buffer_selected = { fg = '#08cd7d', bold = false, italic = true },
+    buffer_selected = { fg = '#005faf', bold = true, italic = true },
     -- buffer_visible = { fg = '#928374', bg = '#928374' },
-    indicator_selected = { fg = '#08cd7d' }
+    indicator_selected = { fg = '#005faf' }
 
   },
   options = {
