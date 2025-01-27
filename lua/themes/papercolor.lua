@@ -86,4 +86,8 @@ vim.cmd([[
   highlight elixirId guifg=#444444
   highlight elixirBlockDefinition guifg=#0050a0 gui=italic
   highlight elixirBoolean guifg=#0050a0 gui=italic
+  highlight elixirFunctionCall guifg=#0050a0
+  highlight @function.call guifg=#0087af
+  highlight @function guifg=#af0000
+  highlight @string.special.symbol guifg=#008700
 ]])
