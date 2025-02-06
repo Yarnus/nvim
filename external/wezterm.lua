@@ -16,12 +16,7 @@ wezterm.on(
     end
 
     local title = ' ' .. index .. '.' .. str .. ' '
-
-    if tab.is_active then
-      return { { Background = { Color = 'orange' } }, { Foreground = { Color = 'black' } }, { Text = title } }
-    end
-
-    return { { Background = { Color = 'black' } }, { Foreground = { Color = 'grey' } }, { Text = title } }
+    return { { Text = title } }
   end
 )
 
@@ -142,20 +137,37 @@ return {
   bold_brightens_ansi_colors                 = true,
   freetype_load_target                       = 'Normal',
   freetype_load_flags                        = 'NO_HINTING|MONOCHROME',
-  -- colors                                     = { background = 'black' },
-  -- color_scheme                               = 'Jellybeans',
-  -- color_scheme                               = 'Aura (Gogh)',
-  -- color_scheme                               = 'Ayu Mirage (Gogh)',
-  -- color_scheme                               = 'Edge Dark (base16)',
-  -- color_scheme                               = 'FrontEndDelight',
-  -- color_scheme                               = 'Everforest Dark (Gogh)',
-  color_scheme                               = 'Bamboo',
+  color_scheme                               = 'Google (light) (terminal.sexy)',
+  colors                                     = {
+    foreground = '#444444',
+    background = '#eeeeee',
+
+    cursor_bg = '#005faf',
+    cursor_fg = 'white',
+    cursor_border = '#005faf',
+
+    selection_fg = 'white',
+    selection_bg = '#005faf',
+
+    -- 标签栏颜色
+    tab_bar = {
+      background = '#eeeeee',
+      active_tab = {
+        bg_color = '#eeeeee',
+        fg_color = '#005faf',
+      },
+      inactive_tab = {
+        bg_color = '#eeeeee',
+        fg_color = '#8e908c',
+      },
+    },
+  },
   tab_max_width                              = 80,
   initial_rows                               = 35,
   initial_cols                               = 120,
   window_background_opacity                  = 1,
   text_background_opacity                    = 1,
-  window_padding                             = { left = 5, right = 5, top = 5, bottom = 5 },
+  window_padding                             = { left = 5, right = 5, top = 5, bottom = 0 },
   inactive_pane_hsb                          = { brightness = 1, hue = 1, saturation = 1 },
   keys                                       = key_bindings,
   key_tables                                 = key_tables,
