@@ -14,6 +14,13 @@ return {
     config = function() require('config.nvim-treesitter') end
   },
 
+  -- 添加 playground 插件
+  {
+    'nvim-treesitter/playground',
+    cmd = 'TSPlaygroundToggle',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  },
+
   -- completion
   {
     'rafamadriz/friendly-snippets',

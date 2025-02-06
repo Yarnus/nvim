@@ -163,7 +163,8 @@ end
 lspconfig.elixirls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { '/home/ian/bin/elixir_ls/language_server.sh' },
+  -- cmd = { '/home/ian/bin/elixir_ls/language_server.sh' },
+  cmd = { '/Users/yarnus/.config/elixir_ls/_build/v0.20.1_mixinstall/language_server.sh' },
   filetypes = { 'elixir', 'eelixir' },
   -- root_dir = lspconfig.util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
   settings = {
