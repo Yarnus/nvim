@@ -119,14 +119,13 @@ return {
   },
 
   {
-    'nvim-telescope/telescope.nvim',
-    cmd = "Telescope",
+    'ibhagwan/fzf-lua',
     dependencies = {
-      { 'nvim-lua/popup.nvim',                      lazy = true },
-      { 'nvim-lua/plenary.nvim',                    lazy = true },
-      { 'nvim-telescope/telescope-fzy-native.nvim', lazy = true },
+      'nvim-tree/nvim-web-devicons'
     },
-    config = function() require('config.telescope') end,
+    config = function()
+      require('config.fzf-lua')
+    end,
   },
 
   {

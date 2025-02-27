@@ -7,14 +7,14 @@ db.setup({
     },
     shortcut = {
       { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
-      {
-        icon = ' ',
-        icon_hl = '@variable',
-        desc = 'Files',
-        group = 'Label',
-        action = 'Telescope find_files',
-        key = 'f',
-      },
+      -- {
+      --   icon = ' ',
+      --   icon_hl = '@variable',
+      --   desc = 'Files',
+      --   group = 'Label',
+      --   action = 'FzfLua files',
+      --   key = 'f',
+      -- },
       -- {
       --   desc = ' Apps',
       --   group = 'DiagnosticHint',
