@@ -1,6 +1,14 @@
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
 
+  -- 添加 dashboard-nvim 配置
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require('config.dashboard') end,
+  },
+
   {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
