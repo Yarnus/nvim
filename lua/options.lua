@@ -14,7 +14,6 @@ vim.opt.virtualedit = 'block'
 vim.opt.encoding = 'utf-8'
 vim.opt.viewoptions = 'folds,cursor,curdir,slash,unix'
 vim.opt.sessionoptions = 'curdir,help,tabpages,winsize'
-vim.opt.clipboard = 'unnamedplus'
 vim.opt.wildignorecase = true
 vim.opt.wildignore =
 '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
@@ -108,21 +107,6 @@ vim.opt.cursorline = false
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
-if vim.loop.os_uname().sysname == 'Darwin' then
-  vim.g.clipboard = {
-    name = 'macOS-clipboard',
-    copy = {
-      ['+'] = 'pbcopy',
-      ['*'] = 'pbcopy',
-    },
-    paste = {
-      ['+'] = 'pbpaste',
-      ['*'] = 'pbpaste',
-    },
-    cache_enabled = 0,
-  }
-end
-
 -- 性能相关
 vim.opt.updatetime = 100  -- 更快的更新时间(默认为4000ms)，建议设置在100-200之间
 vim.opt.timeoutlen = 400  -- 更短的按键序列等待时间
@@ -164,6 +148,19 @@ vim.opt.smartindent = true -- 智能缩进
 vim.opt.autoindent = true  -- 自动缩进
 
 -- 系统相关
+-- 使用 provider 方式设置 clipboard
+vim.g.clipboard = {
+  name = 'macOS-clipboard',
+  copy = {
+    ['+'] = 'pbcopy',
+    ['*'] = 'pbcopy',
+  },
+  paste = {
+    ['+'] = 'pbpaste',
+    ['*'] = 'pbpaste',
+  },
+  cache_enabled = 0,
+}
 vim.opt.clipboard = "unnamedplus" -- 使用系统剪贴板
 vim.opt.mouse = "a"               -- 启用鼠标支持
 vim.opt.splitright = true         -- 垂直分割时新窗口在右边
