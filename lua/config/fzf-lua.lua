@@ -14,6 +14,7 @@ local winopts = {
   },
   preview    = {
     layout = 'flex',
+    border = 'rounded',
     warp = true,
     title = false,
     scrollbar = false,
@@ -58,5 +59,16 @@ require('fzf-lua').setup({
       ['ctrl-m']    = 'toggle-all', -- 可选：将多选功能转移到其他键
     },
   },
-
+  fzf_opts = {
+    -- 自定义指示器样式
+    ["--ansi"]           = true,
+    ["--style"]          = "minimal",
+    ["--info"]           = "inline-right", -- fzf < v0.42 = "inline"
+    ["--height"]         = "100%",
+    ["--layout"]         = "reverse",
+    ["--border"]         = "none",
+    ["--highlight-line"] = true, -- fzf >= v0.53
+    -- ['--pointer']        = '➜', -- 当前选中项的指示器
+    ['--marker']         = '✓', -- 多选时的标记符号
+  }
 })
