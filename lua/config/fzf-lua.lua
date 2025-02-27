@@ -45,7 +45,7 @@ require('fzf-lua').setup({
     },
   },
   hls = {
-    preview_border  = 'FloatBorder',
+    preview_border  = "Normal",
     preview_title   = 'Title',
     prompt          = 'Directory',
     cursor_line     = 'CursorLine',
@@ -70,5 +70,5 @@ require('fzf-lua').setup({
     ["--highlight-line"] = true, -- fzf >= v0.53
     -- ['--pointer']        = '➜', -- 当前选中项的指示器
     ['--marker']         = '✓', -- 多选时的标记符号
-  }
+  },
 })
