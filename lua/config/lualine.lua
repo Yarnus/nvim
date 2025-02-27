@@ -2,27 +2,25 @@ local lualine = require('lualine')
 local utils = require('utils')
 
 -- local default_colors = require("gruvbox-baby.colors").config()
--- local default_colors = {}
-local default_colors = require("everforest.colours")
+local default_colors = {}
 
 local extra_colors = {
-  -- red = "#e95678",
-  red          = '#ec5f67',
-  redwine      = "#d16d9e",
-  orange       = "#FF8700",
-  yellow       = "#f7bb3b",
-  lignt_orange = "#fab795",
-  green        = "#afd700",
-  dark_green   = "#98be65",
-  cyan         = '#008080',
-  blue         = '#51afef',
-  violet       = "#CBA6F7",
-  magenta      = "#c678dd",
-  teal         = "#1abc9c",
-  grey         = "#928374",
-  brown        = "#c78665",
-  bg           = default_colors.background,
-  fg           = default_colors.foreground
+  red = '#af0000',          -- 深红色
+  redwine = "#d70087",      -- 深玫红
+  orange = "#d75f00",       -- 深橙色
+  yellow = "#5f8700",       -- 橄榄绿
+  lignt_orange = "#d75f5f", -- 浅红色
+  green = "#008700",        -- 深绿色
+  dark_green = "#005f00",   -- 墨绿色
+  cyan = '#0087af',         -- 青色
+  blue = '#005faf',         -- 深蓝色
+  violet = "#8700af",       -- 紫色
+  magenta = "#875f87",      -- 深紫色
+  teal = "#005f87",         -- 深青色
+  grey = "#4e4e4e",         -- 深灰色
+  brown = "#875f00",        -- 棕色
+  bg = default_colors.background,
+  fg = default_colors.foreground
 }
 
 
@@ -44,20 +42,43 @@ local conditions = {
 
 local config = {
   options = {
-    -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
     icons_enabled = true,
-    -- theme = "everforest",
-    -- theme = {
-    --   -- We are going to use lualine_c an lualine_x as left and
-    --   -- right section. Both are highlighted by c theme .  So we
-    --   -- are just setting default looks o statusline
-    --   normal = { c = { fg = colors.fg, bg = colors.bg } },
-    --   inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    -- },
+    theme = {
+      normal = {
+        a = { fg = '#005faf', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      },
+      insert = {
+        a = { fg = '#008700', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      },
+      visual = {
+        a = { fg = '#d75f00', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      },
+      replace = {
+        a = { fg = '#af0000', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      },
+      command = {
+        a = { fg = '#5f8700', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      },
+      inactive = {
+        a = { fg = '#444444', bg = 'NONE' },
+        b = { fg = '#444444', bg = 'NONE' },
+        c = { fg = '#444444', bg = 'NONE' }
+      }
+    },
     globalstatus = true,
-    ignore_focus = { "NvimTree" }
+    ignore_focus = { "NvimTree" },
   },
   sections = {
     -- these are to remove the defaults
@@ -171,9 +192,9 @@ ins_left {
   cond = conditions.hide_in_width,
   symbols = { error = '  ', warn = '  ', info = '  ' },
   diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
+    color_error = { fg = colors.red, bg = 'NONE' },
+    color_warn = { fg = colors.yellow, bg = 'NONE' },
+    color_info = { fg = colors.cyan, bg = 'NONE' },
   },
 }
 
