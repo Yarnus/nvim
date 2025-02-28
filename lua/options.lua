@@ -162,7 +162,6 @@ vim.g.clipboard = {
   cache_enabled = 0,
 }
 vim.opt.clipboard = "unnamedplus" -- 使用系统剪贴板
-vim.opt.mouse = "a"               -- 启用鼠标支持
 vim.opt.splitright = true         -- 垂直分割时新窗口在右边
 vim.opt.splitbelow = true         -- 水平分割时新窗口在下边
 
