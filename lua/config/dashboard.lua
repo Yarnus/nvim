@@ -6,14 +6,14 @@ db.setup({
     week_header = { enable = true },
     shortcut = {
       { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
-      {
-        icon = ' ',
-        icon_hl = '@variable',
-        desc = 'Files',
-        group = 'Label',
-        action = 'FzfLua files',
-        key = 'f',
-      },
+      -- {
+      --   icon = ' ',
+      --   icon_hl = '@variable',
+      --   desc = 'Files',
+      --   group = 'Label',
+      --   action = 'FzfLua files',
+      --   key = 'f',
+      -- },
       {
         desc = ' Projects',
         group = 'Number',
@@ -48,13 +48,7 @@ db.setup({
         key = 'r',
       },
     },
-    project = {
-      enable = true,
-      limit = 8,
-      icon = ' ',
-      label = 'Recent Projects:',
-      action = 'FzfLua files cwd=',
-    },
+    project = { enable = false },
     mru = {
       enable = false,
       limit = 10,
