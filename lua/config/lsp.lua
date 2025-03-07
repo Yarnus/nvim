@@ -214,3 +214,21 @@ lspconfig.jsonls.setup {
   filetypes = { "json", "jsonc" },
   init_options = { provideFormatter = true }
 }
+
+-- 添加 YAML 语言服务器配置
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose*.yml",
+      },
+      validate = true,
+      format = {
+        enable = true,
+      },
+    },
+  },
+}
