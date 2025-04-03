@@ -3,7 +3,11 @@ return {
 	branch = "master",
 	config = function()
 		require("kanagawa").setup({
+			compile = true,
+			undercurl = true,
 			transparent = false,
+			dimInactive = false,
+			terminalColors = true,
 			colors = {
 				theme = {
 					all = {
