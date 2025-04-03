@@ -192,6 +192,19 @@ return {
 			-- ts_ls = {},
 			--
 
+			elixirls = {
+				filetypes = { "elixir", "eelixir" },
+				-- root_dir = lspconfig.util.root_pattern('deps/', '.git') or vim.loop.os_homedir(),
+				settings = {
+					elixirLS = {
+						dialyzerEnabled = false,
+						fetchDeps = false,
+						suggestSpecs = false,
+						autoInsertRequiredAlias = true,
+						autoBuild = false,
+					},
+				},
+			},
 			lua_ls = {
 				settings = {
 					Lua = {

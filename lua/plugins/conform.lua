@@ -7,14 +7,22 @@ return {
 			python = { "isort", "black" },
 			-- You can customize some of the format options for the filetype (:help conform.format)
 			rust = { "rustfmt" },
-			-- Conform will run the first available formatter
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
+			-- elixir stuff
+			elixir = { "mix format" },
+			eelixir = { "mix format" },
+			heex = { "mix format" },
+			surface = { "mix format" },
+			-- frontend
+			html = { "prettierd --end-of-line", stop_after_first = true },
+			javascript = { "prettierd --end-of-line", stop_after_first = true },
+			typescript = { "prettierd --end-of-line", stop_after_first = true },
+			["_"] = { "trim_whitespace" },
 		},
 		format_on_save = {
 			-- These options will be passed to conform.format()
 			timeout_ms = 500,
 			lsp_format = "fallback",
+			quiet = false,
 		},
 	},
 }
