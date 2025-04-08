@@ -4,8 +4,6 @@ local cmd = function(str)
 	return "<cmd>" .. str .. "<CR>"
 end
 
-set("n", "<C-n>", "<cmd>Oil --float<CR>", { desc = "Open Parent Directory in Oil" })
-
 set("n", "<leader>gl", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open Diagnostics in Float" })
@@ -39,3 +37,5 @@ set("n", "-", cmd(":bd"), { desc = "Buffer Delete" })
 set("n", "=", cmd(":bn"), { desc = "Buffer New" })
 set("n", "<Tab>", cmd(":bnext"), { desc = "Next Buffer" })
 set("n", "<S-Tab>", cmd(":bprevious"), { desc = "Previous Buffer" })
+-- nvim-tree
+set("n", "<C-n>", cmd(":NvimTreeToggle"))
