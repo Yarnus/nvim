@@ -189,7 +189,7 @@ return {
 			path = 3,
 			file_status = false,
 			cond = conditions.buffer_not_empty,
-			color = { fg = colors.teal, gui = "" },
+			color = { fg = colors.red, gui = "" },
 		})
 
 		ins_left({

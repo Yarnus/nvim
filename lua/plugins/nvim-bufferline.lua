@@ -21,7 +21,8 @@ return {
 				middle_mouse_command = nil, -- can be a string | function, | false see "Mouse actions"
 				indicator = {
 					style = "icon",
-					icon = " ", -- this should be omitted if indicator style is not 'icon'
+					-- this should be omitted if indicator style is not 'icon'
+					-- icon = " ",
 				},
 				buffer_close_icon = "",
 				modified_icon = "●",
@@ -81,7 +82,7 @@ return {
 				show_buffer_icons = false, -- disable filetype icons for buffers
 				show_buffer_close_icons = false,
 				show_close_icon = false,
-				show_tab_indicators = true,
+				show_tab_indicators = false,
 				show_duplicate_prefix = false, -- whether to show duplicate buffer prefix
 				persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 				move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
