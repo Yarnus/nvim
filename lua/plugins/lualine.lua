@@ -13,22 +13,24 @@ return {
 		local default_colors = {}
 
 		local extra_colors = {
-			red = "#E46876",
+			red = "#C34043",
 			redwine = "#43242B",
-			orange = "#FF9E3B",
+			orange = "#FFA066",
 			yellow = "#DCA561",
-			lignt_orange = "#FF9E3B",
+			lignt_orange = "#FF9E64",
 			green = "#76946A",
 			dark_green = "#98BB6C",
-			cyan = "#658594",
-			blue = "#6A9589",
-			violet = "#938AA9",
-			magenta = "#7E9CD8",
-			teal = "#7AA89F",
+			cyan = "#7FB4CA",
+			blue = "#7E9CD8",
+			violet = "#957FB8",
+			magenta = "#938AA9",
+			teal = "#6A9589",
 			grey = "#727169",
-			brown = "#717C7C",
-			bg = default_colors.background,
-			fg = default_colors.foreground,
+			brown = "#727169",
+			-- 来自MiniTablineHidden的背景色
+			bg = "#2A2A37",
+			-- 来自MiniTablineVisible的前景色
+			fg = "#DCD7BA",
 		}
 
 		local colors = merge_table(default_colors, extra_colors)
@@ -189,7 +191,8 @@ return {
 			path = 3,
 			file_status = false,
 			cond = conditions.buffer_not_empty,
-			color = { fg = colors.red, gui = "" },
+			-- color = { fg = colors.fg, fg = colors.bg, gui = "" },
+			color = { fg = colors.fg, fg = colors.bg },
 		})
 
 		ins_left({

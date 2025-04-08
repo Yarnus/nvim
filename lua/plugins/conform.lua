@@ -3,6 +3,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
+			yaml = { "yamlls" },
 			-- Conform will run multiple formatters sequentially
 			python = { "isort", "black" },
 			-- You can customize some of the format options for the filetype (:help conform.format)
@@ -13,9 +14,9 @@ return {
 			heex = { "mix format" },
 			surface = { "mix format" },
 			-- frontend
-			html = { "prettierd --end-of-line", stop_after_first = true },
-			javascript = { "prettierd --end-of-line", stop_after_first = true },
-			typescript = { "prettierd --end-of-line", stop_after_first = true },
+			html = { "prettierd", stop_after_first = true },
+			javascript = { "prettierd", stop_after_first = true },
+			typescript = { "prettierd", stop_after_first = true },
 			["_"] = { "trim_whitespace" },
 		},
 		format_on_save = {
