@@ -1,6 +1,5 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "echasnovski/mini.icons" },
 	config = function()
 		local lualine = require("lualine")
 		local merge_table = function(t1, t2)
@@ -165,15 +164,10 @@ return {
 		ins_left({
 			"branch",
 			icon = "",
-			color = { fg = colors.yellow, gui = "" },
+			color = { fg = colors.magenta, gui = "" },
 			-- separator           = '❯',
 		})
 
-		-- 0: Just the filename
-		-- 1: Relative path
-		-- 2: Absolute path
-		-- 3: Absolute path, with tilde as the home directory
-		-- 4: Filename and parent dir, with tilde as the home directory
 		ins_left({
 			"diff",
 			-- Is it me or the symbol for modified us really weird
@@ -186,13 +180,18 @@ return {
 			cond = conditions.hide_in_width,
 		})
 
+		-- 0: Just the filename
+		-- 1: Relative path
+		-- 2: Absolute path
+		-- 3: Absolute path, with tilde as the home directory
+		-- 4: Filename and parent dir, with tilde as the home directory
 		ins_left({
 			"filename",
 			path = 3,
 			file_status = false,
 			cond = conditions.buffer_not_empty,
 			-- color = { fg = colors.fg, fg = colors.bg, gui = "" },
-			color = { fg = colors.fg, fg = colors.bg },
+			color = { fg = colors.yellow, bg = "none" },
 		})
 
 		ins_left({
@@ -233,7 +232,7 @@ return {
 				return msg
 			end,
 			icon = " lsp:",
-			color = { fg = colors.cyan, gui = "" },
+			color = { fg = colors.teal, gui = "" },
 		})
 
 		-- Add components to right sections

@@ -2,9 +2,7 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
 	lazy = false,
-	dependencies = {
-		"echasnovski/mini.icons",
-	},
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local function on_attach(bufnr)
 			local api = require("nvim-tree.api")

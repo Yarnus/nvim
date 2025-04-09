@@ -96,8 +96,9 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 				providers = {
+					snippets = { min_keyword_length = 3, async = true },
 					lsp = { min_keyword_length = 0, async = true },
-					buffer = { min_keyword_length = 3 },
+					buffer = { min_keyword_length = 2 },
 				},
 			},
 

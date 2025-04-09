@@ -18,7 +18,7 @@ return {
 			terminal_colors = true,
 			-- cache highlights and colors for faster startup.
 			-- see Cache section for more details.
-			cache = false,
+			cache = true,
 
 			styles = {
 				-- style for comments
