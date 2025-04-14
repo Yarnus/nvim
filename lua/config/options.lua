@@ -3,6 +3,7 @@ vim.g.mapleader = ","
 vim.opt.termguicolors = true
 vim.opt.mouse = ""
 vim.opt.autoread = true
+vim.opt.clipboard = "unnamedplus"
 -- disable ring
 vim.opt.errorbells = false
 vim.opt.visualbell = false
