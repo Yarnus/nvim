@@ -16,7 +16,7 @@ end, { desc = "Format current file" })
 
 -- custom
 set("n", "<esc>", ":noh<return><esc>")
-set("n", "<C-s>", cmd("write"))
+set("n", "<C-s>", cmd("set eol | write"))
 set("i", "<C-a>", "<Home>")
 set("i", "<C-e>", "<End>")
 set("c", "<C-a>", "<Home>")

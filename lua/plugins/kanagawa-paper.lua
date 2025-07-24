@@ -56,6 +56,10 @@ return {
 					PmenuSbar = { bg = theme.ui.bg_m1 },
 					PmenuThumb = { bg = theme.ui.bg_p2 },
 
+					-- 添加 hover 窗口的高亮组
+					-- NormalFloat = { bg = "#e6e0cf", fg = theme.ui.fg },
+					-- FloatBorder = { bg = "#e6e0cf", fg = "#938aa9" },
+
 					["@markup.link.url.markdown_inline"] = { link = "Special" }, -- (url)
 					["@markup.link.label.markdown_inline"] = { link = "WarningMsg" }, -- [label]
 					["@markup.italic.markdown_inline"] = { link = "Exception" }, -- *italic*
@@ -91,5 +95,11 @@ return {
 		})
 
 		vim.cmd.colorscheme("kanagawa-paper-canvas")
+		vim.cmd([[
+			"highlight! NormalFloat guibg=#e6e2cd guifg=#1f1f28
+			"highlight! FloatBorder guibg=#e6e2cd guifg=#9cabca
+			highlight! Statusline guibg=#eeeeee
+			highlight! NormalFloat guibg=#dcddc8 guifg=#1f1f28
+		]])
 	end,
 }
