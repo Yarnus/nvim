@@ -46,6 +46,8 @@ return {
 				html = { "prettierd", stop_after_first = true },
 				javascript = { "prettierd", stop_after_first = true },
 				typescript = { "prettierd", stop_after_first = true },
+				dart = { "dart_format" },
+				csharp = { "csharpier" },
 				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {
