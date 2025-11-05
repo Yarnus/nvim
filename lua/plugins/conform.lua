@@ -29,6 +29,11 @@ return {
 					args = { "format", "--stdin-filename", "$FILENAME", "-" },
 					cwd = root_file({ "mix.exs" }),
 				},
+				dart_format = {
+					command = "dart",
+					args = { "format", "$FILENAME" },
+					stdin = false,
+				},
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
