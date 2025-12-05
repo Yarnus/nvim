@@ -49,17 +49,25 @@ return {
 			overrides = function(colors)
 				local theme = colors.theme
 				return {
-					-- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-					-- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
 					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
 					PmenuSbar = { bg = theme.ui.bg_m1 },
 					PmenuThumb = { bg = theme.ui.bg_p2 },
-
-					-- 添加 hover 窗口的高亮组
-					-- NormalFloat = { bg = "#e6e0cf", fg = theme.ui.fg },
-					-- FloatBorder = { bg = "#e6e0cf", fg = "#938aa9" },
-
+					-- 主体背景 & 文本
+					SagaNormal = {
+						bg = theme.ui.bg_p3, -- 比编辑区略深一点
+						fg = theme.ui.fg,
+					},
+					SagaBorder = {
+						bg = theme.ui.card_bg,
+						fg = theme.ui.shade3 or theme.ui.bg_p2, -- 类似 TelescopeTitle 那种强调色
+					},
+					SagaTitle = {
+						bg = theme.ui.card_bg,
+						fg = theme.syn.identifier, -- crystalBlue 系的函数色
+						bold = true,
+					},
+					SagaBeacon = { bg = theme.ui.bg_p2, fg = theme.ui.shade0 },
 					["@markup.link.url.markdown_inline"] = { link = "Special" }, -- (url)
 					["@markup.link.label.markdown_inline"] = { link = "WarningMsg" }, -- [label]
 					["@markup.italic.markdown_inline"] = { link = "Exception" }, -- *italic*
