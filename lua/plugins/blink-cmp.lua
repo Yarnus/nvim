@@ -36,7 +36,17 @@ return {
 				preset = "none",
 				["<CR>"] = { "accept", "fallback" },
 				["<S-Tab>"] = { "select_prev", "fallback" },
-				["<Tab>"] = { "select_next", "fallback" },
+				["<Tab>"] = {
+					function()
+						local ok, suggestion = pcall(require, "copilot.suggestion")
+						if ok and suggestion.is_visible() then
+							suggestion.accept()
+							return true
+						end
+					end,
+					"select_next",
+					"fallback",
+				},
 				-- 	-- disable a keymap from the preset
 				-- ["<C-e>"] = {},
 				-- 	-- show with a list of providers

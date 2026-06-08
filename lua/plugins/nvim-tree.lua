@@ -26,6 +26,7 @@ return {
 			vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
 			vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
 			vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
+			vim.keymap.set("n", "O", api.node.run.system, opts("Run System"))
 			vim.keymap.set("n", "p", api.node.navigate.parent, opts("Parent Directory"))
 			vim.keymap.set("n", "q", api.tree.close, opts("Close"))
 			vim.keymap.set("n", "R", api.fs.rename, opts("Rename"))

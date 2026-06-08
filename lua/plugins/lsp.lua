@@ -203,15 +203,15 @@ return {
 			yamlls = {},
 			pyright = {},
 			elixirls = {
-				cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
-				filetypes = { "elixir", "eex" },
+				cmd = { vim.fn.expand("~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh") },
+				filetypes = { "elixir", "eex", "heex" },
 				root_dir = require("lspconfig").util.root_pattern("mix.exs", ".git"),
 				settings = {
 					elixirLS = {
 						dialyzerEnabled = false,
 						fetchDeps = false,
 						suggestSpecs = false,
-						autoInsertRequiredAlias = true,
+						autoInsertRequiredAlias = false,
 						autoBuild = false,
 					},
 				},
