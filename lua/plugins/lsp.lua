@@ -170,14 +170,16 @@ return {
 			},
 		})
 
-		-- 配置 LSP hover 和 signature help 的边框
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-			border = "rounded",
-		})
+		-- Configure borders for LSP hover and signature help.
+		vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+			config = vim.tbl_deep_extend("force", config or {}, { border = "rounded" })
+			return vim.lsp.handlers.hover(err, result, ctx, config)
+		end
 
-		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-			border = "rounded",
-		})
+		vim.lsp.handlers["textDocument/signatureHelp"] = function(err, result, ctx, config)
+			config = vim.tbl_deep_extend("force", config or {}, { border = "rounded" })
+			return vim.lsp.handlers.signature_help(err, result, ctx, config)
+		end
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
