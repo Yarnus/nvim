@@ -33,6 +33,7 @@ return {
 		}
 
 		local colors = merge_table(default_colors, extra_colors)
+		local section_fg = vim.o.background == "dark" and colors.fg or "#444444"
 
 		local conditions = {
 			buffer_not_empty = function()
@@ -56,33 +57,33 @@ return {
 				theme = {
 					normal = {
 						a = { fg = "#005faf", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 					insert = {
 						a = { fg = "#008700", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 					visual = {
 						a = { fg = "#d75f00", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 					replace = {
 						a = { fg = "#af0000", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 					command = {
 						a = { fg = "#5f8700", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 					inactive = {
-						a = { fg = "#444444", bg = "NONE" },
-						b = { fg = "#444444", bg = "NONE" },
-						c = { fg = "#444444", bg = "NONE" },
+						a = { fg = section_fg, bg = "NONE" },
+						b = { fg = section_fg, bg = "NONE" },
+						c = { fg = section_fg, bg = "NONE" },
 					},
 				},
 				globalstatus = true,

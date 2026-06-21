@@ -3,6 +3,8 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
+		local kanagawa_paper_theme = "ink" -- "ink" for dark, "canvas" for light
+
 		require("kanagawa-paper").setup({
 			-- enable undercurls for underlined text
 			undercurl = true,
@@ -18,7 +20,7 @@ return {
 			terminal_colors = true,
 			-- cache highlights and colors for faster startup.
 			-- see Cache section for more details.
-			cache = true,
+			cache = false,
 
 			styles = {
 				-- style for comments
@@ -49,25 +51,25 @@ return {
 			overrides = function(colors)
 				local theme = colors.theme
 				return {
-					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+					Pmenu = { fg = theme.ui.pmenu.fg, bg = theme.ui.bg_p1 },
+					PmenuSel = { fg = theme.ui.pmenu.fg_sel, bg = theme.ui.bg_p2 },
 					PmenuSbar = { bg = theme.ui.bg_m1 },
 					PmenuThumb = { bg = theme.ui.bg_p2 },
 					-- 主体背景 & 文本
 					SagaNormal = {
-						bg = theme.ui.bg_p3, -- 比编辑区略深一点
-						fg = theme.ui.fg,
+						bg = theme.ui.float.bg,
+						fg = theme.ui.float.fg,
 					},
 					SagaBorder = {
-						bg = theme.ui.card_bg,
-						fg = theme.ui.shade3 or theme.ui.bg_p2, -- 类似 TelescopeTitle 那种强调色
+						bg = theme.ui.float.bg,
+						fg = theme.ui.float.fg_border,
 					},
 					SagaTitle = {
-						bg = theme.ui.card_bg,
+						bg = theme.ui.float.bg,
 						fg = theme.syn.identifier, -- crystalBlue 系的函数色
 						bold = true,
 					},
-					SagaBeacon = { bg = theme.ui.bg_p2, fg = theme.ui.shade0 },
+					SagaBeacon = { bg = theme.ui.bg_p2, fg = theme.ui.fg },
 					["@markup.link.url.markdown_inline"] = { link = "Special" }, -- (url)
 					["@markup.link.label.markdown_inline"] = { link = "WarningMsg" }, -- [label]
 					["@markup.italic.markdown_inline"] = { link = "Exception" }, -- *italic*
@@ -102,12 +104,14 @@ return {
 			},
 		})
 
-		vim.cmd.colorscheme("kanagawa-paper-canvas")
-		vim.cmd([[
-			"highlight! NormalFloat guibg=#e6e2cd guifg=#1f1f28
-			"highlight! FloatBorder guibg=#e6e2cd guifg=#9cabca
-			highlight! Statusline guibg=#eeeeee
-			highlight! NormalFloat guibg=#dcddc8 guifg=#1f1f28
-		]])
+		vim.cmd.colorscheme("kanagawa-paper-" .. kanagawa_paper_theme)
+		if kanagawa_paper_theme == "canvas" then
+			vim.cmd([[
+				"highlight! NormalFloat guibg=#e6e2cd guifg=#1f1f28
+				"highlight! FloatBorder guibg=#e6e2cd guifg=#9cabca
+				highlight! Statusline guibg=#eeeeee
+				highlight! NormalFloat guibg=#dcddc8 guifg=#1f1f28
+			]])
+		end
 	end,
 }
