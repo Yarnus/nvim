@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local kanagawa_paper_theme = "ink" -- "ink" for dark, "canvas" for light
+		local kanagawa_paper_theme = "canvas" -- "ink" for dark, "canvas" for light
 
 		require("kanagawa-paper").setup({
 			-- enable undercurls for underlined text
