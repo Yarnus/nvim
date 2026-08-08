@@ -205,7 +205,7 @@ return {
 			yamlls = {},
 			pyright = {},
 			elixirls = {
-				cmd = { vim.fn.expand("~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh") },
+				-- cmd = { vim.fn.expand("~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh") },
 				filetypes = { "elixir", "eex", "heex" },
 				root_dir = require("lspconfig").util.root_pattern("mix.exs", ".git"),
 				settings = {

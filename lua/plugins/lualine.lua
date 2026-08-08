@@ -2,38 +2,43 @@ return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
 		local lualine = require("lualine")
-		local merge_table = function(t1, t2)
-			for k, v in pairs(t2) do
-				t1[k] = v
-			end
-			return t1
+		local function get_colors()
+			local theme = require("kanagawa-paper.colors").setup().theme
+
+			return {
+				red = theme.diag.error,
+				orange = theme.accent.accent2,
+				yellow = theme.diag.warning,
+				green = theme.diag.ok,
+				cyan = theme.diag.hint,
+				blue = theme.modes.normal,
+				violet = theme.modes.visual,
+				magenta = theme.syn.keyword,
+				teal = theme.syn.type,
+			}
 		end
 
-		local default_colors = {}
+		local function component_color(name)
+			return function()
+				return { fg = get_colors()[name], bg = "NONE" }
+			end
+		end
 
-		local extra_colors = {
-			red = "#C34043",
-			redwine = "#43242B",
-			orange = "#FFA066",
-			yellow = "#DCA561",
-			lignt_orange = "#FF9E64",
-			green = "#76946A",
-			dark_green = "#98BB6C",
-			cyan = "#7FB4CA",
-			blue = "#7E9CD8",
-			violet = "#957FB8",
-			magenta = "#938AA9",
-			teal = "#6A9589",
-			grey = "#727169",
-			brown = "#727169",
-			-- 来自MiniTablineHidden的背景色
-			bg = "#2A2A37",
-			-- 来自MiniTablineVisible的前景色
-			fg = "#DCD7BA",
-		}
+		local function lualine_theme()
+			local variant = vim.o.background == "dark" and "ink" or "canvas"
+			local theme = vim.deepcopy(require("lualine.themes.kanagawa-paper-" .. variant))
 
-		local colors = merge_table(default_colors, extra_colors)
-		local section_fg = vim.o.background == "dark" and colors.fg or "#444444"
+			for mode_name, mode in pairs(theme) do
+				for section_name, section in pairs(mode) do
+					if section_name == "a" and mode_name ~= "inactive" then
+						section.fg = section.bg
+					end
+					section.bg = "NONE"
+				end
+			end
+
+			return theme
+		end
 
 		local conditions = {
 			buffer_not_empty = function()
@@ -54,38 +59,7 @@ return {
 				component_separators = "",
 				section_separators = "",
 				icons_enabled = true,
-				theme = {
-					normal = {
-						a = { fg = "#005faf", bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-					insert = {
-						a = { fg = "#008700", bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-					visual = {
-						a = { fg = "#d75f00", bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-					replace = {
-						a = { fg = "#af0000", bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-					command = {
-						a = { fg = "#5f8700", bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-					inactive = {
-						a = { fg = section_fg, bg = "NONE" },
-						b = { fg = section_fg, bg = "NONE" },
-						c = { fg = section_fg, bg = "NONE" },
-					},
-				},
+				theme = lualine_theme,
 				globalstatus = true,
 				ignore_focus = { "NvimTree" },
 			},
@@ -124,7 +98,7 @@ return {
 			function()
 				return "▊"
 			end,
-			color = { fg = colors.blue }, -- Sets highlighting of component
+			color = component_color("blue"), -- Sets highlighting of component
 			padding = { left = 0, right = 1 }, -- We don't need space before this
 		})
 
@@ -135,6 +109,7 @@ return {
 			end,
 			color = function()
 				-- auto change color according to neovims mode
+				local colors = get_colors()
 				local mode_color = {
 					n = colors.red,
 					i = colors.green,
@@ -165,7 +140,7 @@ return {
 		ins_left({
 			"branch",
 			icon = "",
-			color = { fg = colors.magenta, gui = "" },
+			color = component_color("magenta"),
 			-- separator           = '❯',
 		})
 
@@ -174,9 +149,9 @@ return {
 			-- Is it me or the symbol for modified us really weird
 			symbols = { added = "  ", modified = "  ", removed = "  " },
 			diff_color = {
-				added = { fg = colors.green },
-				modified = { fg = colors.orange },
-				removed = { fg = colors.red },
+				added = component_color("green"),
+				modified = component_color("orange"),
+				removed = component_color("red"),
 			},
 			cond = conditions.hide_in_width,
 		})
@@ -192,7 +167,7 @@ return {
 			file_status = false,
 			cond = conditions.buffer_not_empty,
 			-- color = { fg = colors.fg, fg = colors.bg, gui = "" },
-			color = { fg = colors.yellow, bg = "none" },
+			color = component_color("yellow"),
 		})
 
 		ins_left({
@@ -200,11 +175,6 @@ return {
 			sources = { "nvim_diagnostic" },
 			cond = conditions.hide_in_width,
 			symbols = { error = "  ", warn = "  ", info = "  " },
-			diagnostics_color = {
-				color_error = { fg = colors.red, bg = "NONE" },
-				color_warn = { fg = colors.yellow, bg = "NONE" },
-				color_info = { fg = colors.cyan, bg = "NONE" },
-			},
 		})
 
 		-- Insert mid section. You can make any number of sections in neovim :)
@@ -233,7 +203,7 @@ return {
 				return msg
 			end,
 			icon = " lsp:",
-			color = { fg = colors.teal, gui = "" },
+			color = component_color("teal"),
 		})
 
 		-- Add components to right sections
@@ -242,7 +212,7 @@ return {
 			"fileformat",
 			fmt = string.upper,
 			icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-			color = { fg = colors.red, gui = "" },
+			color = component_color("red"),
 		})
 
 		-- ins_right({
@@ -258,13 +228,13 @@ return {
 		-- 	cond = conditions.buffer_not_empty,
 		-- })
 		--
-		ins_right({ "progress", color = { fg = colors.green, gui = "" } })
+		ins_right({ "progress", color = component_color("green") })
 
 		ins_right({
 			function()
 				return "▊"
 			end,
-			color = { fg = colors.blue },
+			color = component_color("blue"),
 			padding = { left = 1 },
 		})
 

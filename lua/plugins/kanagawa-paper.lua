@@ -3,8 +3,6 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local kanagawa_paper_theme = "canvas" -- "ink" for dark, "canvas" for light
-
 		require("kanagawa-paper").setup({
 			-- enable undercurls for underlined text
 			undercurl = true,
@@ -43,7 +41,7 @@ return {
 				},
 			},
 			-- adjust overall color balance for each theme [-1, 1]
-			color_offset = {
+			color_balance = {
 				ink = { brightness = 0, saturation = 0 },
 				canvas = { brightness = 0, saturation = 0 },
 			},
@@ -104,14 +102,6 @@ return {
 			},
 		})
 
-		vim.cmd.colorscheme("kanagawa-paper-" .. kanagawa_paper_theme)
-		if kanagawa_paper_theme == "canvas" then
-			vim.cmd([[
-				"highlight! NormalFloat guibg=#e6e2cd guifg=#1f1f28
-				"highlight! FloatBorder guibg=#e6e2cd guifg=#9cabca
-				highlight! Statusline guibg=#eeeeee
-				highlight! NormalFloat guibg=#dcddc8 guifg=#1f1f28
-			]])
-		end
+		vim.cmd.colorscheme("kanagawa-paper")
 	end,
 }

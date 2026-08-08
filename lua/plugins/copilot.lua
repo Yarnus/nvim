@@ -1,10 +1,6 @@
 local function setup_copilot_highlights()
-	local comment_fg = vim.api.nvim_get_hl(0, { name = "Comment", link = false }).fg
-	local fallback_fg = vim.o.background == "dark" and "#8a8f7a" or "#8e8a80"
-	local suggestion_fg = comment_fg and string.format("#%06x", comment_fg) or fallback_fg
-
-	vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = suggestion_fg, italic = true })
-	vim.api.nvim_set_hl(0, "CopilotAnnotation", { fg = suggestion_fg })
+	vim.api.nvim_set_hl(0, "CopilotSuggestion", { link = "Comment" })
+	vim.api.nvim_set_hl(0, "CopilotAnnotation", { link = "Comment" })
 end
 
 return {
